@@ -1,46 +1,68 @@
 <template>
-	<view>
-		<home v-if="PageCur=='basics'"></home>
-		<components v-if="PageCur=='component'"></components>
-		<plugin v-if="PageCur=='plugin'"></plugin>
-		<view class="cu-bar tabbar bg-white shadow foot">
-			<view class="action" @click="NavChange" data-cur="home">
-				<view class='cuIcon-cu-image'>
-					<image :src="'/static/tabbar/basics' + [PageCur=='home'?'_cur':''] + '.png'"></image>
-				</view>
-				<view :class="PageCur=='basics'?'text-green':'text-gray'">首页</view>
-			</view>
-			<view class="action" @click="NavChange" data-cur="component">
-				<view class='cuIcon-cu-image'>
-					<image :src="'/static/tabbar/component' + [PageCur == 'component'?'_cur':''] + '.png'"></image>
-				</view>
-				<view :class="PageCur=='component'?'text-green':'text-gray'">组件</view>
-			</view>
-			<view class="action" @click="NavChange" data-cur="plugin">
-				<view class='cuIcon-cu-image'>
-					<image :src="'/static/tabbar/plugin' + [PageCur == 'plugin'?'_cur':''] + '.png'"></image>
-				</view>
-				<view :class="PageCur=='plugin'?'text-green':'text-gray'">扩展</view>
-			</view>
+	<view class="content">
+		<image class="logo" src="/static/logo.png"></image>
+		<view class="text-area">
+			<text class="title">{{title}}</text>
 		</view>
 	</view>
 </template>
-
+ 
 <script>
+	import {sendAjax} from '@/common/sendAjax.js';
+	import config from '@/apiConfig.js'
+	const { getAllUrl } = config.api
 	export default {
 		data() {
-		return {
-				PageCur: 'basics'
+			return {
+				title: 'Hello miss dj ilove you '
 			}
 		},
-		methods: {
-			NavChange: function(e) {
-				this.PageCur = e.currentTarget.dataset.cur
+		onLoad() {
+			let that = this
+			let infoOpt = {
+				url: getAllUrl,
+				type: 'POST',
+				data: {
+				}
 			}
+			let infoCb = {}
+			infoCb.success = function(res) {
+				console.log(res.list);
+				that.title = res.list[0].k
+			}
+			
+			sendAjax(infoOpt, infoCb);
+		},
+		methods: {
+
 		}
 	}
 </script>
 
 <style>
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 
+	.logo {
+		height: 200upx;
+		width: 200upx;
+		margin-top: 200upx;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 50upx;
+	}
+
+	.text-area {
+		display: flex;
+		justify-content: center;
+	}
+
+	.title {
+		font-size: 36upx;
+		color: #8f8f94;
+	}
 </style>

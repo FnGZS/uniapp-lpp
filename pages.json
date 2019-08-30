@@ -3,15 +3,16 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "0"
+				// "navigationStyle": "custom",
+				"navigationBarTitleText": "绿泡泡家政平台"
+				
 			}
 		}
 	],
+
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		// "navigationBarTitleText": "首页",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#8ed145",
+		"backgroundColor": "#8ed145"
 	}
 	// "tabBar": {
 	// 	"borderStyle": "black",

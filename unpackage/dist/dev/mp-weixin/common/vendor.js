@@ -1,8 +1,8 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],[
 /* 0 */
-/*!***********************************************!*\
-  !*** C:/Users/a/Documents/GitHub/2/2/main.js ***!
-  \***********************************************/
+/*!***************************************************!*\
+  !*** D:/2278/Documents/GitHub/uniapp-lpp/main.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12,7 +12,10 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 _vue.default.config.productionTip = false;
 
-_App.default.mpType = 'app';
+_App.default.mpType = 'app';var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 19));};
+
+
+_vue.default.component('cu-custom', cuCustom);
 
 var app = new _vue.default(_objectSpread({},
 _App.default));
@@ -752,7 +755,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -6964,7 +6967,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -6985,14 +6988,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7068,7 +7071,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7475,9 +7478,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!**************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/2/2/pages.json ***!
-  \**************************************************/
+/*!******************************************************!*\
+  !*** D:/2278/Documents/GitHub/uniapp-lpp/pages.json ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7597,9 +7600,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 11 */
-/*!********************************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/2/2/main.js?{"page":"pages%2Findex%2Findex"} ***!
-  \********************************************************************************/
+/*!************************************************************************************!*\
+  !*** D:/2278/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Findex%2Findex"} ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7610,117 +7613,6 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_index.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */
-/*!**********************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/2/2/common/sendAjax.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.sendAjax = sendAjax;
-//请求模板
-
-// let infoOpt = {
-// 	url: '',
-// 	type: 'POST',
-// 	data: {
-// 	}
-// }
-// let infoCb = {}
-// infoCb.success = function(res) {
-// 	console.log(res);
-// }
-// 
-// sendAjax(infoOpt, infoCb);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function sendAjax(options, callback) {
-  var _sets = options;
-  if (typeof _sets.type === 'undefined') {
-    _sets.type = 'POST';
-  }
-  if (typeof _sets.data === 'undefined') {
-    _sets.data = {};
-  }
-  // method大写
-  _sets.type = _sets.type.toUpperCase();
-  //执行之前
-  var bcallback = callback.beforeSend || function (data) {};
-  //成功回调
-  var scallback = callback.success || function (data) {};
-  //执行回调
-  var ccallback = callback.complete || function (data) {};
-
-  bcallback();
-  uni.request({
-    url: _sets.url,
-    method: _sets.type,
-    data: _sets.data,
-    header: {
-      'content-type': 'application/json'
-      // 'authorization': uni.getStorageSync('userInfo') !== null ? uni.getStorageSync('userInfo').authorization : ''
-    },
-    success: function success(res) {
-      if (res.data.code == 200) {
-
-        scallback(res.data.data);
-      } else {
-        uni.showModal({
-          title: '提示',
-          content: res.data.message || '处理失败',
-          showCancel: false });
-
-      }
-    },
-    fail: function fail() {
-      uni.showModal({
-        title: '提示',
-        content: '服务器连接失败',
-        showCancel: false });
-
-    },
-    complete: function complete() {
-      ccallback();
-    } });
-
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-/* 18 */
-/*!****************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/2/2/apiConfig.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-var apiUrl = 'http://192.168.17.110:8081';
-module.exports = {
-  api: {
-    //获取所有列表
-    getAllUrl: "".concat(apiUrl, "/dict/getAll") } };
 
 /***/ })
 ]]);

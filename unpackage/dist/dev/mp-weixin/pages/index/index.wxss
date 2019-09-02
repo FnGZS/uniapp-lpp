@@ -71,4 +71,8 @@ page {
   letter-spacing: 2px;
   color: #B1B1B1;
 }
+.cu-login{
+	height:80rpx;
+	font-size:35rpx;
+}
 

@@ -2499,9 +2499,9 @@ button.cuIcon.lg {
 	transform: translateX(0%);
 }
 .cu-modal .cu-dialog>.cu-bar:first-child .action{
-  min-width: 100rpx;
+  min-width: 100upx;
   margin-right: 0;
-  min-height: 100rpx;
+  min-height: 100upx;
 }
 /* ==================
          轮播
@@ -3909,4 +3909,100 @@ scroll-view.cu-steps .cu-item {
 .line-white,
 .lines-white {
 	color: #ffffff;
+}
+
+/* 字体大小 */
+.font_20 {
+    font-size: 20upx!important;
+}
+.font_22 {
+    font-size: 22upx!important;
+}
+
+.font_24 {
+    font-size: 24upx!important;
+}
+
+.font_26 {
+    font-size: 26upx!important;
+}
+
+.font_28 {
+    font-size: 28upx!important;
+}
+
+.font_30 {
+    font-size: 30upx!important;
+}
+
+.font_32 {
+    font-size: 32upx!important;
+}
+
+.font_34 {
+    font-size: 34upx!important;
+}
+.font_36 {
+    font-size: 34upx!important;
+}
+
+.font_40 {
+    font-size: 40upx!important;
+}
+
+.font_60 {
+    font-size: 60upx!important;
+}
+
+.font_w {
+    font-weight: bold;
+}
+
+/* 字体颜色 */
+.color_red {
+    color: #d25446;
+}
+
+.color_8d8d8d {
+    color: #8d8d8d;
+}
+
+.color_808080 {
+    color: #808080;
+}
+
+.color_999999 {
+    color: #999999;
+}
+.color_ef696c{
+  color: #ef696c;
+}
+.color_b3b3b3 {
+    color: #b3b3b3;
+}
+
+.color_2574b9 {
+    color: #2574b9;
+}
+
+.color_e49791 {
+    color: #e49791;
+}
+
+.color_db7368 {
+    color: #db7368;
+}
+
+.color_45b223 {
+    color: #45b223;
+}
+
+.color_fff {
+    color: #fff;
+}
+.color_959595 {
+    color: #959595;
+}
+.color_4a4a4a {
+    color: #4a4a4a;
 }

@@ -1,6 +1,22 @@
 <template >
 	<view>
-
+		<!-- 登录授权 -->
+		<view class="cu-modal" :class="modalName=='toUserLogin'?'show':''">
+			<view class="cu-dialog">
+				<view class="padding-xs">
+					<button class="cu-login margin-bottom-xs" type="primary"  open-type="getUserInfo" @getuserinfo="wxGetUserInfo" withCredentials="true"><view class="cuIcon-weixin ">微信用户快速登录</view></button>
+					<text class="font_24 color_4a4a4a">请授权用户的信息，头像昵称等。</text>
+				</view>
+			</view>
+		</view>
+		<!-- 手机号授权 -->
+		<view class="cu-modal" :class="modalName=='toPhoneLogin'?'show':''">
+			<view class="cu-dialog">
+				<view class="padding-xs">
+					<button class="cu-login" type="primary"  open-type="getPhoneNumber" @getphonenumber="wxGetPhoneNumber" withCredentials="true"><view class="cuIcon-phone ">获取手机号</view></button>
+				</view>
+			</view>
+		</view>
 		<swiper class="screen-swiper" :indicator-dots="true" :circular="true"
 		 :autoplay="true" interval="5000" duration="500" indicator-color="#fff" indicator-active-color="#3598DC">
 			<swiper-item v-for="(item,index) in swiperList" :key="index">
@@ -23,6 +39,7 @@
 </template>
 
 <script>
+	import {login} from '@/common/login.js'
 	export default {
 		data() {
 			return {
@@ -38,11 +55,34 @@
 				msgList: [
 				        { url: "url", title: "公告：多地首套房贷利率上浮 热点城市渐迎零折扣时代" },
 				        { url: "url", title: "公告：悦如公寓三周年生日趴邀你免费吃喝欢唱" },
-				        { url: "url", title: "公告：你想和一群有志青年一起过周末嘛？" }]
+				        { url: "url", title: "公告：你想和一群有志青年一起过周末嘛？" }],
+						modalName:''
 			}
 		},
+		onLaunch: function() {
+			//判断是否第一次进入小程序
+			this.modalName=login()?null:'toUserLogin'
+		},
 		methods: {
-			
+			wxGetUserInfo(res){
+				var that = this
+				if (!res.detail.iv) {
+					uni.showToast({
+						title: "您取消了授权,登录失败",
+						icon: "none"
+					});
+					return false;
+				}
+				//授权成功回调
+				let callback = {}
+				callback.success = function(){
+					that.modalName = null
+				}
+				login(callback)
+			},
+			wxGetPhoneNumber(res){
+				console.log(res)
+			}
 		}
 	}
 </script>
@@ -121,5 +161,9 @@ page {
   white-space: nowrap;
   letter-spacing: 2px;
   color: #B1B1B1;
+}
+.cu-login{
+	height:80upx;
+	font-size:35upx;
 }
 </style>

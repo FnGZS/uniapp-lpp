@@ -1,8 +1,8 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],[
 /* 0 */
-/*!***************************************************!*\
-  !*** D:/2278/Documents/GitHub/uniapp-lpp/main.js ***!
-  \***************************************************/
+/*!******************************************************!*\
+  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7478,9 +7478,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!******************************************************!*\
-  !*** D:/2278/Documents/GitHub/uniapp-lpp/pages.json ***!
-  \******************************************************/
+/*!*********************************************************!*\
+  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/pages.json ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7600,9 +7600,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 11 */
-/*!************************************************************************************!*\
-  !*** D:/2278/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Findex%2Findex"} ***!
-  \************************************************************************************/
+/*!***************************************************************************************!*\
+  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Findex%2Findex"} ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7613,6 +7613,194 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_index.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */
+/*!**************************************************************!*\
+  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/login.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.login = login;var _sendAjax = __webpack_require__(/*! @/common/sendAjax.js */ 27);
+var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig.js */ 28));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
+jwtLogin = _apiConfig.default.api.jwtLogin;
+function login(callback, first) {
+  if (!callback) {
+    callback = {};
+  }
+  var firstLogin = first ? false : true;
+  var that = this;
+  var bcallback = callback.beforeSend || function (data) {};
+  var scallback = callback.success || function (data) {};
+  // 登录
+  bcallback();
+  uni.login({
+    success: function success(resp) {
+      uni.getSetting({
+        success: function success(res) {
+          if (res.authSetting['scope.userInfo']) {
+            if (firstLogin) {
+              uni.getUserInfo({
+                success: function success(userResult) {
+                  uni.setStorageSync('userInfo', userResult.userInfo);
+                  var platUserInfoMap = {};
+                  platUserInfoMap["encryptedData"] = userResult.encryptedData;
+                  platUserInfoMap["iv"] = userResult.iv;
+                  //登录请求
+                  var infoOpt = {
+                    url: jwtLogin,
+                    type: 'POST',
+                    data: {
+                      platCode: resp.code,
+                      platUserInfoMap: platUserInfoMap } };
+
+
+                  var infoCb = {};
+                  infoCb.success = function (res) {
+                    res.user.token = res.token;
+                    return uni.setStorageSync("userInfo", res.user);
+
+                    scallback(res.user);
+                  };
+                  (0, _sendAjax.sendAjax)(infoOpt, infoCb);
+                } });
+
+            }
+          } else {
+            return false;
+          }
+        } });
+
+    } });
+
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 27 */
+/*!*****************************************************************!*\
+  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/sendAjax.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.sendAjax = sendAjax;
+//请求模板
+
+// let infoOpt = {
+// 	url: '',
+// 	type: 'POST',
+// 	data: {
+// 	}
+// }
+// let infoCb = {}
+// infoCb.success = function(res) {
+// 	console.log(res);
+// }
+// 
+// sendAjax(infoOpt, infoCb);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function sendAjax(options, callback) {
+  var _sets = options;
+  if (typeof _sets.type === 'undefined') {
+    _sets.type = 'POST';
+  }
+  if (typeof _sets.data === 'undefined') {
+    _sets.data = {};
+  }
+  // method大写
+  _sets.type = _sets.type.toUpperCase();
+  //执行之前
+  var bcallback = callback.beforeSend || function (data) {};
+  //成功回调
+  var scallback = callback.success || function (data) {};
+  //执行回调
+  var ccallback = callback.complete || function (data) {};
+
+  bcallback();
+  uni.request({
+    url: _sets.url,
+    method: _sets.type,
+    data: _sets.data,
+    header: {
+      'content-type': 'application/json'
+      // 'authorization': uni.getStorageSync('userInfo') !== null ? uni.getStorageSync('userInfo').authorization : ''
+    },
+    success: function success(res) {
+      if (res.data.code == 200) {
+
+        scallback(res.data.data);
+      } else {
+        uni.showModal({
+          title: '提示',
+          content: res.data.message || '处理失败',
+          showCancel: false });
+
+      }
+    },
+    fail: function fail() {
+      uni.showModal({
+        title: '提示',
+        content: '服务器连接失败',
+        showCancel: false });
+
+    },
+    complete: function complete() {
+      ccallback();
+    } });
+
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 28 */
+/*!***********************************************************!*\
+  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/apiConfig.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var apiUrl = 'http://localhost:8080';
+module.exports = {
+  api: {
+    //登录授权
+    jwtLogin: "".concat(apiUrl, "/user/jwtLogin"),
+    //登录
+    userLoginUrl: "".concat(apiUrl, "/user/login"),
+    //获取所有列表
+    getAllUrl: "".concat(apiUrl, "/dict/getAll") } };
 
 /***/ })
 ]]);

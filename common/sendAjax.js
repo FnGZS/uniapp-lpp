@@ -52,11 +52,10 @@ function sendAjax(options, callback) {
 		data: _sets.data,
 		header: {
 			'content-type': 'application/json',
-			// 'authorization': uni.getStorageSync('userInfo') !== null ? uni.getStorageSync('userInfo').authorization : ''
+			'authorization': uni.getStorageSync('userInfo') !== '' ? uni.getStorageSync('userInfo').token : ''
 		},
 		success(res) {
 			if (res.data.code == 200) {
-
 				scallback(res.data.data)
 			} else{
 				uni.showModal({

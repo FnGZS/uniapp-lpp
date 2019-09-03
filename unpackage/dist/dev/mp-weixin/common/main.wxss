@@ -3877,6 +3877,9 @@ scroll-view.cu-steps .cu-item {
 .font_28 {
     font-size: 28rpx!important;
 }
+.font_29 {
+    font-size: 29rpx!important;
+}
 .font_30 {
     font-size: 30rpx!important;
 }
@@ -3938,6 +3941,9 @@ scroll-view.cu-steps .cu-item {
 }
 .color_4a4a4a {
     color: #4a4a4a;
+}
+.color_5a6c81{
+	color:#5A6C81;
 }
 @-webkit-keyframes cuIcon-spin {
 0% {

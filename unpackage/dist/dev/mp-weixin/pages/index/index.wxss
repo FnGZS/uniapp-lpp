@@ -1,78 +1,222 @@
 
-@font-face {font-family: "iconfont";
-  src: url('https://at.alicdn.com/iconfont.eot?t=1563794167254'); /* IE9 */
-  src: url('https://at.alicdn.com/iconfont.eot?t=1563794167254#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAWQAAsAAAAACngAAAVDAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDQAqHcIYsATYCJAMYCw4ABCAFhG0HWxvdCFGUT06I7Asc5wlKLa10hBbHBKsFAOCyggkAAAAAWCAvgODp2+93Z2Z3v4gkxCJdqybxJlo6CWIjFE7/hPKIam9rqnKSrgGgcMaCQV0LTTT/bf374yGfLHfTMlyECmALWHmwv739dhEHNpCIozBJgxQzXNA1kJcmrZPWQSEgt/luUC0NL/CrvD/f/eF+povEgeWzb3OKDItKHI3HAxpQVNDuDuhaS+QE/Yaxi8s4DAFpfX3RenRxDcscTSIwZQ/ewHJMy5VQRFIRchZmQq5ZkByXegtw5f6+fEwjCcpPaBNXt8MEdjr5PhkRE+5sFLz+zACzDAxMARzkyLVeaPviKVeazvuLjnlAWpLSTnU3cj/FMVEyFK7ImpbV/+WBcZTwkBlNmkX4xYBHlDQRGKIUAoeoi0ARHSAQ3D9p8VAZeixuAClALqic6r+zY7wQuWIrymqf02VbqWJvezuqlN8HsWAMIrkkHK+YgClTxCR5OqmoDWambOBg8TLERG5EfI6O3E9OPNvW4JUT0fpji3eIGKmYh630XXaoz8gBaZ+8S+ype7EGhA1+kVmbM2exA2y5lbtqw/sCNQeaQ3teRcjhocfxsXHBiefJkXsRgUwe6rkf2RdFlLeTW4k2Skcu5G6FAEVtKFzSAYKk9ojRQzvkXaMaemkAQMDwUBOKbh1pF62I0tYvuhc14Z4lFRhW3Iy4vStFvYsbEeRdGepe1ILjJeWYR2wRF0zqgEFyOwhCANGKARQ3uLxHE2yc5k2QJiF1V+Jc7kQ+lArvOUlqreUG9KQN2yiyuKdHMAgBlZ0QBMBNXdxwRY8kDJ8vuTui81DYfelE97eaMEGP8mbm8QpPmkyYbNTEMtdyXqIAvyAfI3rJ2cqcfkvd/uFTB00COJCk7ms7IzHr5MzH5+Q098N2kotJmInXuO4vTreMcOKwF9FVHE6BL7FU3ZmdL7ajMi5TPyScRLKfTTmhpZMk3mLQAmj3kZgndmcn+PkmZncnKhigKDuvU71E0QSJR4O06dTpWdMxirHyV7Kuzpl4xh/yk8zkQEu954/8QqkyxTLFzYmAdl1HJ6saM8yiett5q8rqPqpZlVIPxfWzqFm8UTjigv6Wlgk3ijcTvaB4zPxZFY8Qd34xmBtW8iyzxDbOipIySjPlQ1vccq3ibEtjqpIwSPbTnQTYtleB9LgZOz2bGU7PQCe5/6BnF/kGQSXGjL1euhB8QGEqHkjSJZwTDLl3P4RK3kXor5X1rpDzunz6xCR99GRWvcGblv83VVVtBRUfEniP00K0Qe9ZGVnfB9FBtPj7+GfrbGF7tXX8YaxdkvEJiB/hSreQamC6eHGP+7YKcwD26AMQR3br07/aj6m/K/tbem9JuDjE3XZQTPwYD1y15/5wMmrz/kx1ypWg3oSyQNOEFNmY61aa3Fr2YPt1fkFBWhr8kc6yv77ktdrJIJJqIaiEHpikIbTDT4GXMQ1B0gykTTpenlEh2iRTwIQvAKLoG1TeDZiiH7TD/4JX9w9BMQzS1oJzw4yROF41FTJKCdo3DDGXzjDoqpd6Sb7JjUQFLvWWpA4unAzHydAxlSR9TKmf/VTVoRMu8AgcR3nOWAnPKdZhqlrNRiOX90TDmAtYtUAQQ5EEst6gIMZKzm6uVlM/f4l4jZwhJTUl1ltE1EL7aGJoXAN9LC1r1ZxL99ozb0oph4c5ghXQETSTXPczVOX3myMxNZS28FZmRqieqysdji8vrnILkKbdGkLFxImXIAnc2eS0mknBBsMaJmtxdZ0avcJg6ZBL7w0vpC0TAAA=') format('woff2'),
-  url('https://at.alicdn.com/iconfont.woff?t=1563794167254') format('woff'),
-  url('https://at.alicdn.com/iconfont.ttf?t=1563794167254') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('https://at.alicdn.com/iconfont.svg?t=1563794167254#iconfont') format('svg'); /* iOS 4.1- */
-}
-.iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.icon-yule1:before {
-  content: "\E666";
-}
-.icon-yule2:before {
-  content: "\E61C";
-}
-.icon-yule3:before {
-  content: "\E608";
-}
-.icon-gonggao:before {
-  content: "\E609";
-}
-.icon-yule4:before {
-  content: "\E7F1";
-}
 page {
-    background-color: #fff !important;
+	background-color: #fff !important;
 }
-.gonggao{
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: 5%;
-  width: 100%;
-  height: 55rpx;
-  margin-top: 10rpx;
-  border-bottom: 8rpx solid #f5f5f5;
-  background: #fff;
+/* 登录 */
+.cu-login {
+	height: 80rpx;
+	font-size: 35rpx;
 }
-.gonggao-left{
-  /* border-right: 1upx solid #ddd; */
-}
-.icon-gonggao{
-  background: -webkit-gradient(linear, left top, right top, from(#f2994a), to(#f2c94c));
-  background: -o-linear-gradient(left, #f2994a, #f2c94c);
-  background: linear-gradient(to right, #f2994a, #f2c94c);
-  color: #fff;
-  padding: 5rpx 8rpx;
-}
+/* 轮播 */
 .swiper_container {
-  height: 55rpx;
-  width: 100vw;
-  margin-left: 10rpx;
+	height: 55rpx;
+	width: 100vw;
+	margin-left: 10rpx;
 }
 .swiper_item {
-  /* height: 30upx; */
-  /* margin-top: 25upx; */
-  margin-top: 7rpx;
-  font-size: 23rpx;
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
-  white-space: nowrap;
-  letter-spacing: 2px;
-  color: #B1B1B1;
+	font-size: 26rpx;
+	line-height: 55rpx;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	white-space: nowrap;
+	letter-spacing: 2px;
+	color: #b1b1b1;
 }
-.cu-login{
-	height:80rpx;
-	font-size:35rpx;
+.screen-swiper {
+	width: 750rpx;
+	min-height: 320rpx;
+}
+/* 公告部分 */
+.gonggao {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	width: 750rpx;
+	height: 74rpx;
+	border-bottom: 8rpx solid #f8f8f8;
+	background: #fff;
+}
+.gonggao-left {
+	position: relative;
+	width: 184rpx;
+	height: 34rpx;
+	border-right: 2rpx solid #c3c3c3;
+}
+.gonggao-box {
+	position: absolute;
+	z-index: 2;
+	right: 30rpx;
+	bottom: -2rpx;
+	width: 78rpx;
+	height: 36rpx;
+	background: -webkit-gradient(linear, left top, right top, from(#ff8a00), to(#ffce08));
+	background: -o-linear-gradient(left, #ff8a00, #ffce08);
+	background: linear-gradient(to right, #ff8a00, #ffce08);
+	color: #fff;
+	text-align: center;
+	border-radius: 4rpx;
+}
+.gonggao-rightArrow {
+	position: absolute;
+	bottom: 4rpx;
+	right: 16rpx;
+	z-index: 1;
+	width: 0;
+	height: 0;
+	border-top: 0 solid transparent;
+	border-bottom: 14rpx solid transparent;
+	border-left: 16rpx solid #ff8a00;
+	opacity: 0.42;
+}
+/* 公共title */
+.public-title {
+	width: 750rpx;
+	height: 92rpx;
+	padding-left: 30rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.public-box {
+	width: 720rpx;
+	padding-left: 13rpx;
+	font-weight: bold;
+}
+.public-leftLine {
+	width: 8rpx;
+	height: 32rpx;
+	background: #3598dc;
+	border-radius: 4rpx;
+}
+/* 常规保洁 */
+.baojie-cont {
+	padding: 0 20rpx 30rpx 30rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	border-bottom: 8rpx solid #f8f8f8;
+}
+.baojie-list {
+	margin: 0 10rpx 10rpx 0;
+	width: 340rpx;
+	height: 180rpx;
+	background: #f5f5f5;
+	position: relative;
+}
+.baojie-list-title {
+	color: #333333;
+	margin-top: 24rpx;
+	margin-left: 20rpx;
+}
+.baojie-list-text {
+	color: #777777;
+	margin-top: 10rpx;
+	margin-left: 20rpx;
+}
+.baojie-list-go {
+	color: #b19c71;
+	border: 1rpx solid #b19c71;
+	text-align: center;
+	border-radius: 4rpx;
+	width: 60rpx;
+	padding: 2rpx 5rpx;
+	margin-left: 20rpx;
+	margin-top: 10rpx;
+}
+.baojie-list image {
+	position: absolute;
+	right: 20rpx;
+	top: 20rpx;
+	width: 100rpx;
+	height: 140rpx;
+}
+/* 推荐 */
+.tuijian-cont {
+	padding: 0 30rpx;
+	margin-bottom: 50rpx;
+}
+.tuijian-list {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	position: relative;
+	-webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+	        box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+	border: 1rpx solid #f4f4f4;
+	margin-bottom: 20rpx;
+}
+.tuijian-list image {
+	margin: 30rpx 30rpx;
+	width: 180rpx;
+	height: 180rpx;
+	border-radius: 50%;
+}
+.tuijian-name {
+	color: #3c3c3c;
+	margin-top: 50rpx;
+	margin-left: 20rpx;
+	font-size: 33rpx;
+	font-weight: bold;
+}
+.tuijian-detail {
+	color: #919191;
+	margin-top: 10rpx;
+	margin-left: 20rpx;
+	font-size: 28rpx;
+}
+.tuijian-skill {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.tuijian-skill-main {
+	margin-top: 20rpx;
+	margin-left: 20rpx;
+	padding: 5rpx 10rpx;
+	font-size: 25rpx;
+	border: 2rpx solid #e7e6ec;
+	border-radius: 10rpx;
+	color: #c1c1c1;
+}
+.tuijan-label {
+	position: absolute;
+	top: 50rpx;
+	right: 30rpx;
+	font-size: 23rpx;
+	color: #fff;
+	background: #ff3366;
+	padding: 2rpx 10rpx;
+	border-radius: 5rpx;
 }
 

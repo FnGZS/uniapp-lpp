@@ -4,11 +4,10 @@
   ],
   "subPackages": [],
   "window": {
-    "navigationBarBackgroundColor": "#8ed145",
+    "navigationBarBackgroundColor": "#09C499",
     "backgroundColor": "#8ed145"
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  },
-  "sitemapLocation": "sitemap3.json"
+  }
 }

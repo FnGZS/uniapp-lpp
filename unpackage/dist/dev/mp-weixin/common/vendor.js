@@ -12,7 +12,7 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 _vue.default.config.productionTip = false;
 
-_App.default.mpType = 'app';var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 19));};
+_App.default.mpType = 'app';var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 22));};
 
 
 _vue.default.component('cu-custom', cuCustom);
@@ -7620,16 +7620,7 @@ createPage(_index.default);
 /* 14 */,
 /* 15 */,
 /* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */
+/* 17 */
 /*!**************************************************************!*\
   !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/login.js ***!
   \**************************************************************/
@@ -7637,9 +7628,14 @@ createPage(_index.default);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.login = login;var _sendAjax = __webpack_require__(/*! @/common/sendAjax.js */ 27);
-var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig.js */ 28));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
-jwtLogin = _apiConfig.default.api.jwtLogin;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.login = login;var _sendAjax = __webpack_require__(/*! @/common/sendAjax.js */ 18);
+
+
+var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
+
+jwtLogin =
+_apiConfig.default.api.jwtLogin;
+
 function login(callback, first) {
   if (!callback) {
     callback = {};
@@ -7658,7 +7654,6 @@ function login(callback, first) {
             if (firstLogin) {
               uni.getUserInfo({
                 success: function success(userResult) {
-                  uni.setStorageSync('userInfo', userResult.userInfo);
                   var platUserInfoMap = {};
                   platUserInfoMap["encryptedData"] = userResult.encryptedData;
                   platUserInfoMap["iv"] = userResult.iv;
@@ -7674,8 +7669,8 @@ function login(callback, first) {
                   var infoCb = {};
                   infoCb.success = function (res) {
                     res.user.token = res.token;
-                    return uni.setStorageSync("userInfo", res.user);
-
+                    console.log(res);
+                    uni.setStorageSync("userInfo", res.user);
                     scallback(res.user);
                   };
                   (0, _sendAjax.sendAjax)(infoOpt, infoCb);
@@ -7683,7 +7678,7 @@ function login(callback, first) {
 
             }
           } else {
-            return false;
+            uni.setStorageSync("userInfo", '');
           }
         } });
 
@@ -7693,7 +7688,7 @@ function login(callback, first) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 27 */
+/* 18 */
 /*!*****************************************************************!*\
   !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/sendAjax.js ***!
   \*****************************************************************/
@@ -7754,12 +7749,11 @@ function sendAjax(options, callback) {
     method: _sets.type,
     data: _sets.data,
     header: {
-      'content-type': 'application/json'
-      // 'authorization': uni.getStorageSync('userInfo') !== null ? uni.getStorageSync('userInfo').authorization : ''
-    },
+      'content-type': 'application/json',
+      'authorization': uni.getStorageSync('userInfo') !== '' ? uni.getStorageSync('userInfo').token : '' },
+
     success: function success(res) {
       if (res.data.code == 200) {
-
         scallback(res.data.data);
       } else {
         uni.showModal({
@@ -7784,7 +7778,7 @@ function sendAjax(options, callback) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 28 */
+/* 19 */
 /*!***********************************************************!*\
   !*** C:/Users/a/Documents/GitHub/uniapp-lpp/apiConfig.js ***!
   \***********************************************************/
@@ -7792,15 +7786,12 @@ function sendAjax(options, callback) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var apiUrl = 'http://localhost:8080';
+ // const apiUrl = 'http://localhost:8080'
+var apiUrl = 'http://192.168.17.110:8080';
 module.exports = {
   api: {
     //登录授权
-    jwtLogin: "".concat(apiUrl, "/user/jwtLogin"),
-    //登录
-    userLoginUrl: "".concat(apiUrl, "/user/login"),
-    //获取所有列表
-    getAllUrl: "".concat(apiUrl, "/dict/getAll") } };
+    jwtLogin: "".concat(apiUrl, "/user/jwtLogin") } };
 
 /***/ })
 ]]);

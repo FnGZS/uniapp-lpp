@@ -7,6 +7,14 @@
 				"navigationBarTitleText": "绿泡泡家政平台"
 				
 			}
+		},
+		{
+			"path": "pages/cleanNormal/cleanNormal",
+			"style": {
+				// "navigationStyle": "custom",
+				"navigationBarTitleText": "常规保洁"
+				
+			}
 		}
 	],
 

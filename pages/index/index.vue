@@ -88,7 +88,7 @@
 				<view class="public-box color_5a6c81 font_29">保洁推荐</view>
 			</view>
 			<view class="baojie-cont">
-				<view class="baojie-list" bindtap="toCleanNormal">
+				<view class="baojie-list" @click="toCleanNormal">
 					<view class="baojie-list-title font_29">常规保洁</view>
 					<view class="baojie-list-text font_24">XXXX</view>
 					<view class="baojie-list-go font_20">GO></view>

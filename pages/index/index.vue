@@ -210,6 +210,11 @@ export default {
 		},
 		wxGetPhoneNumber(res) {
 			console.log(res);
+		},
+		toCleanNormal(){
+			uni.navigateTo({
+				url:'../cleanNormal/cleanNormal'
+			})
 		}
 	}
 };

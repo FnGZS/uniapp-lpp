@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/cleanNormal/cleanNormal"
   ],
   "subPackages": [],
   "window": {
@@ -10,5 +11,5 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
   },
-  "sitemapLocation": "sitemap87.json"
+  "sitemapLocation": "sitemap62.json"
 }

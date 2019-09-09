@@ -210,14 +210,14 @@
 	  }
 	   
 	  .on {
-	    color: #8ed145;
-	    border-bottom: 2upx solid #8ed145;
+	    color: #09C499;
+	    border-bottom: 2upx solid #09C499;
 	  }
 	   
 	  .on i {
 	  
-	    border: 5px solid #8ed145;
-	    border-top-color: #8ed145;
+	    border: 5px solid #09C499;
+	    border-top-color: #09C499;
 	    border-bottom-color: transparent;
 	    border-left-color: transparent;
 	    border-right-color: transparent;
@@ -339,29 +339,29 @@
 	    padding-left: 5%;
 	    height: 70upx;
 	    line-height: 70upx;
-	    border-bottom: 2upx solid #8ed145;
-	    color: #8ed145;
+	    border-bottom: 2upx solid #09C499;
+	    color: #09C499;
 	  }
 	  .add_priceing {
 	    padding-left: 5%;
 	    height: 70upx;
 	    line-height: 70upx;
-	    border-bottom: 2upx solid #8ed145;
-	    color: #8ed145;
+	    border-bottom: 2upx solid #09C499;
+	    color: #09C499;
 	  }
 	  .add_amounting {
 	    padding-left: 5%;
 	    height: 70upx;
 	    line-height: 70upx;
-	    border-bottom: 2upx solid #8ed145;
-	    color: #8ed145;
+	    border-bottom: 2upx solid #09C499;
+	    color: #09C499;
 	  }
 	  .add_typeing {
 	    padding-left: 5%;
 	    height: 70upx;
 	    line-height: 70upx;
-	    border-bottom: 2upx solid #8ed145;
-	    color: #8ed145;
+	    border-bottom: 2upx solid #09C499;
+	    color: #09C499;
 	  }
 	  .list{
 	    width: 100%;
@@ -388,14 +388,15 @@
 	  .list-left-phone{
 	    width: 60upx;
 	    height: 60upx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: auto;
 	    border: 5upx solid #F3F3F3;
 	    border-radius: 50%;
-	    margin: auto;
 	  }
 	  .icon-dianhua{
-	    margin-left: 15upx;
 	    color: #09C499;
-	    line-height: 60upx;
 	  }
 	  .list-center{
 	    margin-left: 40upx;

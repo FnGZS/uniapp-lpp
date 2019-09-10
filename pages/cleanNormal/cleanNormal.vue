@@ -1,6 +1,13 @@
 <template>
 	<view>
+		
 		<view id="cleanNoraml">
+			<view class="cleanNoraml-search">
+				<view class="cleanNoraml-search-box">
+					<view class="cuIcon-search font_30"></view>
+					<input type="text" value=""  placeholder="搜索"/>
+				</view>
+			</view>
 		  <view id="swiper-tab">
 		    <view class="swiper-tab">
 		      <view class="swiper-tab-list" :class="currentTab==0 ? 'on' : ''" data-current="0" @click="tabNav">{{first}}
@@ -59,7 +66,7 @@
 		        <view class='iconfont icon-biaoqian'>
 		          <view class='list-score'>4.9</view>
 		        </view>
-		        <view class='list-yuyue'>预约</view>
+		        <view class='list-yuyue' @click="toDetail">预约</view>
 		      </view>
 		    </view>
 		  </view>
@@ -132,6 +139,12 @@
 				  this.fours=e.target.dataset.name,
 				  this.displays= "none"
 			  },
+			  //下一页
+			  toDetail(){
+				 uni.navigateTo({
+				 	url:'../subscribeTime/subscribeTime'
+				 })
+			  }
 		}
 	}
 				
@@ -164,8 +177,34 @@
 	}
 	
 	
-	 
-	
+	 /* 搜索 */
+	.cleanNoraml-search{
+		width: 100%;
+		height: 80upx;
+		padding-top: 15upx;
+		background: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.cleanNoraml-search-box{
+		width:661upx;
+		height:56upx;
+		background:rgba(238,238,238,1);
+		border-radius:28upx;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	.cuIcon-search{
+		line-height: 56upx;
+		margin: 0 10upx 0 30upx;
+		color: #A8A8A8;
+	}
+	.cleanNoraml-search-box input{
+		font-size: 24upx;
+		color: #4a4a4a;
+	}
 	  /* 下面是tobar */
 	   
 	  #swiper-tab {

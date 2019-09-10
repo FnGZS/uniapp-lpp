@@ -289,26 +289,7 @@ page {
 	border-left: 16upx solid #ff8a00;
 	opacity: 0.42;
 }
-/* 公共title */
-.public-title {
-	width: 750upx;
-	height: 92upx;
-	padding-left: 30upx;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-.public-box {
-	width: 720upx;
-	padding-left: 13upx;
-	font-weight: bold;
-}
-.public-leftLine {
-	width: 8upx;
-	height: 32upx;
-	background: #3598dc;
-	border-radius: 4upx;
-}
+
 
 /* 常规保洁 */
 .baojie-cont {

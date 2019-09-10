@@ -105,7 +105,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -238,7 +245,14 @@ var _default =
       this.type_index = e.target.dataset.num,
       this.fours = e.target.dataset.name,
       this.displays = "none";
+    },
+    //下一页
+    toDetail: function toDetail() {
+      uni.navigateTo({
+        url: '../subscribeTime/subscribeTime' });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

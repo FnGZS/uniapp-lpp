@@ -15,6 +15,12 @@
 				"navigationBarTitleText": "常规保洁"
 				
 			}
+		},
+		{
+			"path": "pages/subscribeTime/subscribeTime",
+			"style": {
+				"navigationBarTitleText": "预约时间"
+			}
 		}
 	],
 

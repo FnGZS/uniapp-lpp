@@ -12,7 +12,7 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 _vue.default.config.productionTip = false;
 
-_App.default.mpType = 'app';var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 30));};
+_App.default.mpType = 'app';var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 38));};
 
 
 _vue.default.component('cu-custom', cuCustom);
@@ -7620,7 +7620,74 @@ createPage(_index.default);
 /* 14 */,
 /* 15 */,
 /* 16 */,
-/* 17 */,
+/* 17 */
+/*!**************************************************************!*\
+  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/login.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.login = login;var _sendAjax = __webpack_require__(/*! @/common/sendAjax.js */ 18);
+
+
+var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
+
+jwtLogin =
+_apiConfig.default.api.jwtLogin;
+
+function login(callback, first) {
+  if (!callback) {
+    callback = {};
+  }
+  var firstLogin = first ? false : true;
+  var that = this;
+  var bcallback = callback.beforeSend || function (data) {};
+  var scallback = callback.success || function (data) {};
+  // 登录
+  bcallback();
+  uni.login({
+    success: function success(resp) {
+      uni.getSetting({
+        success: function success(res) {
+          if (res.authSetting['scope.userInfo']) {
+            if (firstLogin) {
+              uni.getUserInfo({
+                success: function success(userResult) {
+                  var platUserInfoMap = {};
+                  platUserInfoMap["encryptedData"] = userResult.encryptedData;
+                  platUserInfoMap["iv"] = userResult.iv;
+                  //登录请求
+                  var infoOpt = {
+                    url: jwtLogin,
+                    type: 'POST',
+                    data: {
+                      platCode: resp.code,
+                      platUserInfoMap: platUserInfoMap } };
+
+
+                  var infoCb = {};
+                  infoCb.success = function (res) {
+                    res.user.token = res.token;
+                    console.log(res);
+                    uni.setStorageSync("userInfo", res.user);
+                    scallback(res.user);
+                  };
+                  (0, _sendAjax.sendAjax)(infoOpt, infoCb);
+                } });
+
+            }
+          } else {
+            uni.setStorageSync("userInfo", '');
+          }
+        } });
+
+    } });
+
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
 /* 18 */
 /*!*****************************************************************!*\
   !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/sendAjax.js ***!
@@ -7752,77 +7819,20 @@ createPage(_cleanNormal.default);
 /* 27 */,
 /* 28 */,
 /* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */
-/*!**************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/login.js ***!
-  \**************************************************************/
+/* 30 */
+/*!*******************************************************************************************************!*\
+  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2FsubscribeTime%2FsubscribeTime"} ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.login = login;var _sendAjax = __webpack_require__(/*! @/common/sendAjax.js */ 18);
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
-
-var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
-
-jwtLogin =
-_apiConfig.default.api.jwtLogin;
-
-function login(callback, first) {
-  if (!callback) {
-    callback = {};
-  }
-  var firstLogin = first ? false : true;
-  var that = this;
-  var bcallback = callback.beforeSend || function (data) {};
-  var scallback = callback.success || function (data) {};
-  // 登录
-  bcallback();
-  uni.login({
-    success: function success(resp) {
-      uni.getSetting({
-        success: function success(res) {
-          if (res.authSetting['scope.userInfo']) {
-            if (firstLogin) {
-              uni.getUserInfo({
-                success: function success(userResult) {
-                  var platUserInfoMap = {};
-                  platUserInfoMap["encryptedData"] = userResult.encryptedData;
-                  platUserInfoMap["iv"] = userResult.iv;
-                  //登录请求
-                  var infoOpt = {
-                    url: jwtLogin,
-                    type: 'POST',
-                    data: {
-                      platCode: resp.code,
-                      platUserInfoMap: platUserInfoMap } };
-
-
-                  var infoCb = {};
-                  infoCb.success = function (res) {
-                    res.user.token = res.token;
-                    console.log(res);
-                    uni.setStorageSync("userInfo", res.user);
-                    scallback(res.user);
-                  };
-                  (0, _sendAjax.sendAjax)(infoOpt, infoCb);
-                } });
-
-            }
-          } else {
-            uni.setStorageSync("userInfo", '');
-          }
-        } });
-
-    } });
-
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _subscribeTime = _interopRequireDefault(__webpack_require__(/*! ./pages/subscribeTime/subscribeTime.vue */ 31));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_subscribeTime.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ })
 ]]);

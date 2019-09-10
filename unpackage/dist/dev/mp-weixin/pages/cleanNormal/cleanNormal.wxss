@@ -21,6 +21,54 @@
   content: "\E60D";
 }
 
+/* 搜索 */
+.cleanNoraml-search{
+	width: 100%;
+	height: 80rpx;
+	padding-top: 15rpx;
+	background: #fff;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.cleanNoraml-search-box{
+	width:661rpx;
+	height:56rpx;
+	background:rgba(238,238,238,1);
+	border-radius:28rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.cuIcon-search{
+	line-height: 56rpx;
+	margin: 0 10rpx 0 30rpx;
+	color: #A8A8A8;
+}
+.cleanNoraml-search-box input{
+	font-size: 24rpx;
+	color: #4a4a4a;
+}
+
 /* 下面是tobar */
 #swiper-tab {
     width: 100%;

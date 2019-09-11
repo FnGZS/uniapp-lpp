@@ -19,7 +19,13 @@
 		{
 			"path": "pages/subscribeTime/subscribeTime",
 			"style": {
-				"navigationBarTitleText": "预约时间"
+				"navigationBarTitleText": "预约"
+			}
+		},
+		{
+			"path": "pages/subscribeSub/subscribeSub",
+			"style": {
+				"navigationBarTitleText": "预约"
 			}
 		}
 	],

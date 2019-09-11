@@ -1,0 +1,219 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 步骤条 */
+.cu-steps {
+	padding: 0rpx 0rpx 20rpx 85rpx;
+	margin-bottom: 10rpx;
+}
+.text-blue,
+.line-blue,
+.lines-blue {
+	color: #09c499;
+}
+.cu-steps .cu-item .num {
+	border: 1rpx solid #09c499;
+	color: #09c499;
+}
+.cu-steps .cu-item[class*='text-'] .num {
+	background-color: #09c499;
+}
+radio {
+	-webkit-transform: scale(0.6);
+	    -ms-transform: scale(0.6);
+	        transform: scale(0.6);
+}
+.subImg {
+	width: 100%;
+	height: 400rpx;
+}
+.subImg image {
+	width: 100%;
+	height: 100%;
+}
+.subForm {
+	width: 703rpx;
+	height: 520rpx;
+	margin: 24rpx auto;
+	background: #fff;
+	overflow: hidden;
+}
+.subFormInfo {
+	width: 100%;
+	height: 105rpx;
+	border-bottom: 1rpx solid #f5f5f5;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.subFormInfoLeft {
+	width: 200rpx;
+	height: 105rpx;
+	line-height: 105rpx;
+	text-align: center;
+	color: #333;
+	font-size: 30rpx;
+	font-weight: 700;
+}
+.columnLine {
+	width: 4rpx;
+	height: 34rpx;
+	background: #ccc;
+}
+.columnLine radio-group {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+}
+.azure {
+	margin-left: 50rpx;
+}
+.block{
+	height: 105rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	color: #4a4a4a;
+	font-size: 28rpx;
+}
+.subFormInfoRight input{
+	width: 450rpx;
+	margin-left: 20rpx;
+}
+/* 备注 */
+.subFormRemark{
+	width: 703rpx;
+	min-height: 300rpx;
+	background: #fff;
+	margin: 0 auto 200rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.subFormRemark textarea{
+	margin: 10rpx 45rpx;
+}
+

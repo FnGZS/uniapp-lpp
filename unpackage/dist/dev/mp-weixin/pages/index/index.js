@@ -442,7 +442,8 @@ var _login = __webpack_require__(/*! @/common/login.js */ 17); //
 //
 //
 var _default = { data: function data() {return { swiperList: [{ id: 0, type: 'image', url: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=265069926,1736566583&fm=15&gp=0.jpg' }, { id: 1, type: 'image', url: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3617678736,2551419226&fm=15&gp=0.jp' }], msgList: [{ url: 'url', title: '多地首套房贷利率上浮 热点城市渐迎零折扣时代' }, { url: 'url', title: '悦如公寓三周年生日趴邀你免费吃喝欢唱' }, { url: 'url', title: '你想和一群有志青年一起过周末嘛？' }], modalName: '' };}, onLoad: function onLoad() {//判断是否第一次进入小程序
-    this.modalName = uni.getStorageSync('userInfo') ? null : 'toUserLogin';}, methods: { wxGetUserInfo: function wxGetUserInfo(res) {var that = this;if (!res.detail.iv) {uni.showToast({ title: '您取消了授权,登录失败', icon: 'none' });return false;} //授权成功回调
+    // this.modalName = uni.getStorageSync('userInfo') ? null : 'toUserLogin';
+  }, methods: { wxGetUserInfo: function wxGetUserInfo(res) {var that = this;if (!res.detail.iv) {uni.showToast({ title: '您取消了授权,登录失败', icon: 'none' });return false;} //授权成功回调
       var callback = {};callback.success = function () {that.modalName = null;};(0, _login.login)(callback);}, wxGetPhoneNumber: function wxGetPhoneNumber(res) {console.log(res);}, toCleanNormal: function toCleanNormal() {uni.navigateTo({ url: '../cleanNormal/cleanNormal' });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

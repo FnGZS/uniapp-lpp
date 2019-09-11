@@ -49,7 +49,7 @@
 			</swiper>
 		</view>
 		<!-- 休闲 -->
-		<!-- <view class="xiuxian">
+		<view class="xiuxian">
 			<view class="public-title">
 				<view class="public-leftLine"></view>
 				<view class="public-box color_5a6c81 font_29">娱乐休闲</view>
@@ -80,7 +80,7 @@
 			        <view class="list-title">唱歌</view>
 			      </view>
 			    </view>
-		</view> -->
+		</view>
 		<!-- 保洁 -->
 		<view class="baojie">
 			<view class="public-title">
@@ -189,7 +189,7 @@ export default {
 	},
 	onLoad: function() {
 		//判断是否第一次进入小程序
-		this.modalName = uni.getStorageSync('userInfo') ? null : 'toUserLogin';
+		// this.modalName = uni.getStorageSync('userInfo') ? null : 'toUserLogin';
 	},
 	methods: {
 		wxGetUserInfo(res) {
@@ -224,6 +224,23 @@ export default {
 page {
 	background-color: #fff !important;
 }
+@font-face {font-family: "iconfont";
+  src: url('https://at.alicdn.com/t/iconfont.eot?t=1563794167254'); /* IE9 */
+  src: url('https://at.alicdn.com/t/iconfont.eot?t=1563794167254#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAWQAAsAAAAACngAAAVDAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDQAqHcIYsATYCJAMYCw4ABCAFhG0HWxvdCFGUT06I7Asc5wlKLa10hBbHBKsFAOCyggkAAAAAWCAvgODp2+93Z2Z3v4gkxCJdqybxJlo6CWIjFE7/hPKIam9rqnKSrgGgcMaCQV0LTTT/bf374yGfLHfTMlyECmALWHmwv739dhEHNpCIozBJgxQzXNA1kJcmrZPWQSEgt/luUC0NL/CrvD/f/eF+povEgeWzb3OKDItKHI3HAxpQVNDuDuhaS+QE/Yaxi8s4DAFpfX3RenRxDcscTSIwZQ/ewHJMy5VQRFIRchZmQq5ZkByXegtw5f6+fEwjCcpPaBNXt8MEdjr5PhkRE+5sFLz+zACzDAxMARzkyLVeaPviKVeazvuLjnlAWpLSTnU3cj/FMVEyFK7ImpbV/+WBcZTwkBlNmkX4xYBHlDQRGKIUAoeoi0ARHSAQ3D9p8VAZeixuAClALqic6r+zY7wQuWIrymqf02VbqWJvezuqlN8HsWAMIrkkHK+YgClTxCR5OqmoDWambOBg8TLERG5EfI6O3E9OPNvW4JUT0fpji3eIGKmYh630XXaoz8gBaZ+8S+ype7EGhA1+kVmbM2exA2y5lbtqw/sCNQeaQ3teRcjhocfxsXHBiefJkXsRgUwe6rkf2RdFlLeTW4k2Skcu5G6FAEVtKFzSAYKk9ojRQzvkXaMaemkAQMDwUBOKbh1pF62I0tYvuhc14Z4lFRhW3Iy4vStFvYsbEeRdGepe1ILjJeWYR2wRF0zqgEFyOwhCANGKARQ3uLxHE2yc5k2QJiF1V+Jc7kQ+lArvOUlqreUG9KQN2yiyuKdHMAgBlZ0QBMBNXdxwRY8kDJ8vuTui81DYfelE97eaMEGP8mbm8QpPmkyYbNTEMtdyXqIAvyAfI3rJ2cqcfkvd/uFTB00COJCk7ms7IzHr5MzH5+Q098N2kotJmInXuO4vTreMcOKwF9FVHE6BL7FU3ZmdL7ajMi5TPyScRLKfTTmhpZMk3mLQAmj3kZgndmcn+PkmZncnKhigKDuvU71E0QSJR4O06dTpWdMxirHyV7Kuzpl4xh/yk8zkQEu954/8QqkyxTLFzYmAdl1HJ6saM8yiett5q8rqPqpZlVIPxfWzqFm8UTjigv6Wlgk3ijcTvaB4zPxZFY8Qd34xmBtW8iyzxDbOipIySjPlQ1vccq3ibEtjqpIwSPbTnQTYtleB9LgZOz2bGU7PQCe5/6BnF/kGQSXGjL1euhB8QGEqHkjSJZwTDLl3P4RK3kXor5X1rpDzunz6xCR99GRWvcGblv83VVVtBRUfEniP00K0Qe9ZGVnfB9FBtPj7+GfrbGF7tXX8YaxdkvEJiB/hSreQamC6eHGP+7YKcwD26AMQR3br07/aj6m/K/tbem9JuDjE3XZQTPwYD1y15/5wMmrz/kx1ypWg3oSyQNOEFNmY61aa3Fr2YPt1fkFBWhr8kc6yv77ktdrJIJJqIaiEHpikIbTDT4GXMQ1B0gykTTpenlEh2iRTwIQvAKLoG1TeDZiiH7TD/4JX9w9BMQzS1oJzw4yROF41FTJKCdo3DDGXzjDoqpd6Sb7JjUQFLvWWpA4unAzHydAxlSR9TKmf/VTVoRMu8AgcR3nOWAnPKdZhqlrNRiOX90TDmAtYtUAQQ5EEst6gIMZKzm6uVlM/f4l4jZwhJTUl1ltE1EL7aGJoXAN9LC1r1ZxL99ozb0oph4c5ghXQETSTXPczVOX3myMxNZS28FZmRqieqysdji8vrnILkKbdGkLFxImXIAnc2eS0mknBBsMaJmtxdZ0avcJg6ZBL7w0vpC0TAAA=') format('woff2'),
+  url('https://at.alicdn.com/t/iconfont.woff?t=1563794167254') format('woff'),
+  url('https://at.alicdn.com/t/iconfont.ttf?t=1563794167254') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('https://at.alicdn.com/t/iconfont.svg?t=1563794167254#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* 登录 */
 .cu-login {
 	height: 80upx;
@@ -247,6 +264,105 @@ page {
 .screen-swiper {
 	width: 750upx;
 	min-height: 320upx;
+}
+/* 娱乐部分 */
+.icon-yule1:before {
+  content: "\e666";
+}
+
+.icon-yule2:before {
+  content: "\e61c";
+}
+
+.icon-yule3:before {
+  content: "\e608";
+}
+
+.icon-gonggao:before {
+  content: "\e609";
+}
+
+.icon-yule4:before {
+  content: "\e7f1";
+}
+.xiuxian{
+  width: 100%;
+  padding-bottom: 30rpx;
+  border-bottom: 8rpx solid #f5f5f5;
+}
+.title{
+  display: flex;
+}
+.title-col{
+  width: 10rpx;
+  height: 36rpx;
+  background: #0FA1E2;
+  margin-left: 5%;
+  border-radius: 5rpx;
+}
+.title-text{
+  line-height: 36rpx;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #5A6C81;
+}
+.xiuxian .cont{
+  display: flex;
+  width: 90%;
+  margin-left: 5%;
+}
+.list{
+  margin-top: 20rpx;
+  width: 25%;
+}
+.list-icon{
+  margin: auto;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+.icon-yule1{
+  color: #fff;
+  font-size: 48rpx;
+  text-align: center;
+  line-height: 90rpx;
+}
+.icon-yule2{
+  color: #fff;
+  font-size: 48rpx;
+  text-align: center;
+  line-height: 90rpx;
+}
+.icon-yule3{
+  color: #fff;
+  font-size: 48rpx;
+  text-align: center;
+  line-height: 90rpx;
+}
+.icon-yule4{
+  color: #fff;
+  font-size: 48rpx;
+  text-align: center;
+  line-height: 90rpx;
+}
+.bc1{
+  background: #FF7AAF;
+}
+.bc2{
+  background: #FB936E;
+}
+.bc3{
+  background: #76B1FF;
+}
+.bc4{
+  background: #D099FF;
+}
+.list-title{
+  font-size: 25rpx;
+  margin-top: 10rpx;
+  text-align: center;
+  color: #4A4A4A;
 }
 /* 公告部分 */
 .gonggao {
@@ -302,13 +418,15 @@ page {
 	margin: 0 10upx 10upx 0;
 	width: 340upx;
 	height: 180upx;
-	background: #f5f5f5;
+	background: #f8f8f8;
+	border: 1upx solid #EEEEEE;
 	position: relative;
 }
 .baojie-list-title {
 	color: #333333;
 	margin-top: 24upx;
-	margin-left: 20upx;
+	margin-left: 18upx;
+	font-weight: 600;
 }
 .baojie-list-text {
 	color: #777777;

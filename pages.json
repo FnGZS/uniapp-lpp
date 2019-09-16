@@ -27,6 +27,13 @@
 			"style": {
 				"navigationBarTitleText": "预约"
 			}
+		},
+		{
+			"path": "pages/orderSub/orderSub",
+			"style": {
+				"navigationBarTitleText": "提交",
+				"navigationStyle": "custom"
+			}
 		}
 	],
 

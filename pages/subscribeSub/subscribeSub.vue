@@ -53,7 +53,7 @@
 			<view class="subFormInfoLeft">备&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp注</view>
 			<textarea value="" placeholder="填写备注" />
 		</view>
-		<view class="sub">下一步</view>
+		<view class="sub" @click="toSub()">提交</view>
 	</view>
 </template>
 
@@ -82,6 +82,12 @@ export default {
 	methods: {
 		RadioChange(e) {
 			this.radio = e.detail.value;
+		},
+		//下一页
+		toSub(){
+						 uni.navigateTo({
+						 	url:'../orderSub/orderSub'
+						 })
 		}
 	}
 };

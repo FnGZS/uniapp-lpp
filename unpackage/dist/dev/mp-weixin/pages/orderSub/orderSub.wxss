@@ -1,0 +1,90 @@
+
+.orderBox{
+	position: relative;
+	margin-top: 100rpx;
+	width: 750rpx;
+	height: 1030rpx;
+}
+.orderBox image{
+	width: 100%;
+	height: 100%;
+}
+.orderTop,.orderBottom{
+	width: 670rpx;
+	height: 300rpx;
+	position: absolute;
+	top: 290rpx;
+	left: 40rpx;
+}
+.orderBottom{
+	top: 729rpx;
+}
+.orderTopText,.orderBottomText{
+	width: 100%;
+	height: 100rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	line-height: 100rpx;
+	font-size: 30rpx;
+}
+.lastText{
+	line-height: 70rpx;
+}
+.orderMoney{
+	width: 690rpx;
+	margin: 10rpx auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	margin-bottom: 30rpx;
+}
+.orderDingMoney{
+	width: 690rpx;
+	margin: 10rpx auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
+}
+.subBtn{
+	position: relative;
+	background: #09c499;
+	width:690rpx;
+	height: 84rpx;
+	margin: 20rpx auto;
+	color: #FFFFFF;
+	line-height: 84rpx;
+	font-size: 30rpx;
+	text-align: center;
+}
+

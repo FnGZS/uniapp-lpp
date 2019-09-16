@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/cleanNormal/cleanNormal",
     "pages/subscribeTime/subscribeTime",
-    "pages/subscribeSub/subscribeSub"
+    "pages/subscribeSub/subscribeSub",
+    "pages/orderSub/orderSub"
   ],
   "subPackages": [],
   "window": {

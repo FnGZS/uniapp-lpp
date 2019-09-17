@@ -40,7 +40,7 @@
 				<view class="gonggao-box font_24">公告</view>
 				<view class="gonggao-rightArrow"></view>
 			</view>
-			<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2500">
+			<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="4000">
 				<block v-for="(item, index) in msgList" :key="index">
 					<swiper-item>
 						<view class="swiper_item">{{ item.title }}</view>
@@ -49,7 +49,7 @@
 			</swiper>
 		</view>
 		<!-- 休闲 -->
-		<view class="xiuxian">
+		<!-- <view class="xiuxian">
 			<view class="public-title">
 				<view class="public-leftLine"></view>
 				<view class="public-box color_5a6c81 font_29">娱乐休闲</view>
@@ -80,7 +80,7 @@
 			        <view class="list-title">唱歌</view>
 			      </view>
 			    </view>
-		</view>
+		</view> -->
 		<!-- 保洁 -->
 		<view class="baojie">
 			<view class="public-title">
@@ -92,37 +92,37 @@
 					<view class="baojie-list-title font_29">常规保洁</view>
 					<view class="baojie-list-text font_24">XXXX</view>
 					<view class="baojie-list-go font_20">GO></view>
-					<image src="http://zjw77.club/someimg/lpp_sy_baojie.png"></image>
+					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">深度保洁</view>
 					<view class="baojie-list-text font_24">XXXX</view>
 					<view class="baojie-list-go font_20">GO></view>
-					<image src="http://zjw77.club/someimg/lpp_sy_baojie.png"></image>
+					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">新居开荒</view>
 					<view class="baojie-list-text font_24">XXXX</view>
 					<view class="baojie-list-go font_20">GO></view>
-					<image src="http://zjw77.club/someimg/lpp_sy_baojie.png"></image>
+					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">办公室店面保洁</view>
 					<view class="baojie-list-text font_24">XXXX</view>
 					<view class="baojie-list-go font_20">GO></view>
-					<image src="http://zjw77.club/someimg/lpp_sy_baojie.png"></image>
+					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">家居整理</view>
 					<view class="baojie-list-text font_24">XXXX</view>
 					<view class="baojie-list-go font_20">GO></view>
-					<image src="http://zjw77.club/someimg/lpp_sy_baojie.png"></image>
+					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">甲醛治理</view>
 					<view class="baojie-list-text font_24">XXXX</view>
 					<view class="baojie-list-go font_20">GO></view>
-					<image src="http://zjw77.club/someimg/lpp_sy_baojie.png"></image>
+					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 			</view>
 		</view>
@@ -171,12 +171,7 @@ export default {
 				{
 					id: 0,
 					type: 'image',
-					url: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=265069926,1736566583&fm=15&gp=0.jpg'
-				},
-				{
-					id: 1,
-					type: 'image',
-					url: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3617678736,2551419226&fm=15&gp=0.jp'
+					url: 'https://www.sxscott.com/img/banner.png'
 				}
 			],
 			msgList: [
@@ -254,12 +249,12 @@ page {
 }
 .swiper_item {
 	font-size: 26upx;
-	line-height: 55upx;
+	line-height: 58upx;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	letter-spacing: 2px;
-	color: #b1b1b1;
+	letter-spacing: 2upx;
+	color: #959595;
 }
 .screen-swiper {
 	width: 750upx;
@@ -445,10 +440,10 @@ page {
 }
 .baojie-list image {
 	position: absolute;
-	right: 20upx;
-	top: 20upx;
-	width: 100upx;
-	height: 140upx;
+	right: 20rpx;
+	top: 40rpx;
+	width: 120rpx;
+	height: 120rpx;
 }
 /* 推荐 */
 .tuijian-cont {
@@ -458,28 +453,27 @@ page {
 .tuijian-list {
 	display: flex;
 	position: relative;
-	box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
-	border: 1upx solid #f4f4f4;
-	margin-bottom: 20upx;
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1);
+	margin-bottom: 30upx;
+	border-radius: 6upx;
 }
 .tuijian-list image {
-	margin: 30upx 30upx;
-	width: 180upx;
-	height: 180upx;
-	border-radius: 50%;
+	margin: 20upx 20upx;
+	width: 160upx;
+	height: 160upx;
 }
 .tuijian-name {
 	color: #3c3c3c;
-	margin-top: 50upx;
+	margin-top: 20upx;
 	margin-left: 20upx;
-	font-size: 33upx;
+	font-size: 30upx;
 	font-weight: bold;
 }
 .tuijian-detail {
 	color: #919191;
 	margin-top: 10upx;
 	margin-left: 20upx;
-	font-size: 28upx;
+	font-size: 26upx;
 }
 .tuijian-skill {
 	display: flex;
@@ -495,7 +489,7 @@ page {
 }
 .tuijan-label {
 	position: absolute;
-	top: 50upx;
+	top: 20upx;
 	right: 30upx;
 	font-size: 23upx;
 	color: #fff;

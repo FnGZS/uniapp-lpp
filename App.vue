@@ -32,7 +32,7 @@ export default {
 .sub {
 	width: 675upx;
 	height: 82upx;
-	background: #09c499;
+	background: #3598dc;
 	display: flex;
 	justify-content: center;
 	align-items: center;

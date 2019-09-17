@@ -102,14 +102,14 @@
 .text-blue,
 .line-blue,
 .lines-blue {
-	color: #09c499;
+	color: #3598dc;
 }
 .cu-steps .cu-item .num {
-	border: 1rpx solid #09c499;
-	color: #09c499;
+	border: 1rpx solid #3598dc;
+	color: #3598dc;
 }
 .cu-steps .cu-item[class*='text-'] .num {
-	background-color: #09c499;
+	background-color: #3598dc;
 }
 radio {
 	-webkit-transform: scale(0.6);

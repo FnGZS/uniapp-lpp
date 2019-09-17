@@ -62,7 +62,7 @@ export default {
 <style>
 	.orderBox{
 		position: relative;
-		margin-top: 100upx;
+		margin-top: 10upx;
 		width: 750upx;
 		height: 1030upx;
 	}
@@ -109,7 +109,7 @@ export default {
 	}
 	.subBtn{
 		position: relative;
-		background: #09c499;
+		background: #3598dc;
 		width:690upx;
 		height: 84upx;
 		margin: 20upx auto;

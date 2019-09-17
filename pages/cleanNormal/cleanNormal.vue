@@ -249,14 +249,14 @@
 	  }
 	   
 	  .on {
-	    color: #09C499;
-	    border-bottom: 2upx solid #09C499;
+	    color: #3598dc;
+	    border-bottom: 2upx solid #3598dc;
 	  }
 	   
 	  .on i {
 	  
-	    border: 5px solid #09C499;
-	    border-top-color: #09C499;
+	    border: 5px solid #3598dc;
+	    border-top-color: #3598dc;
 	    border-bottom-color: transparent;
 	    border-left-color: transparent;
 	    border-right-color: transparent;
@@ -378,29 +378,29 @@
 	    padding-left: 5%;
 	    height: 70upx;
 	    line-height: 70upx;
-	    border-bottom: 2upx solid #09C499;
-	    color: #09C499;
+	    border-bottom: 2upx solid #3598dc;
+	    color: #3598dc;
 	  }
 	  .add_priceing {
 	    padding-left: 5%;
 	    height: 70upx;
 	    line-height: 70upx;
-	    border-bottom: 2upx solid #09C499;
-	    color: #09C499;
+	    border-bottom: 2upx solid #3598dc;
+	    color: #3598dc;
 	  }
 	  .add_amounting {
 	    padding-left: 5%;
 	    height: 70upx;
 	    line-height: 70upx;
-	    border-bottom: 2upx solid #09C499;
-	    color: #09C499;
+	    border-bottom: 2upx solid #3598dc;
+	    color: #3598dc;
 	  }
 	  .add_typeing {
 	    padding-left: 5%;
 	    height: 70upx;
 	    line-height: 70upx;
-	    border-bottom: 2upx solid #09C499;
-	    color: #09C499;
+	    border-bottom: 2upx solid #3598dc;
+	    color: #3598dc;
 	  }
 	  .list{
 	    width: 100%;
@@ -435,7 +435,7 @@
 	    border-radius: 50%;
 	  }
 	  .icon-dianhua{
-	    color: #09C499;
+	    color: #3598dc;
 	  }
 	  .list-center{
 	    margin-left: 40upx;
@@ -485,7 +485,7 @@
 	  }
 	  .icon-biaoqian{
 	    font-size: 80upx;
-	    color:#71E3C9;
+	    color:#3598dc;
 	    margin-top: -20upx; 
 	    position: absolute;
 	    right: 8%;
@@ -501,13 +501,14 @@
 	    position: absolute;
 	    bottom: 20upx;
 	    right: 5%;
-	    font-size: 28upx;
-	    border: 5upx solid #F6F7FF;
+	    font-size: 26upx;
+	    border: 4upx solid #F6F7FF;
 	    height: 50upx;
 	    width: 100upx;
-	    line-height: 50upx;
-	    border-radius: 25upx;
-	    color: #09C499;
-	    text-align: center;
+	    border-radius: 20upx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	    color: #3598dc;
 	  }
 </style>

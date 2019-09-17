@@ -364,8 +364,8 @@ radio.azure[checked] .wx-radio-input,
 switch.azure.checked .uni-switch-input,
 checkbox.azure.checked .uni-checkbox-input,
 radio.azure.checked .uni-radio-input {
-	background-color: #09C499 !important;
-	border-color: #09C499 !important;
+	background-color: #3598dc !important;
+	border-color: #3598dc !important;
 	color: #ffffff !important;
 }
 switch.purple[checked] .wx-switch-input,

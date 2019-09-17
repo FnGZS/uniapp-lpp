@@ -8,7 +8,8 @@
   ],
   "subPackages": [],
   "window": {
-    "navigationBarBackgroundColor": "#09C499",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#fff",
     "backgroundColor": "#8ed145"
   },
   "usingComponents": {

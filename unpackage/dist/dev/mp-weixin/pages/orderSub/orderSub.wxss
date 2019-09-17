@@ -1,7 +1,7 @@
 
 .orderBox{
 	position: relative;
-	margin-top: 100rpx;
+	margin-top: 10rpx;
 	width: 750rpx;
 	height: 1030rpx;
 }
@@ -78,7 +78,7 @@
 }
 .subBtn{
 	position: relative;
-	background: #09c499;
+	background: #3598dc;
 	width:690rpx;
 	height: 84rpx;
 	margin: 20rpx auto;

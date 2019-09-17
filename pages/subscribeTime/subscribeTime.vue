@@ -129,14 +129,14 @@ export default {
 .text-blue,
 .line-blue,
 .lines-blue {
-	color: #09c499;
+	color: #3598dc;
 }
 .cu-steps .cu-item .num {
-	border: 1upx solid #09c499;
-	color: #09c499;
+	border: 1upx solid #3598dc;
+	color: #3598dc;
 }
 .cu-steps .cu-item[class*='text-'] .num {
-	background-color: #09c499;
+	background-color: #3598dc;
 }
 /* 咨询 */
 .subPeople {
@@ -189,7 +189,7 @@ export default {
 	color: #fff;
 	width: 140upx;
 	height: 56upx;
-	background: #09c499;
+	background: #3598dc;
 	border-radius: 20upx;
 	opacity: 0.7;
 }
@@ -244,7 +244,7 @@ export default {
 }
 .subPeopleTimeTableYuYue,
 .subPeopleTimeTableNoYuYue {
-	background: #09c499;
+	background: #3598dc;
 	width: 71upx;
 	height: 67upx;
 	opacity: 0.8;

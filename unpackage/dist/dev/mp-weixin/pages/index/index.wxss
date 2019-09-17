@@ -30,13 +30,13 @@ page {
 }
 .swiper_item {
 	font-size: 26rpx;
-	line-height: 55rpx;
+	line-height: 58rpx;
 	overflow: hidden;
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
 	white-space: nowrap;
-	letter-spacing: 2px;
-	color: #b1b1b1;
+	letter-spacing: 2rpx;
+	color: #959595;
 }
 .screen-swiper {
 	width: 750rpx;
@@ -243,9 +243,9 @@ page {
 .baojie-list image {
 	position: absolute;
 	right: 20rpx;
-	top: 20rpx;
-	width: 100rpx;
-	height: 140rpx;
+	top: 40rpx;
+	width: 120rpx;
+	height: 120rpx;
 }
 /* 推荐 */
 .tuijian-cont {
@@ -258,29 +258,28 @@ page {
 	display: -ms-flexbox;
 	display: flex;
 	position: relative;
-	-webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
-	        box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
-	border: 1rpx solid #f4f4f4;
-	margin-bottom: 20rpx;
+	-webkit-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1);
+	        box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1);
+	margin-bottom: 30rpx;
+	border-radius: 6rpx;
 }
 .tuijian-list image {
-	margin: 30rpx 30rpx;
-	width: 180rpx;
-	height: 180rpx;
-	border-radius: 50%;
+	margin: 20rpx 20rpx;
+	width: 160rpx;
+	height: 160rpx;
 }
 .tuijian-name {
 	color: #3c3c3c;
-	margin-top: 50rpx;
+	margin-top: 20rpx;
 	margin-left: 20rpx;
-	font-size: 33rpx;
+	font-size: 30rpx;
 	font-weight: bold;
 }
 .tuijian-detail {
 	color: #919191;
 	margin-top: 10rpx;
 	margin-left: 20rpx;
-	font-size: 28rpx;
+	font-size: 26rpx;
 }
 .tuijian-skill {
 	display: -webkit-box;
@@ -299,7 +298,7 @@ page {
 }
 .tuijan-label {
 	position: absolute;
-	top: 50rpx;
+	top: 20rpx;
 	right: 30rpx;
 	font-size: 23rpx;
 	color: #fff;

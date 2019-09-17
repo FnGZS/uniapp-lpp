@@ -9,6 +9,7 @@ export default {
 <style>
 @import 'colorui/main.css';
 @import 'colorui/icon.css';
+@import './common/styles/aliicon.css';
 /* 公共title */
 .public-title {
 	width: 750upx;

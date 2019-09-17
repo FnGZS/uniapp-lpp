@@ -1,6 +1,6 @@
 import {
 	sendAjax
-} from '@/common/sendAjax.js'
+} from '@/common/js/sendAjax.js'
 import config from '@/apiConfig.js'
 const {
 	jwtLogin

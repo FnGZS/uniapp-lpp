@@ -163,7 +163,7 @@
 </template>
 
 <script>
-import { login } from '@/common/login.js';
+import { login } from '@/common/js/login.js';
 export default {
 	data() {
 		return {

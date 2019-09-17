@@ -33,6 +33,18 @@
 			"style": {
 				"navigationBarTitleText": "提交"
 			}
+		},
+		{
+			"path": "pages/message/message",
+			"style": {
+				"navigationBarTitleText": "消息"
+			}
+		},
+		{
+			"path": "pages/message_info/message_info",
+			"style": {
+				"navigationBarTitleText": "聊天"
+			}
 		}
 	],
 
@@ -53,7 +65,7 @@
 				"text":"首页"
 			},
 			{
-				"pagePath": "pages/index/index",
+				"pagePath": "pages/message/message",
 				"iconPath": "static/tab/messageNo.png",
 				"selectedIconPath": "static/tab/message.png",
 				"text":"消息"

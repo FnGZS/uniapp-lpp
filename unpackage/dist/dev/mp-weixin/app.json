@@ -4,7 +4,9 @@
     "pages/cleanNormal/cleanNormal",
     "pages/subscribeTime/subscribeTime",
     "pages/subscribeSub/subscribeSub",
-    "pages/orderSub/orderSub"
+    "pages/orderSub/orderSub",
+    "pages/message/message",
+    "pages/message_info/message_info"
   ],
   "subPackages": [],
   "window": {
@@ -24,7 +26,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/message/message",
         "iconPath": "static/tab/messageNo.png",
         "selectedIconPath": "static/tab/message.png",
         "text": "消息"

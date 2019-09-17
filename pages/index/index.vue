@@ -49,7 +49,7 @@
 			</swiper>
 		</view>
 		<!-- 休闲 -->
-		<!-- <view class="xiuxian">
+		<view class="xiuxian" @click="noMore()">
 			<view class="public-title">
 				<view class="public-leftLine"></view>
 				<view class="public-box color_5a6c81 font_29">娱乐休闲</view>
@@ -80,7 +80,7 @@
 			        <view class="list-title">唱歌</view>
 			      </view>
 			    </view>
-		</view> -->
+		</view>
 		<!-- 保洁 -->
 		<view class="baojie">
 			<view class="public-title">
@@ -91,37 +91,37 @@
 				<view class="baojie-list" @click="toCleanNormal">
 					<view class="baojie-list-title font_29">常规保洁</view>
 					<view class="baojie-list-text font_24">XXXX</view>
-					<view class="baojie-list-go font_20">GO></view>
+					
 					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">深度保洁</view>
 					<view class="baojie-list-text font_24">XXXX</view>
-					<view class="baojie-list-go font_20">GO></view>
+					
 					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">新居开荒</view>
 					<view class="baojie-list-text font_24">XXXX</view>
-					<view class="baojie-list-go font_20">GO></view>
+					
 					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">办公室店面保洁</view>
 					<view class="baojie-list-text font_24">XXXX</view>
-					<view class="baojie-list-go font_20">GO></view>
+					
 					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">家居整理</view>
 					<view class="baojie-list-text font_24">XXXX</view>
-					<view class="baojie-list-go font_20">GO></view>
+					
 					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 				<view class="baojie-list">
 					<view class="baojie-list-title font_29">甲醛治理</view>
 					<view class="baojie-list-text font_24">XXXX</view>
-					<view class="baojie-list-go font_20">GO></view>
+					
 					<image src="https://www.sxscott.com/img/c.png"></image>
 				</view>
 			</view>
@@ -134,7 +134,7 @@
 			</view>
 			<view class="tuijian-cont">
 				<view class="tuijian-list">
-					<image src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1034389669,3064515247&fm=26&gp=0.jpg"></image>
+					<image src="https://www.sxscott.com/img/c.png"></image>
 					<view class="tuijian-info">
 						<view class="tuijian-name">吴某某</view>
 						<view class="tuijian-detail">越城区 | 2-3年 | XXX</view>
@@ -146,7 +146,7 @@
 					</view>
 				</view>
 				<view class="tuijian-list">
-					<image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=932160767,1999068792&fm=26&gp=0.jpg"></image>
+					<image src="https://www.sxscott.com/img/c.png"></image>
 					<view class="tuijian-info">
 						<view class="tuijian-name">张某某</view>
 						<view class="tuijian-detail">柯桥区 | 1-3年 | XXX</view>
@@ -210,6 +210,13 @@ export default {
 			uni.navigateTo({
 				url:'../cleanNormal/cleanNormal'
 			})
+		},
+		noMore(){
+			uni.showToast({
+			    title: '该功能暂未开放！',
+				icon:'none',
+			    duration: 1000
+			});
 		}
 	}
 };
@@ -419,25 +426,15 @@ page {
 }
 .baojie-list-title {
 	color: #333333;
-	margin-top: 24upx;
+	margin-top: 30upx;
 	margin-left: 18upx;
-	font-weight: 600;
 }
 .baojie-list-text {
 	color: #777777;
-	margin-top: 10upx;
+	margin-top: 20upx;
 	margin-left: 20upx;
 }
-.baojie-list-go {
-	color: #b19c71;
-	border: 1upx solid #b19c71;
-	text-align: center;
-	border-radius: 4upx;
-	width: 60upx;
-	padding: 2upx 5upx;
-	margin-left: 20upx;
-	margin-top: 10upx;
-}
+
 .baojie-list image {
 	position: absolute;
 	right: 20rpx;
@@ -461,13 +458,13 @@ page {
 	margin: 20upx 20upx;
 	width: 160upx;
 	height: 160upx;
+	border-radius: 10upx;
 }
 .tuijian-name {
 	color: #3c3c3c;
 	margin-top: 20upx;
 	margin-left: 20upx;
 	font-size: 30upx;
-	font-weight: bold;
 }
 .tuijian-detail {
 	color: #919191;

@@ -8,9 +8,40 @@
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarBackgroundColor": "#fff",
-    "backgroundColor": "#8ed145"
+    "navigationBarBackgroundColor": "#3598dc"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "color": "#aeaeae",
+    "selectedColor": "#08a1f2",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tab/indexNo.png",
+        "selectedIconPath": "static/tab/index.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tab/messageNo.png",
+        "selectedIconPath": "static/tab/message.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tab/shopCarNo.png",
+        "selectedIconPath": "static/tab/shopCar.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tab/myNo.png",
+        "selectedIconPath": "static/tab/my.png",
+        "text": "我的"
+      }
+    ]
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"

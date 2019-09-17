@@ -42,7 +42,7 @@
 		  <view class="listMain">
 		    <view class='list' v-for="(item,index) in list" :key="index">
 		      <view class='list-left'>
-		        <image class='list-left-img' src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1034389669,3064515247&fm=26&gp=0.jpg'></image>
+		        <image class='list-left-img' src='https://www.sxscott.com/img/c.png'></image>
 		        <view class='list-left-line'></view>
 		        <view class='list-left-phone'>
 		          <view class='iconfont icon-dianhua'></view>
@@ -407,7 +407,7 @@
 	    padding:20upx 5%;
 	    display: flex;
 	    background: #fff;
-	    border-top: 8upx solid #f5f5f5;
+	    border-top: 1upx solid #f5f5f5;
 	  }
 	  .list-left{
 	    width: 20%;

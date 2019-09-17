@@ -98,6 +98,7 @@
 .cu-steps {
 	padding: 0rpx 0rpx 20rpx 85rpx;
 	margin-bottom: 10rpx;
+	margin-top: 10rpx;
 }
 .text-blue,
 .line-blue,

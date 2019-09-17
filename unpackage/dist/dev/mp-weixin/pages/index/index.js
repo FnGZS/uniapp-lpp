@@ -444,7 +444,7 @@ var _login = __webpack_require__(/*! @/common/login.js */ 17); //
 var _default = { data: function data() {return { swiperList: [{ id: 0, type: 'image', url: 'https://www.sxscott.com/img/banner.png' }], msgList: [{ url: 'url', title: '多地首套房贷利率上浮 热点城市渐迎零折扣时代' }, { url: 'url', title: '悦如公寓三周年生日趴邀你免费吃喝欢唱' }, { url: 'url', title: '你想和一群有志青年一起过周末嘛？' }], modalName: '' };}, onLoad: function onLoad() {//判断是否第一次进入小程序
     // this.modalName = uni.getStorageSync('userInfo') ? null : 'toUserLogin';
   }, methods: { wxGetUserInfo: function wxGetUserInfo(res) {var that = this;if (!res.detail.iv) {uni.showToast({ title: '您取消了授权,登录失败', icon: 'none' });return false;} //授权成功回调
-      var callback = {};callback.success = function () {that.modalName = null;};(0, _login.login)(callback);}, wxGetPhoneNumber: function wxGetPhoneNumber(res) {console.log(res);}, toCleanNormal: function toCleanNormal() {uni.navigateTo({ url: '../cleanNormal/cleanNormal' });} } };exports.default = _default;
+      var callback = {};callback.success = function () {that.modalName = null;};(0, _login.login)(callback);}, wxGetPhoneNumber: function wxGetPhoneNumber(res) {console.log(res);}, toCleanNormal: function toCleanNormal() {uni.navigateTo({ url: '../cleanNormal/cleanNormal' });}, noMore: function noMore() {uni.showToast({ title: '该功能暂未开放！', icon: 'none', duration: 1000 });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

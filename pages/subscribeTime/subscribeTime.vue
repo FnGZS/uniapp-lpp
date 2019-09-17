@@ -7,7 +7,7 @@
 			</view>
 		</scroll-view>
 		<view class="subPeople">
-			<image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=932160767,1999068792&fm=26&gp=0.jpg"></image>
+			<image src="https://www.sxscott.com/img/c.png"></image>
 			<view class="subPeople-info">
 				<view class="subPeople-name">张某某</view>
 				<view class="subPeople-detail">柯桥区 | 1-3年 | XXX</view>
@@ -112,10 +112,10 @@ export default {
 	},
 	methods: {
 		//下一页
-		toSub(){
-						 uni.navigateTo({
-						 	url:'../subscribeSub/subscribeSub'
-						 })
+		toSub() {
+			uni.navigateTo({
+				url: '../subscribeSub/subscribeSub'
+			});
 		}
 	}
 };
@@ -125,6 +125,7 @@ export default {
 /* 步骤条 */
 .cu-steps {
 	padding: 0upx 0upx 20upx 85upx;
+	margin-top: 10upx;
 }
 .text-blue,
 .line-blue,

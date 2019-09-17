@@ -98,6 +98,7 @@ export default {
 .cu-steps {
 	padding: 0upx 0upx 20upx 85upx;
 	margin-bottom: 10upx;
+	margin-top: 10upx;
 }
 .text-blue,
 .line-blue,

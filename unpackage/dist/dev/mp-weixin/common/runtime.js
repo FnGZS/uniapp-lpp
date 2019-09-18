@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/message-action":1,"components/left-message":1,"components/right-message":1,"components/send-message":1,"components/avator-group":1};
+/******/ 		var cssChunks = {"components/message-action":1,"components/left-message":1,"components/right-message":1,"components/send-message":1,"components/empty":1,"components/uni-load-more":1,"components/avator-group":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"colorui/components/cu-custom":"colorui/components/cu-custom","components/message-action":"components/message-action","components/left-message":"components/left-message","components/right-message":"components/right-message","components/send-message":"components/send-message","components/avator-group":"components/avator-group"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"colorui/components/cu-custom":"colorui/components/cu-custom","components/message-action":"components/message-action","components/left-message":"components/left-message","components/right-message":"components/right-message","components/send-message":"components/send-message","components/empty":"components/empty","components/uni-load-more":"components/uni-load-more","components/avator-group":"components/avator-group"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

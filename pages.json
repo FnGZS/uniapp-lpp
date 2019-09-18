@@ -45,6 +45,12 @@
 			"style": {
 				"navigationBarTitleText": "聊天"
 			}
+		},
+		{
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "订单"
+			}
 		}
 	],
 
@@ -71,10 +77,10 @@
 				"text":"消息"
 			},
 			{
-				"pagePath": "pages/index/index",
-				"iconPath": "static/tab/shopCarNo.png",
-				"selectedIconPath": "static/tab/shopCar.png",
-				"text":"购物车"
+				"pagePath": "pages/order/order",
+				"iconPath": "static/tab/orderNo.png",
+				"selectedIconPath": "static/tab/order.png",
+				"text":"订单"
 			},
 			{
 				"pagePath": "pages/index/index",

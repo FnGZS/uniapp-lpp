@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<view class="header" v-bind:class="{'status':isH5Plus}">
-			<view class="userinfo">
-				<view class="face"><image :src="userinfo.face"></image></view>
+			<view class="userInfo">
+				<view class="face"><image :src="userInfo.headimgurl"></image></view>
 				<view class="info">
-					<view class="username">{{userinfo.username}}</view>
-					<view class="integral">余额:{{userinfo.integral}}</view>
+					<view class="username">{{userInfo.nickName}}</view>
+					<view class="integral">余额:{{userInfo.integral}}</view>
 				</view>
 			</view>
 			<view class="setting">
@@ -47,7 +47,7 @@
 				//#ifndef APP-PLUS
 				isH5Plus:false,
 				//#endif
-				userinfo:{},
+				userInfo:{},
 				orderTypeLise:[
 					//name-标题 icon-图标 badge-角标
 					{name:'待付款',icon:'icon-daifukuan',badge:1},
@@ -79,12 +79,10 @@
 		},
 		methods: {
 			init() {
+				let userInfo = uni.getStorageSync('userInfo')
+				userInfo.integral = "101020"
 				//用户信息
-				this.userinfo={
-					face:'http://img0.imgtn.bdimg.com/it/u=3511572440,3646830680&fm=26&gp=0.jpg',
-					username:"Effort",
-					integral:"1435"
-				}		
+				this.userInfo = userInfo	
 			},
 			//用户点击订单类型
 			toOrderType(index){
@@ -178,7 +176,7 @@ page{background-color:#fff}
 .header{
 	&.status{padding-top:var(--status-bar-height);}
 	background: linear-gradient(to bottom ,#3598DC, #63B8FF);;width:100%;height:30vw;padding:0 4%;display:flex;align-items:center;
-	.userinfo{
+	.userInfo{
 		width:90%;display:flex;
 		.face{flex-shrink:0;width:15vw;height:15vw;
 			image{width:100%;height:100%;border-radius:100%}

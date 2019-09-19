@@ -102,26 +102,26 @@ page {
 .header.status {
     padding-top: 25px;
 }
-.header .userinfo {
+.header .userInfo {
     width: 90%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
 }
-.header .userinfo .face {
+.header .userInfo .face {
       -webkit-flex-shrink: 0;
           -ms-flex-negative: 0;
               flex-shrink: 0;
       width: 15vw;
       height: 15vw;
 }
-.header .userinfo .face image {
+.header .userInfo .face image {
         width: 100%;
         height: 100%;
         border-radius: 100%;
 }
-.header .userinfo .info {
+.header .userInfo .info {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -131,12 +131,12 @@ page {
               flex-flow: wrap;
       padding-left: 30rpx;
 }
-.header .userinfo .info .username {
+.header .userInfo .info .username {
         width: 100%;
         color: #fff;
         font-size: 40rpx;
 }
-.header .userinfo .info .integral {
+.header .userInfo .info .integral {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;

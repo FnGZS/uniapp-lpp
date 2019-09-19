@@ -154,7 +154,7 @@ var _default =
 
       isH5Plus: false,
 
-      userinfo: {},
+      userInfo: {},
       orderTypeLise: [
       //name-标题 icon-图标 badge-角标
       { name: '待付款', icon: 'icon-daifukuan', badge: 1 },
@@ -186,12 +186,10 @@ var _default =
   },
   methods: {
     init: function init() {
+      var userInfo = uni.getStorageSync('userInfo');
+      userInfo.integral = "101020";
       //用户信息
-      this.userinfo = {
-        face: 'http://img0.imgtn.bdimg.com/it/u=3511572440,3646830680&fm=26&gp=0.jpg',
-        username: "Effort",
-        integral: "1435" };
-
+      this.userInfo = userInfo;
     },
     //用户点击订单类型
     toOrderType: function toOrderType(index) {

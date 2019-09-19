@@ -13,7 +13,7 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 _vue.default.config.productionTip = false;
 
-_App.default.mpType = 'app';var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 80));};
+_App.default.mpType = 'app';var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 88));};
 
 
 _vue.default.component('cu-custom', cuCustom);
@@ -1639,8 +1639,8 @@ createPage(_index.default);
 
 var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
 
-jwtLogin =
-_apiConfig.default.api.jwtLogin;
+jwtLoginUrl =
+_apiConfig.default.api.jwtLoginUrl;
 
 function login(callback, first) {
   if (!callback) {
@@ -1665,7 +1665,7 @@ function login(callback, first) {
                   platUserInfoMap["iv"] = userResult.iv;
                   //登录请求
                   var infoOpt = {
-                    url: jwtLogin,
+                    url: jwtLoginUrl,
                     type: 'POST',
                     data: {
                       platCode: resp.code,
@@ -1679,7 +1679,7 @@ function login(callback, first) {
                     uni.setStorageSync("userInfo", res.user);
                     scallback(res.user);
                   };
-                  (0, _sendAjax.sendAjax)(infoOpt, infoCb);
+                  (0, _sendAjax.sendAjax)(infoOpt, infoCb, 1);
                 } });
 
             }
@@ -1733,7 +1733,7 @@ function login(callback, first) {
 
 
 
-function sendAjax(options, callback) {
+function sendAjax(options, callback, type) {
   var _sets = options;
   if (typeof _sets.type === 'undefined') {
     _sets.type = 'POST';
@@ -1756,8 +1756,8 @@ function sendAjax(options, callback) {
     method: _sets.type,
     data: _sets.data,
     header: {
-      'content-type': 'application/json',
-      'authorization': uni.getStorageSync('userInfo') !== '' ? uni.getStorageSync('userInfo').token : '' },
+      'content-type': type ? 'application/json' : 'application/x-www-form-urlencoded',
+      'Authorization': "Bearer " + (uni.getStorageSync('userInfo') !== '' ? uni.getStorageSync('userInfo').token : '') },
 
     success: function success(res) {
       if (res.data.code == 200) {
@@ -1795,11 +1795,15 @@ function sendAjax(options, callback) {
 
 "use strict";
  // const apiUrl = 'http://localhost:8080'
-var apiUrl = 'http://192.168.17.110:8080';
+var apiUrl = 'http://192.168.1.103:8080';
 module.exports = {
   api: {
     //登录授权
-    jwtLogin: "".concat(apiUrl, "/user/jwtLogin") } };
+    jwtLoginUrl: "".concat(apiUrl, "/user/jwtLogin"),
+    //字段获取字典
+    dictDetailUrl: "".concat(apiUrl, "/dict/seletAll"),
+    //获取新闻公告
+    getNewsUrl: "".concat(apiUrl, "/news/get") } };
 
 /***/ }),
 
@@ -8630,6 +8634,23 @@ var cateList = [{
   goodsList: goodsList,
   orderList: orderList,
   cateList: cateList };exports.default = _default;
+
+/***/ }),
+
+/***/ 80:
+/*!*************************************************************************************!*\
+  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Fuser%2Fuser"} ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _user = _interopRequireDefault(__webpack_require__(/*! ./pages/user/user.vue */ 81));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_user.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ })
 

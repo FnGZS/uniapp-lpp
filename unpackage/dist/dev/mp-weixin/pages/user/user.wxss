@@ -1,0 +1,318 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+page {
+  background-color: #fff;
+}
+@font-face {
+  font-family: "iconfont";
+  src: url("https://at.alicdn.com/t/iconfont.eot?t=1568812918085");
+  /* IE9 */
+  src: url("https://at.alicdn.com/t/iconfont.eot?t=1568812918085#iefix") format("embedded-opentype"), url("data:application/x-font-woff2;charset=utf-8;base64,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") format("woff2"), url("https://at.alicdn.com/t/iconfont.woff?t=1568812918085") format("woff"), url("https://at.alicdn.com/t/iconfont.ttf?t=1568812918085") format("truetype"), url("https://at.alicdn.com/t/iconfont.svg?t=1568812918085#iconfont") format("svg");
+  /* iOS 4.1- */
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-jiantou:before {
+  content: "\E632";
+}
+.icon-shezhi:before {
+  content: "\E660";
+}
+.icon-guanyuwomen:before {
+  content: "\E649";
+}
+.icon-yijianfankui:before {
+  content: "\E63C";
+}
+.icon-dizhi:before {
+  content: "\E614";
+}
+.icon-daipingjia:before {
+  content: "\E611";
+}
+.icon-daifahuo:before {
+  content: "\E615";
+}
+.icon-kefu:before {
+  content: "\E61D";
+}
+.icon-shoucang:before {
+  content: "\E86D";
+}
+.icon-yueyue:before {
+  content: "\E610";
+}
+.icon-guize:before {
+  content: "\E63D";
+}
+.icon-shouhou:before {
+  content: "\E616";
+}
+.icon-daifukuan:before {
+  content: "\E66A";
+}
+.icon-daishouhuo:before {
+  content: "\E617";
+}
+.header {
+  background: -webkit-gradient(linear, left top, left bottom, from(#3598DC), to(#63B8FF));
+  background: -o-linear-gradient(top, #3598DC, #63B8FF);
+  background: linear-gradient(to bottom, #3598DC, #63B8FF);
+  width: 100%;
+  height: 30vw;
+  padding: 0 4%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header.status {
+    padding-top: 25px;
+}
+.header .userinfo {
+    width: 90%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.header .userinfo .face {
+      -webkit-flex-shrink: 0;
+          -ms-flex-negative: 0;
+              flex-shrink: 0;
+      width: 15vw;
+      height: 15vw;
+}
+.header .userinfo .face image {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+}
+.header .userinfo .info {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-flow: wrap;
+          -ms-flex-flow: wrap;
+              flex-flow: wrap;
+      padding-left: 30rpx;
+}
+.header .userinfo .info .username {
+        width: 100%;
+        color: #fff;
+        font-size: 40rpx;
+}
+.header .userinfo .info .integral {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        padding: 0 20rpx;
+        height: 40rpx;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 20rpx;
+        font-size: 24rpx;
+}
+.header .setting {
+    -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+    width: 6vw;
+    height: 6vw;
+}
+.header .setting .icon-shezhi {
+      color: #fff;
+      font-size: 40rpx;
+}
+.hover {
+  background-color: #eee;
+}
+.orders {
+  background-color: #63B8FF;
+  width: 100%;
+  height: 11vw;
+  padding: 0 4%;
+  margin-bottom: calc(11vw + 40rpx);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-radius: 0 0 100% 100%;
+  margin-top: -1rpx;
+}
+.orders .box {
+    width: 98%;
+    padding: 0 1%;
+    height: 22vw;
+    background-color: #fefefe;
+    border-radius: 24rpx;
+    -webkit-box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
+    margin-bottom: 40rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.orders .box .label {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-flex-flow: wrap;
+          -ms-flex-flow: wrap;
+              flex-flow: wrap;
+      width: 100%;
+      height: 16vw;
+      color: #666666;
+      font-size: 26rpx;
+}
+.orders .box .label .icon {
+        position: relative;
+        width: 7vw;
+        height: 7vw;
+        margin: 0 1vw;
+}
+.orders .box .label .icon .badge {
+          position: absolute;
+          width: 4vw;
+          height: 4vw;
+          background-color: #ec6d2c;
+          top: -1vw;
+          right: -1vw;
+          border-radius: 100%;
+          font-size: 20rpx;
+          color: #fff;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          -webkit-box-pack: center;
+          -webkit-justify-content: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+          z-index: 10;
+}
+.orders .box .label .icon image {
+          width: 7vw;
+          height: 7vw;
+          z-index: 9;
+}
+.orders .iconfont {
+    font-size: 50rpx;
+}
+.list {
+  width: 100%;
+  border-bottom: solid 26rpx #f1f1f1;
+}
+.list .li {
+    width: 100%;
+    height: 100rpx;
+    padding: 0 4%;
+    border-bottom: solid 1rpx #e7e7e7;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+.list .li.noborder {
+      border-bottom: 0;
+}
+.list .li .icon {
+      -webkit-flex-shrink: 0;
+          -ms-flex-negative: 0;
+              flex-shrink: 0;
+      width: 50rpx;
+      height: 50rpx;
+}
+.list .li .icon image {
+        width: 50rpx;
+        height: 50rpx;
+}
+.list .li .text {
+      padding-left: 20rpx;
+      width: 100%;
+      color: #666;
+}
+.list .li .to {
+      -webkit-flex-shrink: 0;
+          -ms-flex-negative: 0;
+              flex-shrink: 0;
+      width: 40rpx;
+      height: 40rpx;
+}
+.list .iconfont {
+    font-size: 45rpx;
+}
+.list .icon-jiantou {
+    font-size: 30rpx;
+    margin-right: 10rpx;
+}
+

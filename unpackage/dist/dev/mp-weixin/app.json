@@ -7,7 +7,8 @@
     "pages/orderSub/orderSub",
     "pages/message/message",
     "pages/message_info/message_info",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/user/user"
   ],
   "subPackages": [],
   "window": {
@@ -39,7 +40,7 @@
         "text": "订单"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/user/user",
         "iconPath": "static/tab/myNo.png",
         "selectedIconPath": "static/tab/my.png",
         "text": "我的"
@@ -48,5 +49,6 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  }
+  },
+  "sitemapLocation": "sitemap31.json"
 }

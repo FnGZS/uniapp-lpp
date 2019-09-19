@@ -260,24 +260,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _login = __webpack_require__(/*! @/common/js/login.js */ 17); //
+var _login = __webpack_require__(/*! @/common/js/login.js */ 17);
+var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);
+var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -424,27 +409,15 @@ var _login = __webpack_require__(/*! @/common/js/login.js */ 17); //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { data: function data() {return { swiperList: [{ id: 0, type: 'image', url: 'https://www.sxscott.com/img/banner.png' }], msgList: [{ url: 'url', title: '多地首套房贷利率上浮 热点城市渐迎零折扣时代' }, { url: 'url', title: '悦如公寓三周年生日趴邀你免费吃喝欢唱' }, { url: 'url', title: '你想和一群有志青年一起过周末嘛？' }], modalName: '' };}, onLoad: function onLoad() {//判断是否第一次进入小程序
-    // this.modalName = uni.getStorageSync('userInfo') ? null : 'toUserLogin';
-  }, methods: { wxGetUserInfo: function wxGetUserInfo(res) {var that = this;if (!res.detail.iv) {uni.showToast({ title: '您取消了授权,登录失败', icon: 'none' });return false;} //授权成功回调
-      var callback = {};callback.success = function () {that.modalName = null;};(0, _login.login)(callback);}, wxGetPhoneNumber: function wxGetPhoneNumber(res) {console.log(res);}, toCleanNormal: function toCleanNormal() {uni.navigateTo({ url: '../cleanNormal/cleanNormal' });}, noMore: function noMore() {uni.showToast({ title: '该功能暂未开放！', icon: 'none', duration: 1000 });} } };exports.default = _default;
+var _config$api = _apiConfig.default.api,dictDetailUrl = _config$api.dictDetailUrl,getNewsUrl = _config$api.getNewsUrl;var _default = { data: function data() {return { ylxxList: [], swiperList: [{ id: 0, type: 'image', url: 'https://www.sxscott.com/img/banner.png' }], msgList: [{ url: 'url', title: '多地首套房贷利率上浮 热点城市渐迎零折扣时代' }, { url: 'url', title: '悦如公寓三周年生日趴邀你免费吃喝欢唱' }, { url: 'url', title: '你想和一群有志青年一起过周末嘛？' }], modalName: '' };}, onLoad: function onLoad() {//判断是否第一次进入小程序		
+    if (uni.getStorageSync('userInfo')) {this.modalName = null;this.getDict(); // this.getNews()
+    } else {this.modalName = 'toUserLogin';}}, methods: { //获取用户信息
+    wxGetUserInfo: function wxGetUserInfo(res) {var that = this;if (!res.detail.iv) {uni.showToast({ title: '您取消了授权,登录失败', icon: 'none' });return false;} //授权成功回调
+      var callback = {};callback.success = function () {that.modalName = null;that.getDict(); // that.getNews();
+      };(0, _login.login)(callback);}, // 获取字典
+    getDict: function getDict() {var that = this; //娱乐休闲
+      var infoOpt = { url: dictDetailUrl, type: 'POST', data: { type: 'YLXX', pageNum: 1, pageSize: 999 } };var infoCb = {};infoCb.success = function (res) {that.ylxxList = res.list;};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, // 获取公告
+    getNews: function getNews() {var that = this;var infoOpt = { url: getNewsUrl, type: 'POST', data: { news: 'news' } };var infoCb = {};infoCb.success = function (res) {console.log(res);};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, wxGetPhoneNumber: function wxGetPhoneNumber(res) {console.log(res);}, toCleanNormal: function toCleanNormal() {uni.navigateTo({ url: '../cleanNormal/cleanNormal' });}, noMore: function noMore() {uni.showToast({ title: '该功能暂未开放！', icon: 'none', duration: 1000 });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

@@ -28,10 +28,8 @@
 					<view class="iconfont" :class="li.icon">
 						
 					</view>
-					<!-- <image :src="'../../static/HM-PersonalCenter/sever/'+li.icon"></image> -->
 				</view>
 				<view class="text">{{li.name}}</view>
-				<!-- <image class="to" src="../../static/HM-PersonalCenter/to.png"></image> -->
 				<view class="iconfont icon-jiantou"></view>
 			</view>
 		</view>
@@ -41,12 +39,6 @@
 	export default {
 		data() {
 			return {
-				//#ifdef APP-PLUS
-				isH5Plus:true,
-				//#endif
-				//#ifndef APP-PLUS
-				isH5Plus:false,
-				//#endif
 				userinfo:{},
 				orderTypeLise:[
 					//name-标题 icon-图标 badge-角标

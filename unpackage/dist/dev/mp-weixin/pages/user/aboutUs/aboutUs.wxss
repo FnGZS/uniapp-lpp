@@ -1,0 +1,32 @@
+
+page{
+	background: #fff;
+	color: #A9A9A9;
+}
+.logo image{
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 20rpx;
+	margin-left: 50%;
+	margin-top: 100rpx;
+	position: absolute;
+	left: -75rpx;
+}
+.banben{
+	position: absolute;
+	width: 150rpx;
+	text-align: center;
+	left: -75rpx;
+	margin-left: 50%;
+	top: 280rpx;
+	color: #000000;
+}
+.content{
+	position: absolute;
+	width: 90%;
+	top: 380rpx;
+	margin-left: 5%;
+	font-size: 28rpx;
+	line-height: 40rpx;
+}
+

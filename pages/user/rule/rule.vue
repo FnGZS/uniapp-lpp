@@ -28,6 +28,9 @@
 </script>
 
 <style>
+	page{
+		background: #fff;
+	}
 	#rule{
 		margin-bottom: 50upx;
 	}

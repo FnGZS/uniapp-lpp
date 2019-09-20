@@ -9,7 +9,11 @@
     "pages/message_info/message_info",
     "pages/order/order",
     "pages/user/user",
-    "pages/user/rule/rule"
+    "pages/user/rule/rule",
+    "pages/user/aboutUs/aboutUs",
+    "pages/user/address/address",
+    "pages/user/address/addressAdd",
+    "pages/user/address/addressEdit"
   ],
   "subPackages": [],
   "window": {

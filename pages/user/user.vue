@@ -53,14 +53,14 @@
 					[
 						{name:'我的预约',icon:'icon-yueyue'},
 						{name:'我的收藏',icon:'icon-shoucang'},
-						{name:'我的地址',icon:'icon-dizhi'}
+						{name:'我的地址',icon:'icon-dizhi',url:'address/address'}
 						
 					],
 					[
 						{name:'在线客服',icon:'icon-kefu',url:''},
 						{name:'意见反馈',icon:'icon-yijianfankui',url:''},
 						{name:'平台规则',icon:'icon-guize',url:'rule/rule'},
-						{name:'关于我们',icon:'icon-guanyuwomen',url:''}
+						{name:'关于我们',icon:'icon-guanyuwomen',url:'aboutUs/aboutUs'}
 						
 					]
 				],
@@ -80,6 +80,10 @@
 			//用户点击订单类型
 			toOrderType(index){
 				// uni.showToast({title: this.orderTypeLise[index].name});
+				var toUrl = this.orderTypeLise[index].url;
+				uni.navigateTo({
+					url:toUrl
+				})
 			},
 			//用户点击列表项
 			toPage(list_i,li_i){

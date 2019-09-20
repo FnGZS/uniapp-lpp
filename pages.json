@@ -64,6 +64,31 @@
 				"navigationBarTitleText": "平台规则"
 			}
 		}
+		,
+		{
+			"path": "pages/user/aboutUs/aboutUs",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		},
+		{
+			"path": "pages/user/address/address",
+			"style": {
+				"navigationBarTitleText": "我的地址"
+			}
+		},
+		{
+			"path": "pages/user/address/addressAdd",
+			"style": {
+				"navigationBarTitleText": "新增地址"
+			}
+		},
+		{
+			"path": "pages/user/address/addressEdit",
+			"style": {
+				"navigationBarTitleText": "编辑地址"
+			}
+		}
 	],
 
 	"globalStyle": {

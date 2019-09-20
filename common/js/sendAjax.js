@@ -28,7 +28,7 @@
 
 
 
-function sendAjax(options, callback) {
+function sendAjax(options, callback,type) {
 	const _sets = options
 	if (typeof _sets.type === 'undefined') {
 		_sets.type = 'POST'
@@ -51,8 +51,8 @@ function sendAjax(options, callback) {
 		method: _sets.type,
 		data: _sets.data,
 		header: {
-			'content-type': 'application/json',
-			'authorization': uni.getStorageSync('userInfo') !== '' ? uni.getStorageSync('userInfo').token : ''
+			'content-type': type?'application/json':'application/x-www-form-urlencoded',
+			'Authorization': "Bearer " + (uni.getStorageSync('userInfo') !== '' ? uni.getStorageSync('userInfo').token : '')
 		},
 		success(res) {
 			if (res.data.code == 200) {

@@ -3,7 +3,7 @@ import {
 } from '@/common/js/sendAjax.js'
 import config from '@/apiConfig.js'
 const {
-	jwtLogin
+	jwtLoginUrl
 } = config.api
 
 function login(callback, first) {
@@ -29,7 +29,7 @@ function login(callback, first) {
 									platUserInfoMap["iv"] = userResult.iv;
 									//登录请求
 									let infoOpt = {
-										url: jwtLogin,
+										url: jwtLoginUrl,
 										type: 'POST',
 										data: {
 											platCode: resp.code,
@@ -43,7 +43,7 @@ function login(callback, first) {
 										uni.setStorageSync("userInfo", res.user)
 										scallback(res.user)
 									}
-									sendAjax(infoOpt, infoCb);
+									sendAjax(infoOpt, infoCb,1);
 								}
 							})
 						}

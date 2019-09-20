@@ -2,7 +2,7 @@
 
 /***/ 0:
 /*!******************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js ***!
   \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -13,7 +13,7 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 _vue.default.config.productionTip = false;
 
-_App.default.mpType = 'app';var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 80));};
+_App.default.mpType = 'app';var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 96));};
 
 
 _vue.default.component('cu-custom', cuCustom);
@@ -1611,7 +1611,7 @@ function normalizeComponent (
 
 /***/ 11:
 /*!***************************************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Findex%2Findex"} ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Findex%2Findex"} ***!
   \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1628,7 +1628,7 @@ createPage(_index.default);
 
 /***/ 17:
 /*!*****************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/js/login.js ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/common/js/login.js ***!
   \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1639,8 +1639,8 @@ createPage(_index.default);
 
 var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
 
-jwtLogin =
-_apiConfig.default.api.jwtLogin;
+jwtLoginUrl =
+_apiConfig.default.api.jwtLoginUrl;
 
 function login(callback, first) {
   if (!callback) {
@@ -1665,7 +1665,7 @@ function login(callback, first) {
                   platUserInfoMap["iv"] = userResult.iv;
                   //登录请求
                   var infoOpt = {
-                    url: jwtLogin,
+                    url: jwtLoginUrl,
                     type: 'POST',
                     data: {
                       platCode: resp.code,
@@ -1679,7 +1679,7 @@ function login(callback, first) {
                     uni.setStorageSync("userInfo", res.user);
                     scallback(res.user);
                   };
-                  (0, _sendAjax.sendAjax)(infoOpt, infoCb);
+                  (0, _sendAjax.sendAjax)(infoOpt, infoCb, 1);
                 } });
 
             }
@@ -1697,7 +1697,7 @@ function login(callback, first) {
 
 /***/ 18:
 /*!********************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/js/sendAjax.js ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/common/js/sendAjax.js ***!
   \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1733,7 +1733,7 @@ function login(callback, first) {
 
 
 
-function sendAjax(options, callback) {
+function sendAjax(options, callback, type) {
   var _sets = options;
   if (typeof _sets.type === 'undefined') {
     _sets.type = 'POST';
@@ -1756,8 +1756,8 @@ function sendAjax(options, callback) {
     method: _sets.type,
     data: _sets.data,
     header: {
-      'content-type': 'application/json',
-      'authorization': uni.getStorageSync('userInfo') !== '' ? uni.getStorageSync('userInfo').token : '' },
+      'content-type': type ? 'application/json' : 'application/x-www-form-urlencoded',
+      'Authorization': "Bearer " + (uni.getStorageSync('userInfo') !== '' ? uni.getStorageSync('userInfo').token : '') },
 
     success: function success(res) {
       if (res.data.code == 200) {
@@ -1788,18 +1788,22 @@ function sendAjax(options, callback) {
 
 /***/ 19:
 /*!***********************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/apiConfig.js ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/apiConfig.js ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
  // const apiUrl = 'http://localhost:8080'
-var apiUrl = 'http://192.168.17.110:8080';
+var apiUrl = 'http://192.168.1.103:8080';
 module.exports = {
   api: {
     //登录授权
-    jwtLogin: "".concat(apiUrl, "/user/jwtLogin") } };
+    jwtLoginUrl: "".concat(apiUrl, "/user/jwtLogin"),
+    //字段获取字典
+    dictDetailUrl: "".concat(apiUrl, "/dict/seletAll"),
+    //获取新闻公告
+    getNewsUrl: "".concat(apiUrl, "/news/get") } };
 
 /***/ }),
 
@@ -7754,7 +7758,7 @@ internalMixin(Vue);
 
 /***/ 22:
 /*!***************************************************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2FcleanNormal%2FcleanNormal"} ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2FcleanNormal%2FcleanNormal"} ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7802,7 +7806,7 @@ module.exports = g;
 
 /***/ 30:
 /*!*******************************************************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2FsubscribeTime%2FsubscribeTime"} ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2FsubscribeTime%2FsubscribeTime"} ***!
   \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7819,7 +7823,7 @@ createPage(_subscribeTime.default);
 
 /***/ 38:
 /*!*****************************************************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2FsubscribeSub%2FsubscribeSub"} ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2FsubscribeSub%2FsubscribeSub"} ***!
   \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7836,7 +7840,7 @@ createPage(_subscribeSub.default);
 
 /***/ 4:
 /*!*********************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/pages.json ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/pages.json ***!
   \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7848,7 +7852,7 @@ createPage(_subscribeSub.default);
 
 /***/ 46:
 /*!*********************************************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2ForderSub%2ForderSub"} ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2ForderSub%2ForderSub"} ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7865,7 +7869,7 @@ createPage(_orderSub.default);
 
 /***/ 54:
 /*!*******************************************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Fmessage%2Fmessage"} ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Fmessage%2Fmessage"} ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7882,7 +7886,7 @@ createPage(_message.default);
 
 /***/ 62:
 /*!*****************************************************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Fmessage_info%2Fmessage_info"} ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Fmessage_info%2Fmessage_info"} ***!
   \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7899,7 +7903,7 @@ createPage(_message_info.default);
 
 /***/ 68:
 /*!*******************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/common/js/message.js ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/common/js/message.js ***!
   \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7948,7 +7952,7 @@ module.exports = {
 
 /***/ 71:
 /*!***************************************************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Forder%2Forder"} ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Forder%2Forder"} ***!
   \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7965,7 +7969,7 @@ createPage(_order.default);
 
 /***/ 77:
 /*!******************************************************!*\
-  !*** C:/Users/a/Documents/GitHub/uniapp-lpp/Json.js ***!
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/Json.js ***!
   \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8630,6 +8634,40 @@ var cateList = [{
   goodsList: goodsList,
   orderList: orderList,
   cateList: cateList };exports.default = _default;
+
+/***/ }),
+
+/***/ 80:
+/*!*************************************************************************************!*\
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Fuser%2Fuser"} ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _user = _interopRequireDefault(__webpack_require__(/*! ./pages/user/user.vue */ 81));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_user.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 88:
+/*!********************************************************************************************!*\
+  !*** D:/2278/My Documents/GitHub/uniapp-lpp/main.js?{"page":"pages%2Fuser%2Frule%2Frule"} ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _rule = _interopRequireDefault(__webpack_require__(/*! ./pages/user/rule/rule.vue */ 89));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_rule.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ })
 

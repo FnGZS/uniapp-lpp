@@ -1,0 +1,1 @@
+<view id="rule"><block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="*this"><view><view class="title">{{item.title}}</view><view class="content">{{item.content}}</view></view></block></view>

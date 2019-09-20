@@ -33,6 +33,7 @@
 				<view class="text">{{li.name}}</view>
 				<!-- <image class="to" src="../../static/HM-PersonalCenter/to.png"></image> -->
 				<view class="iconfont icon-jiantou"></view>
+				<button v-if="li.icon =='icon-kefu'" class='service-kefu-btn' plain open-type="contact"></button>
 			</view>
 		</view>
 	</view>
@@ -64,10 +65,10 @@
 						
 					],
 					[
-						{name:'在线客服',icon:'icon-kefu'},
-						{name:'意见反馈',icon:'icon-yijianfankui'},
-						{name:'平台规则',icon:'icon-guize'},
-						{name:'关于我们',icon:'icon-guanyuwomen'}
+						{name:'在线客服',icon:'icon-kefu',url:''},
+						{name:'意见反馈',icon:'icon-yijianfankui',url:''},
+						{name:'平台规则',icon:'icon-guize',url:'rule/rule'},
+						{name:'关于我们',icon:'icon-guanyuwomen',url:''}
 						
 					]
 				],
@@ -86,11 +87,15 @@
 			},
 			//用户点击订单类型
 			toOrderType(index){
-				uni.showToast({title: this.orderTypeLise[index].name});
+				// uni.showToast({title: this.orderTypeLise[index].name});
 			},
 			//用户点击列表项
 			toPage(list_i,li_i){
-				uni.showToast({title: this.severList[list_i][li_i].name});
+				//获取跳转的选项
+				var toUrl = this.severList[list_i][li_i].url;
+				uni.navigateTo({
+					url:toUrl
+				})
 			}
 		}
 	}
@@ -230,4 +235,23 @@ page{background-color:#fff}
 		margin-right: 10upx;
 	}
 }
+.service-kefu-btn{
+	position: absolute;
+	width: 90%;
+	left: 5%;
+	height: 8%;
+	background: #fff;
+	text-align: left;
+	font-size: 28upx;
+
+}
+button[plain] {
+  color:#6D6C6B;
+  
+padding-left:0;
+border:none;
+background-color:transparent;
+
+}
+	
 </style>

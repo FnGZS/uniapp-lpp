@@ -1,0 +1,19 @@
+
+#rule{
+	margin-bottom: 50rpx;
+}
+.title{
+	margin-left: 5%;
+	margin-bottom: 10rpx;
+	width: 90%;
+	font-size: 30rpx;
+	font-weight: bold;
+	margin-top: 50rpx;
+}
+.content{
+	margin-left: 5%;
+	margin-right: 5%;
+	width: 90%;
+	font-size: 28rpx;
+}
+

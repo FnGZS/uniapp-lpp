@@ -315,4 +315,19 @@ page {
     font-size: 30rpx;
     margin-right: 10rpx;
 }
+.service-kefu-btn {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  height: 8%;
+  background: #fff;
+  text-align: left;
+  font-size: 28rpx;
+}
+button[plain] {
+  color: #6D6C6B;
+  padding-left: 0;
+  border: none;
+  background-color: transparent;
+}
 

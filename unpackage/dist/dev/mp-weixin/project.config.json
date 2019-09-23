@@ -22,45 +22,13 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
-			"list": [
-				{
-					"id": -1,
-					"name": "aboutUs",
-					"pathName": "pages/user/aboutUs/aboutUs",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的地址",
-					"pathName": "pages/user/address/address",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "新增地址",
-					"pathName": "pages/user/address/addressAdd",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "编辑地址",
-					"pathName": "pages/user/address/addressEdit",
-					"scene": null
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }

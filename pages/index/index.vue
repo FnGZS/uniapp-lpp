@@ -49,7 +49,7 @@
 			</swiper>
 		</view>
 		<!-- 休闲 -->
-		<view class="xiuxian" @click="noMore()">
+		<view class="xiuxian" @click="noMore()" v-if="ylxxList.length>0">
 			<view class="public-title">
 				<view class="public-leftLine"></view>
 				<view class="public-box color_5a6c81 font_29">娱乐休闲</view>
@@ -161,11 +161,7 @@ export default {
 					url: 'https://www.sxscott.com/img/banner.png'
 				}
 			],
-			msgList: [
-				{ url: 'url', title: '多地首套房贷利率上浮 热点城市渐迎零折扣时代' },
-				{ url: 'url', title: '悦如公寓三周年生日趴邀你免费吃喝欢唱' },
-				{ url: 'url', title: '你想和一群有志青年一起过周末嘛？' }
-			],
+			msgList: [],
 			modalName: ''
 		};
 	},
@@ -174,7 +170,7 @@ export default {
 		if(uni.getStorageSync('userInfo')){
 			this.modalName =null
 			this.getDict()
-			// this.getNews()
+			this.getNews()
 		}else{
 			this.modalName = 'toUserLogin'
 		}
@@ -195,7 +191,7 @@ export default {
 			callback.success = function() {
 				that.modalName = null;
 				that.getDict();
-				// that.getNews();
+				that.getNews();
 			};
 			login(callback);
 		},
@@ -225,12 +221,13 @@ export default {
 				url: getNewsUrl,
 				type: 'POST',
 				data: {
-					news:'news'
+					pageNum:1,
+					pageSize:5
 				}
 			};
 			let infoCb = {};
 			infoCb.success = function(res) {
-				console.log(res)
+				that.msgList = res.list
 			};
 			sendAjax(infoOpt, infoCb);
 		},

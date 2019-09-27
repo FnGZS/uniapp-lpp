@@ -1,6 +1,6 @@
 // const apiUrl = 'http://localhost:8080'
 // const apiUrl = 'http://192.168.1.103:8080'
-const apiUrl = 'http://192.168.1.121:8080'
+const apiUrl = 'http://192.168.1.116:8081'
 
 module.exports = {
 	api: {

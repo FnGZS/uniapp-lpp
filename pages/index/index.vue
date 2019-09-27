@@ -49,17 +49,21 @@
 			</swiper>
 		</view>
 		<!-- 休闲 -->
-		<view class="xiuxian" @click="noMore()" v-if="ylxxList.length>0">
+		<view class="xiuxian"  v-if="ylxxList.length>0">
 			<view class="public-title">
 				<view class="public-leftLine"></view>
 				<view class="public-box color_5a6c81 font_29">娱乐休闲</view>
 			</view>
 			<view class="cont">
 				<view class="list" v-for="(item, index) in ylxxList" :key="index">
-					<view class="list-icon bc1" v-if="item.k === 'PK'"><view class="iconfont icon-yule1"></view></view>
-					<view class="list-icon bc2" v-if="item.k === 'XQ'"><view class="iconfont icon-yule2"></view></view>
-					<view class="list-icon bc3" v-if="item.k === 'YX'"><view class="iconfont icon-yule3"></view></view>
-					<view class="list-icon bc4" v-if="item.k === 'CG'"><view class="iconfont icon-yule4"></view></view>
+					<!-- 唱歌 -->
+					<view class="list-icon bc4" @click="gotoDetail(0)" v-if="item.k === 'CG'"><view class="iconfont icon-yule4"></view></view>
+					<!-- 游戏 -->
+					<view class="list-icon bc3" @click="gotoDetail(1)" v-if="item.k === 'YX'"><view class="iconfont icon-yule3"></view></view>
+					<!-- 下棋 -->
+					<view class="list-icon bc2" @click="gotoDetail(2)" v-if="item.k === 'XQ'"><view class="iconfont icon-yule2"></view></view>
+					<!-- 品咖 -->
+					<view class="list-icon bc1" @click="gotoDetail(3)" v-if="item.k === 'PK'"><view class="iconfont icon-yule1"></view></view>
 					<view class="list-title">{{ item.v }}</view>
 				</view>
 			</view>
@@ -239,12 +243,19 @@ export default {
 				url: '../cleanNormal/cleanNormal'
 			});
 		},
-		noMore() {
-			uni.showToast({
-				title: '该功能暂未开放！',
-				icon: 'none',
-				duration: 1000
-			});
+		gotoDetail(e) {
+			if(e==1){
+				uni.navigateTo({
+					url: './lookImg'
+				});
+			}else{
+				uni.showToast({
+					title: '该功能暂未开放！',
+					icon: 'none',
+					duration: 1000
+				});
+			}
+			
 		}
 	}
 };

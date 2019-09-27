@@ -260,9 +260,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _login = __webpack_require__(/*! @/common/js/login.js */ 17);
 var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);
 var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
 //
 //
 //
@@ -415,7 +423,7 @@ var _config$api = _apiConfig.default.api,dictDetailUrl = _config$api.dictDetailU
       var callback = {};callback.success = function () {that.modalName = null;that.getDict();that.getNews();};(0, _login.login)(callback);}, // 获取字典
     getDict: function getDict() {var that = this; //娱乐休闲
       var infoOpt = { url: dictDetailUrl, type: 'POST', data: { type: 'YLXX', pageNum: 1, pageSize: 999 } };var infoCb = {};infoCb.success = function (res) {that.ylxxList = res.list;};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, // 获取公告
-    getNews: function getNews() {var that = this;var infoOpt = { url: getNewsUrl, type: 'POST', data: { pageNum: 1, pageSize: 5 } };var infoCb = {};infoCb.success = function (res) {that.msgList = res.list;};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, wxGetPhoneNumber: function wxGetPhoneNumber(res) {console.log(res);}, toCleanNormal: function toCleanNormal() {uni.navigateTo({ url: '../cleanNormal/cleanNormal' });}, noMore: function noMore() {uni.showToast({ title: '该功能暂未开放！', icon: 'none', duration: 1000 });} } };exports.default = _default;
+    getNews: function getNews() {var that = this;var infoOpt = { url: getNewsUrl, type: 'POST', data: { pageNum: 1, pageSize: 5 } };var infoCb = {};infoCb.success = function (res) {that.msgList = res.list;};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, wxGetPhoneNumber: function wxGetPhoneNumber(res) {console.log(res);}, toCleanNormal: function toCleanNormal() {uni.navigateTo({ url: '../cleanNormal/cleanNormal' });}, gotoDetail: function gotoDetail(e) {if (e == 1) {uni.navigateTo({ url: './lookImg' });} else {uni.showToast({ title: '该功能暂未开放！', icon: 'none', duration: 1000 });}} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

@@ -88,6 +88,12 @@
 			"style": {
 				"navigationBarTitleText": "编辑地址"
 			}
+		},
+		{
+			"path": "pages/index/lookImg",
+			"style": {
+				"navigationBarTitleText": "看图猜成语"
+			}
 		}
 	],
 

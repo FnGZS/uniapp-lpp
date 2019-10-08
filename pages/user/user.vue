@@ -57,6 +57,11 @@
 						
 					],
 					[
+						{name:'服务认证',icon:'icon-yueyue'}
+						
+						
+					],
+					[
 						{name:'在线客服',icon:'icon-kefu',url:''},
 						{name:'意见反馈',icon:'icon-yijianfankui',url:''},
 						{name:'平台规则',icon:'icon-guize',url:'rule/rule'},

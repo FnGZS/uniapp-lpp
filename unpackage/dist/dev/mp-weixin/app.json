@@ -14,7 +14,8 @@
     "pages/user/address/address",
     "pages/user/address/addressAdd",
     "pages/user/address/addressEdit",
-    "pages/index/lookImg"
+    "pages/index/lookImg",
+    "pages/user/serviceCert/serviceCert"
   ],
   "subPackages": [],
   "window": {
@@ -55,5 +56,6 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  }
+  },
+  "sitemapLocation": "sitemap40.json"
 }

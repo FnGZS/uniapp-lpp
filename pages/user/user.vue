@@ -40,7 +40,7 @@
 	export default {
 		data() {
 			return {
-				userinfo:{},
+				userInfo:null,
 				orderTypeLise:[
 					//name-标题 icon-图标 badge-角标
 					{name:'待付款',icon:'icon-daifukuan',badge:1},
@@ -51,19 +51,14 @@
 				],
 				severList:[
 					[
-						{name:'我的预约',icon:'icon-yueyue'},
-						{name:'我的收藏',icon:'icon-shoucang'},
-						{name:'我的地址',icon:'icon-dizhi',url:'address/address'}
-						
+						{name:'我的地址',icon:'icon-dizhi',url:'address/address'},
+						{name:'积分兑换',icon:'icon-shoucang'},
+						{name:'我的兑换',icon:'icon-shoucang'},
+						{name:'服务认证',icon:'icon-yueyue',url:'serviceCert/serviceCert'}
 					],
-					[
-						{name:'服务认证',icon:'icon-yueyue'}
-						
-						
-					],
+					
 					[
 						{name:'在线客服',icon:'icon-kefu',url:''},
-						{name:'意见反馈',icon:'icon-yijianfankui',url:''},
 						{name:'平台规则',icon:'icon-guize',url:'rule/rule'},
 						{name:'关于我们',icon:'icon-guanyuwomen',url:'aboutUs/aboutUs'}
 						
@@ -77,10 +72,12 @@
 		},
 		methods: {
 			init() {
-				let userInfo = uni.getStorageSync('userInfo')
-				userInfo.integral = "101020"
+				var userInfo = uni.getStorageSync('userInfo')
+				userInfo['integral'] = "88888888"
+				console.log(userInfo)
 				//用户信息
 				this.userInfo = userInfo	
+				console.log(this.userInfo.nickName)
 			},
 			//用户点击订单类型
 			toOrderType(index){

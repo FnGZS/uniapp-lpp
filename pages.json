@@ -94,6 +94,12 @@
 			"style": {
 				"navigationBarTitleText": "看图猜成语"
 			}
+		},
+		{
+			"path": "pages/user/serviceCert/serviceCert",
+			"style": {
+				"navigationBarTitleText": "服务认证"
+			}
 		}
 	],
 

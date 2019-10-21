@@ -14,6 +14,20 @@
 					<view class="time">2019-10-17 17:41</view>
 					<view class="status">待付款</view>
 				</view>
+				<view class="center">
+					<image class="img" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg" mode=""></image>
+					
+				</view>
+				<view class="bottom ">
+					<button class="cu-btn round line-grey sm">取消订单</button>
+					<button class="cu-btn round line-red sm">立即支付</button>
+					<button class="cu-btn round line-gray sm">预约失败</button>
+					<button class="cu-btn round line-blue sm">预约中</button>
+					<button class="cu-btn round line-cyan sm">待服务</button>
+					<button class="cu-btn round line-green sm">服务中</button>
+					<button class="cu-btn round line-orange sm">去评价</button>
+					<button class="cu-btn round line-pink sm">已评价</button>
+				</view>
 			</view>
 		</view>
 		
@@ -99,9 +113,36 @@
 		}
 	}
 	
-	
+	.items{
+		background: #fff;
+	}
 	.top{
 		display: flex;
+		padding-top:10upx;
+		position:relative;
+		font-size: 25upx;
+		.time{
+			margin-left: 5%;
+		}
+		.status{
+			position: absolute;
+			right: 5%;
+			top: 10upx;
+		}
+	}
+	.center{
+		margin-left: 5%;
+		.img{
+			width: 150upx;
+			height: 150upx;
+		}
+	}
+	.bottom{
+		margin:0 5%;
+		padding:15upx 0;
+		.cu-btn{
+			margin-left: 10upx;
+		}
 	}
 	
 </style>

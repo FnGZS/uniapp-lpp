@@ -100,6 +100,15 @@
 			};
 		},
 		methods: {
+			onLoad: function(e) {
+				console.log(e,1)
+				if(e.title){
+					uni.setNavigationBarTitle({
+					    title: e.title
+					});
+				}
+				
+			},
 			// 点击空白处
 			  hideNav: function () {
 				this.displays= "none"

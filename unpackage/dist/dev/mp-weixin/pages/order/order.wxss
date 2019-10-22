@@ -84,10 +84,38 @@ page, .content {
         height: 0;
         border-bottom: 2px solid #08a1f2;
 }
+.items {
+  background: #fff;
+}
 .top {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  padding-top: 10rpx;
+  position: relative;
+  font-size: 25rpx;
+}
+.top .time {
+    margin-left: 5%;
+}
+.top .status {
+    position: absolute;
+    right: 5%;
+    top: 10rpx;
+}
+.center {
+  margin-left: 5%;
+}
+.center .img {
+    width: 150rpx;
+    height: 150rpx;
+}
+.bottom {
+  margin: 0 5%;
+  padding: 15rpx 0;
+}
+.bottom .cu-btn {
+    margin-left: 10rpx;
 }
 

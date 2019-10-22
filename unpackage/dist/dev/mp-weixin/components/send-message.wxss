@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.send-message.data-v-90816e4a {
+.send-message.data-v-4b0e40dc {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0 15rpx;
@@ -40,7 +40,7 @@
       -ms-flex-wrap: nowrap;
           flex-wrap: nowrap;
 }
-.send-message .iconfont.data-v-90816e4a {
+.send-message .iconfont.data-v-4b0e40dc {
     width: 80rpx;
     text-align: center;
     line-height: 100rpx;
@@ -51,14 +51,14 @@
     color: #fff;
     font-size: 60rpx;
 }
-.send-message .input-wrapper.data-v-90816e4a {
+.send-message .input-wrapper.data-v-4b0e40dc {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
     padding: 10rpx;
 }
-.send-message .input-wrapper input.data-v-90816e4a {
+.send-message .input-wrapper input.data-v-4b0e40dc {
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
       padding: 0 15rpx;

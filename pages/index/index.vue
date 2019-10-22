@@ -75,42 +75,13 @@
 				<view class="public-box color_5a6c81 font_29">保洁推荐</view>
 			</view>
 			<view class="baojie-cont">
-				<view class="baojie-list" @click="toCleanNormal">
-					<view class="baojie-list-title font_29">常规保洁</view>
-					<view class="baojie-list-text font_24">XXXX</view>
+				<view class="baojie-list" @click="toCleanNormal(item)" v-for="(item, index) in baojieList" :key="index">
+					<view class="baojie-list-title font_29">{{ item.title }}</view>
+					<view class="baojie-list-text font_24">{{ item.content }}</view>
 
-					<image src="https://www.sxscott.com/img/c.png"></image>
+					<image :src=" item.picture "></image>
 				</view>
-				<view class="baojie-list">
-					<view class="baojie-list-title font_29">深度保洁</view>
-					<view class="baojie-list-text font_24">XXXX</view>
-
-					<image src="https://www.sxscott.com/img/c.png"></image>
-				</view>
-				<view class="baojie-list">
-					<view class="baojie-list-title font_29">新居开荒</view>
-					<view class="baojie-list-text font_24">XXXX</view>
-
-					<image src="https://www.sxscott.com/img/c.png"></image>
-				</view>
-				<view class="baojie-list">
-					<view class="baojie-list-title font_29">办公室店面保洁</view>
-					<view class="baojie-list-text font_24">XXXX</view>
-
-					<image src="https://www.sxscott.com/img/c.png"></image>
-				</view>
-				<view class="baojie-list">
-					<view class="baojie-list-title font_29">家居整理</view>
-					<view class="baojie-list-text font_24">XXXX</view>
-
-					<image src="https://www.sxscott.com/img/c.png"></image>
-				</view>
-				<view class="baojie-list">
-					<view class="baojie-list-title font_29">甲醛治理</view>
-					<view class="baojie-list-text font_24">XXXX</view>
-
-					<image src="https://www.sxscott.com/img/c.png"></image>
-				</view>
+				
 			</view>
 		</view>
 		<!-- 推荐 -->
@@ -165,6 +136,37 @@ export default {
 					url: 'https://www.sxscott.com/img/banner.png'
 				}
 			],
+			baojieList:[{
+				id:0,
+				title:'常规保洁',
+				content:'XXX',
+				picture:'https://www.sxscott.com/img/c.png'
+			},{
+				id:1,
+				title:'深度保洁',
+				content:'XXX',
+				picture:'https://www.sxscott.com/img/c.png'
+			},{
+				id:2,
+				title:'新居开荒',
+				content:'XXX',
+				picture:'https://www.sxscott.com/img/c.png'
+			},{
+				id:3,
+				title:'办公室桌面保洁',
+				content:'XXX',
+				picture:'https://www.sxscott.com/img/c.png'
+			},{
+				id:4,
+				title:'家居整洁',
+				content:'XXX',
+				picture:'https://www.sxscott.com/img/c.png'
+			},{
+				id:5,
+				title:'甲醛治理',
+				content:'XXX',
+				picture:'https://www.sxscott.com/img/c.png'
+			}],
 			msgList: [],
 			modalName: ''
 		};
@@ -238,9 +240,9 @@ export default {
 		wxGetPhoneNumber(res) {
 			console.log(res);
 		},
-		toCleanNormal() {
+		toCleanNormal(e) {
 			uni.navigateTo({
-				url: '../cleanNormal/cleanNormal'
+				url: `../cleanNormal/cleanNormal?title=${e.title}`
 			});
 		},
 		gotoDetail(e) {

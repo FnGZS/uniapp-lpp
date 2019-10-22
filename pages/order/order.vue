@@ -9,32 +9,35 @@
 		</view>
 		<!-- <empty v-if="tabItem.loaded === true && tabItem.orderList.length === 0"></empty> -->
 		<view class="order">
-			<view class="items" @tap="toDetail">
+			<view class="items" @tap="toDetail" v-for="item in orderList">
 				<view class="top">
-					<view class="time">2019-10-17 17:41</view>
+					<view class="time">{{item.time}}</view>
 					<view class="status">待付款</view>
 				</view>
 				<view class="center">
 					<image class="img" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg" mode=""></image>
 					<view class="info">
-						<view class="name">王小姐</view>
-						<view class="work_time">2年工龄</view>
-						<view class="num">接单量:45</view>
-						<view class="label cu-tag  bg-orange">明星保洁员</view>
+						<view class="name">{{item.name}}</view>
+						<view class="work_time">{{item.work_time}}</view>
+						<view class="num">接单量:{{item.num}}</view>
+						<view class="label cu-tag  bg-orange">{{item.label}}</view>
 					</view>
 				</view>
 				<view class="money">
-					<view class="money_main">付款：￥20</view>
+					<view class="money_main">付款：￥{{item.price}}</view>
 				</view>
-				<view class="bottom ">
-					<button class="cu-btn round line-grey sm">取消订单</button>
-					<button class="cu-btn round line-red sm">立即支付</button>
-					<button class="cu-btn round line-gray sm">预约失败</button>
-					<button class="cu-btn round line-blue sm">预约中</button>
-					<button class="cu-btn round line-cyan sm">待服务</button>
-					<button class="cu-btn round line-green sm">服务中</button>
-					<button class="cu-btn round line-orange sm">去评价</button>
-					<button class="cu-btn round line-pink sm">已评价</button>
+				<view class="bottom">
+					<view class="bottomList">
+					<button class="cu-btn round line-grey sm" v-if="item.goodsState==0 && item.fuwuState == 2">取消订单</button>
+					<button class="cu-btn round line-red sm"  v-if="item.goodsState==0 && item.fuwuState == 2">立即支付</button>
+					<button class="cu-btn round line-gray sm" v-if="item.goodsState==0 && item.fuwuState == 0">预约失败</button>
+					<button class="cu-btn round line-blue sm" v-if="item.goodsState==0 && item.fuwuState == 1">预约中</button>
+					<button class="cu-btn round line-cyan sm"  v-if="item.goodsState==1 && item.fuwuState == 2">待服务</button>
+					<button class="cu-btn round line-green sm"  v-if="item.goodsState==1 && item.fuwuState == 3">服务中</button>
+					<button class="cu-btn round line-orange sm"  v-if="item.goodsState==1 && item.fuwuState == 4">去评价</button>
+					<button class="cu-btn round line-pink sm"  v-if="item.goodsState==1 && item.fuwuState ==4">付尾款</button>
+					<button class="cu-btn round line-pink sm"  v-if="item.goodsState==1 && item.fuwuState ==5">已评价</button>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -58,6 +61,12 @@
 					{state: 4,text: '待评价'},
 					{state: 5,text: '售后'}
 				],
+				orderList:[{id:0,time:'2019-10-17 17:41',name:'王小姐',work_time:'1年工龄',num:45,label:'明星保洁员',price:20,goodsState:0,fuwuState:2},
+				{id:1,time:'2019-10-17 17:41',name:'王小姐',work_time:'1年工龄',num:45,label:'明星保洁员',price:20,goodsState:0,fuwuState:0},
+				{id:2,time:'2019-10-17 17:41',name:'王小姐',work_time:'2年工龄',num:45,label:'明星保洁员',price:20,goodsState:0,fuwuState:1},
+				{id:3,time:'2019-10-17 17:41',name:'王小姐',work_time:'3年工龄',num:45,label:'明星保洁员',price:20,goodsState:1,fuwuState:2},
+				{id:3,time:'2019-10-17 17:41',name:'王小姐',work_time:'4年工龄',num:45,label:'明星保洁员',price:20,goodsState:1,fuwuState:3},
+				{id:3,time:'2019-10-17 17:41',name:'王小姐',work_time:'5年工龄',num:45,label:'明星保洁员',price:20,goodsState:1,fuwuState:4}]
 			};
 		},
 		
@@ -99,7 +108,8 @@
 		padding: 0 5px;
 		background: #fff;
 		box-shadow: 0 1px 5px rgba(0,0,0,.06);
-		position: relative;
+		position: sticky;
+		top: 88upx;
 		z-index: 10;
 		.nav-item{
 			flex: 1;
@@ -125,9 +135,12 @@
 			}
 		}
 	}
-	
+	.order{
+		padding-bottom: 100upx;
+	}
 	.items{
 		background: #fff;
+		margin-top: 5upx;
 	}
 	.top{
 		display: flex;
@@ -169,7 +182,7 @@
 		.label{
 			position: absolute;
 			top: 10upx;
-			right: 20%;
+			right: 5%;
 			font-size: 20upx;
 		}
 	}
@@ -188,6 +201,11 @@
 	.bottom{
 		margin:0 5%;
 		padding:15upx 0;
+		height:75upx;
+		.bottomList{
+			position:absolute;
+			right:5%;
+		}
 		.cu-btn{
 			margin-left: 10upx;
 		}

@@ -1,1 +1,1 @@
-<view class="content data-v-13d58a18"><view class="message-list data-v-13d58a18"><message-action vue-id="1" options="{{options}}" messagesList="{{messages}}" class="data-v-13d58a18" bind:__l="__l"></message-action></view></view>
+<view class="content data-v-d639d92a"><view class="message-list data-v-d639d92a"><message-action vue-id="1" options="{{options}}" messagesList="{{messages}}" class="data-v-d639d92a" bind:__l="__l"></message-action></view></view>

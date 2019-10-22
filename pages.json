@@ -106,6 +106,12 @@
 			"style": {
 				"navigationBarTitleText": "服务认证"
 			}
+		},
+		{
+			"path": "pages/order/orderDetail/orderDetail",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
 		}
 	],
 

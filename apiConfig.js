@@ -11,6 +11,5 @@ module.exports = {
 		dictDetailUrl:`${apiUrl}/dict/seletAll`,
 		//获取新闻公告
 		getNewsUrl:`${apiUrl}/news/getList`,
-		
 		}
 }

@@ -11,5 +11,7 @@ module.exports = {
 		dictDetailUrl:`${apiUrl}/dict/seletAll`,
 		//获取新闻公告
 		getNewsUrl:`${apiUrl}/news/getList`,
+		//获取订单列表
+		getOrderList:`${apiUrl}/pay/payOrder`,
 		}
 }

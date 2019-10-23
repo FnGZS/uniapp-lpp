@@ -47,6 +47,8 @@
 
 <script>
 	import empty from "@/components/empty";
+	import { sendAjax } from '@/common/js/sendAjax.js';
+	const { getOrderList} = config.api;
 	export default {
 		components: {
 			empty
@@ -72,12 +74,28 @@
 		
 		onLoad(options){
 			this.tabCurrentIndex = +options.state||0;
+			getOrderList();
 		},
 		 
 		methods: {
 			//顶部tab点击
 			tabClick(index){
 				this.tabCurrentIndex = index;
+			},
+			getOrderList(){
+				let infoOpt = {
+					url: getOrderList,
+					type: 'GET',
+					data: {
+						pageNum: 1,
+						pageSize: 999
+					}
+				};
+				let infoCb = {};
+				infoCb.success = function(res) {
+					that.ylxxList = res.list;
+				};
+				sendAjax(infoOpt, infoCb);
 			},
 			toDetail(){
 				uni.navigateTo({
@@ -109,7 +127,7 @@
 		background: #fff;
 		box-shadow: 0 1px 5px rgba(0,0,0,.06);
 		position: sticky;
-		top: 88upx;
+		top: 0upx;
 		z-index: 10;
 		.nav-item{
 			flex: 1;
@@ -135,9 +153,7 @@
 			}
 		}
 	}
-	.order{
-		padding-bottom: 100upx;
-	}
+
 	.items{
 		background: #fff;
 		margin-top: 5upx;

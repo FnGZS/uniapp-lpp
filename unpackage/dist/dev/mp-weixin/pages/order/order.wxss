@@ -44,7 +44,9 @@ page, .content {
   background: #fff;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
           box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0rpx;
   z-index: 10;
 }
 .navbar .nav-item {
@@ -86,6 +88,7 @@ page, .content {
 }
 .items {
   background: #fff;
+  margin-top: 5rpx;
 }
 .top {
   display: -webkit-box;
@@ -106,14 +109,56 @@ page, .content {
 }
 .center {
   margin-left: 5%;
+  margin-top: 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
 }
 .center .img {
-    width: 150rpx;
-    height: 150rpx;
+    width: 120rpx;
+    height: 120rpx;
+}
+.center .name {
+    font-size: 28rpx;
+    margin-left: 20rpx;
+}
+.center .work_time {
+    font-size: 25rpx;
+    margin-left: 20rpx;
+    line-height: 50rpx;
+}
+.center .num {
+    font-size: 25rpx;
+    margin-left: 20rpx;
+    color: #C6C6C6;
+}
+.center .label {
+    position: absolute;
+    top: 10rpx;
+    right: 5%;
+    font-size: 20rpx;
+}
+.money {
+  position: relative;
+  height: 40rpx;
+}
+.money .money_main {
+    position: absolute;
+    right: 5%;
+    font-size: 25rpx;
+    line-height: 40rpx;
+    color: red;
 }
 .bottom {
   margin: 0 5%;
   padding: 15rpx 0;
+  height: 75rpx;
+}
+.bottom .bottomList {
+    position: absolute;
+    right: 5%;
 }
 .bottom .cu-btn {
     margin-left: 10rpx;

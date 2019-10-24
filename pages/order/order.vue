@@ -11,20 +11,20 @@
 		<view class="order">
 			<view class="items" @tap="toDetail" v-for="item in orderList">
 				<view class="top">
-					<view class="time">{{item.time}}</view>
+					<view class="time">{{item.gmtCreated}}</view>
 					<view class="status">待付款</view>
 				</view>
 				<view class="center">
 					<image class="img" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg" mode=""></image>
 					<view class="info">
-						<view class="name">{{item.name}}</view>
-						<view class="work_time">{{item.work_time}}</view>
+						<view class="name">{{item.employerName}}</view>
+						<view class="work_time">{{item.area}}</view>
 						<view class="num">接单量:{{item.num}}</view>
 						<view class="label cu-tag  bg-orange">{{item.label}}</view>
 					</view>
 				</view>
 				<view class="money">
-					<view class="money_main">付款：￥{{item.price}}</view>
+					<view class="money_main">付款：￥{{item.unitPrice}}</view>
 				</view>
 				<view class="bottom">
 					<view class="bottomList">
@@ -48,6 +48,7 @@
 <script>
 	import empty from "@/components/empty";
 	import { sendAjax } from '@/common/js/sendAjax.js';
+	import config from '@/apiConfig';
 	const { getOrderList} = config.api;
 	export default {
 		components: {
@@ -55,6 +56,7 @@
 		},
 		data() {
 			return {
+				
 				tabCurrentIndex: 0,
 				navList: [{state: 0,text: '全部'},
 					{state: 1,text: '待预约'},
@@ -68,13 +70,15 @@
 				{id:2,time:'2019-10-17 17:41',name:'王小姐',work_time:'2年工龄',num:45,label:'明星保洁员',price:20,goodsState:0,fuwuState:1},
 				{id:3,time:'2019-10-17 17:41',name:'王小姐',work_time:'3年工龄',num:45,label:'明星保洁员',price:20,goodsState:1,fuwuState:2},
 				{id:3,time:'2019-10-17 17:41',name:'王小姐',work_time:'4年工龄',num:45,label:'明星保洁员',price:20,goodsState:1,fuwuState:3},
-				{id:3,time:'2019-10-17 17:41',name:'王小姐',work_time:'5年工龄',num:45,label:'明星保洁员',price:20,goodsState:1,fuwuState:4}]
+				{id:3,time:'2019-10-17 17:41',name:'王小姐',work_time:'5年工龄',num:45,label:'明星保洁员',price:20,goodsState:1,fuwuState:4}],
+				pageNum: 1,
+				pageSize: 5
 			};
 		},
 		
 		onLoad(options){
 			this.tabCurrentIndex = +options.state||0;
-			getOrderList();
+			this.getOrderList();
 		},
 		 
 		methods: {
@@ -83,17 +87,20 @@
 				this.tabCurrentIndex = index;
 			},
 			getOrderList(){
+				var pageNum = this.pageNum;
+				var pageSize = this.pageSize;
+				var that = this;
 				let infoOpt = {
 					url: getOrderList,
 					type: 'GET',
 					data: {
-						pageNum: 1,
-						pageSize: 999
+						pageNum: pageNum,
+						pageSize: pageSize
 					}
 				};
 				let infoCb = {};
 				infoCb.success = function(res) {
-					that.ylxxList = res.list;
+					that.orderList = res.list;
 				};
 				sendAjax(infoOpt, infoCb);
 			},

@@ -1945,7 +1945,9 @@ module.exports = {
     //字段获取字典
     dictDetailUrl: "".concat(apiUrl, "/dict/seletAll"),
     //获取新闻公告
-    getNewsUrl: "".concat(apiUrl, "/news/getList") } };
+    getNewsUrl: "".concat(apiUrl, "/news/getList"),
+    //获取订单列表
+    getOrderList: "".concat(apiUrl, "/pay/payOrder") } };
 
 /***/ }),
 

@@ -105,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var empty = function empty() {return __webpack_require__.e(/*! import() | components/empty */ "components/empty").then(__webpack_require__.bind(null, /*! @/components/empty */ 194));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -154,6 +154,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);var empty = function empty() {return __webpack_require__.e(/*! import() | components/empty */ "components/empty").then(__webpack_require__.bind(null, /*! @/components/empty */ 194));};var
+_getOrderList = config.api.getOrderList;var _default =
 {
   components: {
     empty: empty },
@@ -179,12 +181,28 @@ __webpack_require__.r(__webpack_exports__);
 
   onLoad: function onLoad(options) {
     this.tabCurrentIndex = +options.state || 0;
+    _getOrderList();
   },
 
   methods: {
     //顶部tab点击
     tabClick: function tabClick(index) {
       this.tabCurrentIndex = index;
+    },
+    getOrderList: function getOrderList() {
+      var infoOpt = {
+        url: _getOrderList,
+        type: 'GET',
+        data: {
+          pageNum: 1,
+          pageSize: 999 } };
+
+
+      var infoCb = {};
+      infoCb.success = function (res) {
+        that.ylxxList = res.list;
+      };
+      (0, _sendAjax.sendAjax)(infoOpt, infoCb);
     },
     toDetail: function toDetail() {
       uni.navigateTo({

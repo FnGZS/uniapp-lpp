@@ -306,7 +306,19 @@
 }
 .list-center{
     margin-left: 40rpx;
-    width: 30%;
+    width: 100%;
+	position: relative;
+}
+.list-card{
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+}
+.list-place{
+	  position: absolute;
+	  right: 0;
+	  top: 70rpx;
+	  font-size: 25rpx;
 }
 .list-name{
     margin-top:10rpx;

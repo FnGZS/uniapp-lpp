@@ -1,128 +1,24 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 步骤条 */
+@font-face {font-family: "iconfont";
+	  src: url('https://at.alicdn.com/t/iconfont.eot?t=1566039818041'); /* IE9 */
+	  src: url('https://at.alicdn.com/t/iconfont.eot?t=1566039818041#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAALoAAsAAAAABrAAAAKZAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqBFIEcATYCJAMMCwgABCAFhG0HPBvoBciemjwpEctEiELim4f5ABNFEO33Ont3IQBJkn2+CpKKEbFRbY0kodjoCsO6te9Q1w4v7sHsbUR9Uqkkbd/y5POoTMz4arazwgij+U6a845Vja7Pczm9CXQg82OU4142xn5+1AswDiigvTHawmWSiDeMXeASzhNoNq6Y135jexcICmtaIJ50VQQhF1MUVmwU6mvWFvFancb0ku4BvAq/H3/BEgJJXWbNrT02KFD9I5Q5L1VLzn1CnAA31yFjFSjEZW3umI9gnI9mi297db0ipLmSVUWo0U319h8eSRD1rMZWsIjyiR+hria1mqHurgsZ7k6VOWCT7e0fYrJu8PGxu3f7ONafv3GaCDsn2X8G9s/zgg/fQvGNmzsx00QJDP+fdnigrdtsZ5u3ncmDEPe+XNSd1e6Elxchv5vtD9Uf42BwpLO8/wzWa0tdnfYvwBlcA1R3+VwOqqXc47MkELyZPpgbDS//JwQX8H0BgsI11VKB/IxGid7an6bt2VJ0veXNRdW4GjOQTfbIJjTrQRVYoW5f4x19N1YKjfpGhBqM3WSg0WxKFnYVdVqsoV6jLTRb0bS5RQ/GR5QmLFsHCJ2ukbT7hqzTA1nYT9Tp9496neGDZocRvWeL+dCD6hgWOVaQNI10mTqJ4+dBUXMHVj12kWX1Id+DmVtPIrPBVCw2YSdmcyxwT6gWzgkijDpQI7gM2+0UuRi1YpkbNM5dpUYjqbuRQaYOCLKHwUQcpkAk0xCdjHIifmcuqPT5DpjKw07EWhQ19R4Y46b3jpgZmHqQTRZnL8W9XOM2QWXBcQRCMJQD0ghGYXZ2FOKqH2WFyTgDbUTGpZTRbkf6Wgzr2xzftwuaWQfmSJGjaLjXRafmEQVJF+l46gYAAAAA') format('woff2'),
+	  url('https://at.alicdn.com/t/iconfont.woff?t=1566039818041') format('woff'),
+	  url('https://at.alicdn.com/t/iconfont.ttf?t=1566039818041') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+	  url('https://at.alicdn.com/t/iconfont.svg?t=1566039818041#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont {
+	  font-family: "iconfont" !important;
+	  font-size: 16px;
+	  font-style: normal;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+}
+.icon-dianhua:before {
+	  content: "\E631";
+}
+	
+	/* 步骤条 */
 .cu-steps {
 	padding: 0rpx 0rpx 20rpx 85rpx;
 	margin-top: 10rpx;
@@ -139,7 +35,8 @@
 .cu-steps .cu-item[class*='text-'] .num {
 	background-color: #3598dc;
 }
-/* 咨询 */
+	
+	/* 咨询 */
 .subPeople {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -213,7 +110,8 @@
 	border-radius: 20rpx;
 	opacity: 0.7;
 }
-/* 时间表 */
+	
+	/* 时间表 */
 .subPeopleTime {
 	width: 100%;
 	height: 410rpx;
@@ -316,7 +214,8 @@
 .subPeopleTimeTableNoYuYue {
 	background: #d7d7d7;
 }
-/* 简介 */
+	
+	/* 简介 */
 .subPeopleInfo {
 	width: 100%;
 	background: #fff;
@@ -326,5 +225,8 @@
 	font-size: 26rpx;
 	color: #4a4a4a;
 	margin-bottom: 200rpx;
+}
+.choose{
+	border: 1rpx solid red;
 }
 

@@ -154,6 +154,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);
 var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var empty = function empty() {return __webpack_require__.e(/*! import() | components/empty */ "components/empty").then(__webpack_require__.bind(null, /*! @/components/empty */ 194));};var
 _getOrderList = _apiConfig.default.api.getOrderList;var _default =
@@ -163,21 +167,21 @@ _getOrderList = _apiConfig.default.api.getOrderList;var _default =
 
   data: function data() {
     return {
-
       tabCurrentIndex: 0,
       navList: [{ state: 0, text: '全部' },
-      { state: 1, text: '待预约' },
-      { state: 2, text: '待付款' },
-      { state: 3, text: '待服务' },
-      { state: 4, text: '待评价' },
-      { state: 5, text: '售后' }],
-
-      orderList: [{ id: 0, time: '2019-10-17 17:41', name: '王小姐', work_time: '1年工龄', num: 45, label: '明星保洁员', price: 20, goodsState: 0, fuwuState: 2 },
-      { id: 1, time: '2019-10-17 17:41', name: '王小姐', work_time: '1年工龄', num: 45, label: '明星保洁员', price: 20, goodsState: 0, fuwuState: 0 },
-      { id: 2, time: '2019-10-17 17:41', name: '王小姐', work_time: '2年工龄', num: 45, label: '明星保洁员', price: 20, goodsState: 0, fuwuState: 1 },
-      { id: 3, time: '2019-10-17 17:41', name: '王小姐', work_time: '3年工龄', num: 45, label: '明星保洁员', price: 20, goodsState: 1, fuwuState: 2 },
-      { id: 3, time: '2019-10-17 17:41', name: '王小姐', work_time: '4年工龄', num: 45, label: '明星保洁员', price: 20, goodsState: 1, fuwuState: 3 },
-      { id: 3, time: '2019-10-17 17:41', name: '王小姐', work_time: '5年工龄', num: 45, label: '明星保洁员', price: 20, goodsState: 1, fuwuState: 4 }],
+      // {state: 1,text: '待预约'},
+      { state: 1, text: '预约中' },
+      { state: 2, text: '已预约' },
+      { state: 3, text: '已关闭'
+        // {state: 4,text: '服务中'},
+        // {state: 5,text: '待评价'}
+      }],
+      orderList: [{ id: 0, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '1年工龄', num: 45, label: '明星保洁员', orderStatus: 3 },
+      { id: 1, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '1年工龄', num: 45, label: '明星保洁员', orderStatus: 1 },
+      { id: 2, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '2年工龄', num: 45, label: '明星保洁员', orderStatus: 2 },
+      { id: 3, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '3年工龄', num: 45, label: '明星保洁员', orderStatus: 3 },
+      { id: 3, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '4年工龄', num: 45, label: '明星保洁员', orderStatus: 1 },
+      { id: 3, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '5年工龄', num: 45, label: '明星保洁员', orderStatus: 2 }],
       pageNum: 1,
       pageSize: 5 };
 
@@ -185,7 +189,7 @@ _getOrderList = _apiConfig.default.api.getOrderList;var _default =
 
   onLoad: function onLoad(options) {
     this.tabCurrentIndex = +options.state || 0;
-    this.getOrderList();
+    // this.getOrderList();
   },
 
   methods: {
@@ -208,6 +212,11 @@ _getOrderList = _apiConfig.default.api.getOrderList;var _default =
       var infoCb = {};
       infoCb.success = function (res) {
         that.orderList = res.list;
+      },
+      infoCb.beforeSend = function () {
+        uni.showLoading({
+          title: '加载中' });
+
       };
       (0, _sendAjax.sendAjax)(infoOpt, infoCb);
     },

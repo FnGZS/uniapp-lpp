@@ -55,7 +55,11 @@
 		</view>
 		<view class='barBottom'>
 			<view class='orderStatusBtn'>
-				<button class="cu-btn block line-grey sm" v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 2">取消订单</button>
+				<button class="cu-btn block line-grey sm" v-if="orderDetail.orderStatus==1">取消预约</button>
+				<button class="cu-btn block line-blue sm" v-if="orderDetail.orderStatus==1">预约中</button>
+				<button class="cu-btn block line-cyan sm"  v-if="orderDetail.orderStatus==2">已预约</button>
+				<button class="cu-btn block line-gray sm"  v-if="orderDetail.orderStatus==3">预约关闭</button>
+				<!-- <button class="cu-btn block line-grey sm" v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 2">取消订单</button>
 				<button class="cu-btn block line-red sm"  v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 2">立即支付</button>
 				<button class="cu-btn block line-gray sm" v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 0">预约失败</button>
 				<button class="cu-btn block line-blue sm" v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 1">预约中</button>
@@ -63,7 +67,7 @@
 				<button class="cu-btn block line-green sm"  v-if="orderDetail.goodsState==1 && orderDetail.fuwuState == 3">服务中</button>
 				<button class="cu-btn block line-orange sm"  v-if="orderDetail.goodsState==1 && orderDetail.fuwuState == 4">去评价</button>
 				<button class="cu-btn block line-pink sm"  v-if="orderDetail.goodsState==1 && orderDetail.fuwuState ==4">付尾款</button>
-				<button class="cu-btn block line-pink sm"  v-if="orderDetail.goodsState==1 && orderDetail.fuwuState ==5">已评价</button>
+				<button class="cu-btn block line-pink sm"  v-if="orderDetail.goodsState==1 && orderDetail.fuwuState ==5">已评价</button> -->
 			</view>
 		</view>
 	</view>
@@ -87,7 +91,7 @@
 					goodsType: "常规清洁",
 					headImgUrl: "https://wx.qlogo.cn/mmopen/vi_32/xF183KBwd3dN4mQk483ZNr8vUu94nGibhqmHghSKrEw7Gcr4rpKErFGrCbnNmSoj2aBuAiaGSicwN8PHoZjoqqQhw/132",
 					id: 36,
-					fuwuState: 2,
+					orderStatus: 2,
 					message: "",
 					oldPrice: "50.00",
 					orderId: "12019082018184789852671929861789",

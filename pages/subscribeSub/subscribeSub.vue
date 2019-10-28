@@ -6,7 +6,10 @@
 				{{ item.name }}
 			</view>
 		</scroll-view>
-		<view class="subImg"><image src="/static/img/camBg.jpg" mode=""></image></view>
+		<view class="subImg" @tap="chooseImage">
+			<image v-if="img == ''" src="/static/img/camBg.jpg" mode=""></image>
+			<image v-if="img != ''" :src="img" mode=""></image>
+		</view>
 		<view class="subForm">
 			<view class="subFormInfo">
 				<view class="subFormInfoLeft">计费方式</view>
@@ -24,36 +27,44 @@
 				<view class="subFormInfoLeft">姓&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp名</view>
 				<view class="columnLine"></view>
 				<view class="subFormInfoRight">
-					<input type="text" value="" placeholder='请填写姓名'/>
+					<input type="text" value="" placeholder='请填写姓名' :value="name" @input='input_name'/>
 				</view>
 			</view>
 			<view class="subFormInfo">
 				<view class="subFormInfoLeft">联系电话</view>
 				<view class="columnLine"></view>
 				<view class="subFormInfoRight">
-					<input type="text" value="" placeholder="请填写手机号"/>
+					<input type="text" value="" placeholder="请填写手机号" :value="phone" @input='input_phone'/>
 				</view>
 			</view>
 			<view class="subFormInfo">
 				<view class="subFormInfoLeft">家庭住址</view>
 				<view class="columnLine"></view>
 				<view class="subFormInfoRight">
-					<input type="text" value="" placeholder="请填写家庭住址"/>
+					<input type="text" value="" placeholder="请输入地址" :value="address" @input='input_address'/>
+					<!-- <view class="cuIcon-right"></view> -->
 				</view>
 			</view>
 			<view class="subFormInfo">
 				<view class="subFormInfoLeft">房屋面积</view>
 				<view class="columnLine"></view>
 				<view class="subFormInfoRight">
-					<input type="text" value="" placeholder="请填写房屋面积"/>
+					<input type="text" value="" placeholder="请填写房屋面积"  :value="area" @input='input_area'/>
+					
+						<view class="cu-capsule radius" style="position: absolute;right: 0;top:0;">
+							<view class='cu-tag bg-blue '>
+								平方米(㎡)
+							</view>
+						</view>
+						
 				</view>
 			</view>
 		</view>
 		<view class="subFormRemark">
 			<view class="subFormInfoLeft">备&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp注</view>
-			<textarea value="" placeholder="填写备注" />
+			<textarea value="" placeholder="填写备注"  :value="remark" @input='input_remark'/>
 		</view>
-		<view class="sub" @click="toSub()">提交</view>
+		<view class="sub" v-on:click.stop="submit">提交</view>
 	</view>
 </template>
 
@@ -61,33 +72,92 @@
 export default {
 	data() {
 		return {
-			basicsList: [
-				{
-					name: '预约时间'
-				},
-				{
-					name: '完善信息'
-				},
-				{
-					name: '提交'
-				}
-			],
+			clearnerId:null,
+			customerId:null,
+			img:'',
+			name:'',
+			phone:'',
+			address:'',
+			area:'',
+			remark:'',
+			appointmentTime:'',
+			appointmentType:'',
+			basicsList: [{name: '预约时间'},{name: '完善信息'},{name: '估价'}],
 			// 0 预约时间 1 预约时间+完善信息 2  预约时间+完善信息+提交
 			scroll: 1,
 			radio: '1'
 		};
 	},
-	onLoad(){
-	},
 	methods: {
+		onLoad: function(e) {
+			this.clearnerId = e.id;
+			this.appointmentType = e.type;
+			this.appointmentTime = e.day;
+			this.customerId = uni.getStorageSync('userInfo').openId;
+		},
+		chooseImage() {
+			uni.chooseImage({
+				count: 1, //默认9
+				sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				sourceType: ['album'], //从相册选择
+				success: (res) => {
+						this.img = res.tempFilePaths
+				}
+			});
+		},
+		input_name(e){
+			this.name = e.detail.value
+		},
+		input_phone(e){
+			this.phone = e.detail.value
+		},
+		input_address(e){
+			this.address = e.detail.value
+		},
+		input_area(e){
+			console.log(e)
+			this.area = e.detail.value
+		},
+		input_remark(e){
+			console.log(e);
+			this.remark = e.detail.value
+		},
+		
 		RadioChange(e) {
 			this.radio = e.detail.value;
 		},
 		//下一页
-		toSub(){
-						 uni.navigateTo({
-						 	url:'../orderSub/orderSub'
-						 })
+		submit(){
+			if(this.img == ''){
+				uni.showToast({title:'请选择图片',icon:'none'})
+			}else if(this.name == ''){
+				uni.showToast({title:'请输入名字',icon:'none'})
+			}else if(this.phone == ''){
+				uni.showToast({title:'请输入联系电话',icon:'none'})
+			}else if(this.address == ''){
+				uni.showToast({title:'请输入家庭地址',icon:'none'})
+			}else if(this.area == ''){
+				uni.showToast({title:'请输入房屋面积',icon:'none'})
+			}
+			else{
+				var data = {
+					clearnerId:this.clearnerId,
+					customerId:this.customerId,
+					img:this.img,
+					billingType:this.scroll,
+					name:this.name,
+					phone:this.phone,
+					address:this.address,
+					area:this.area,
+					remark:this.remark,
+					appointmentTime:this.appointmentTime,
+					appointmentType:this.appointmentType
+				}
+				 uni.navigateTo({
+					url:'../orderSub/orderSub?data=' + JSON.stringify(data)
+				 })
+			}
+			
 		}
 	}
 };
@@ -112,6 +182,7 @@ export default {
 .cu-steps .cu-item[class*='text-'] .num {
 	background-color: #3598dc;
 }
+
 radio {
 	transform: scale(0.6);
 }
@@ -169,9 +240,17 @@ radio {
 	color: #4a4a4a;
 	font-size: 28upx;
 }
+.subFormInfoRight {
+	position: relative;
+}
 .subFormInfoRight input{
 	width: 450upx;
 	margin-left: 20upx;
+}
+.cuIcon-right{
+	position: absolute;
+	right:0;
+	top:20upx;
 }
 /* 备注 */
 .subFormRemark{
@@ -184,5 +263,8 @@ radio {
 }
 .subFormRemark textarea{
 	margin: 10upx 45upx;
+}
+.sub{
+	z-index: 999;
 }
 </style>

@@ -5,51 +5,91 @@
 			<view class="orderTop">
 				<view class="orderTopText">
 					<span class="color_959595">业主:</span>
-					<span class="color_4a4a4a">王先生</span>
+					<span class="color_4a4a4a">{{data.name}}</span>
 				</view>
 				<view class="orderTopText">
 					<span class="color_959595">地址:</span>
-					<span class="color_4a4a4a">绍兴格林豪泰</span>
+					<span class="color_4a4a4a">{{data.address}}</span>
 				</view>
 				<view class="orderTopText lastText">
 					<span class="color_959595">预约时间:</span>
-					<span class="color_4a4a4a">2019/9/16下午</span>
+					<span class="color_4a4a4a">{{data.appointmentTime}}{{data.appointmentType}}</span>
 				</view>
 			</view>
 			<view class="orderBottom">
 				<view class="orderBottomText">
 					<span class="color_959595">姓名:</span>
-					<span class="color_4a4a4a">唐菲</span>
+					<span class="color_4a4a4a">{{cleanerDetail.name}}</span>
 				</view>
 				<view class="orderBottomText">
 					<span class="color_959595">电话:</span>
-					<span class="color_4a4a4a">123123151564</span>
+					<span class="color_4a4a4a">{{cleanerDetail.telephone}}</span>
 				</view>
 				<view class="orderBottomText lastText">
-					<span class="color_959595 font_22">支付说明:</span>
-					<span class="color_4a4a4a font_22">提交订单先付估价的一层定金，服务完成支付余款</span>
+					<span class="color_959595 font_22">简介:</span>
+					<span class="color_4a4a4a font_22">{{cleanerDetail.introduction}}</span>
 				</view>
 			</view>
 		</view>
 		<view class="orderMoney">
 			<span class="font_40 color_959595">估价：</span>
-			<span class="font_40 color_959595">￥8888</span>
+			<span class="font_40 color_959595">￥{{sum}}</span>
 		</view>
-		<view class="orderDingMoney"><span class="font_30 color_959595">x0.1</span></view>
-		<view class="orderDingMoney">
+		<!-- <view class="orderDingMoney"><span class="font_30 color_959595">x0.1</span></view> -->
+		<!-- <view class="orderDingMoney">
 			<span class="font_30">定金：</span>
 			<span class="font_30 color_red">￥888</span>
-		</view>
-		<view class="subBtn">立即支付</view>
+		</view> -->
+		<view class="subBtn">立即预约</view>
 	</view>
 </template>
 
 <script>
+import { sendAjax } from '@/common/js/sendAjax.js';
+import config from '@/apiConfig';
+const {getCleanerDeail} = config.api;
 export default {
 	data() {
-		return {};
+		return {
+			data:[],
+			cleanerDetail:[],
+			sum:0
+		};
 	},
 	methods: {
+		onLoad: function(e) {
+			this.data = JSON.parse(e.data)
+			console.log(this.data)
+			this.getCleanerDeail();
+			this.calculation();
+		},
+		calculation(){
+			var num = this.data.area;
+			this.sum = num * 100; 
+		},
+		getCleanerDeail(){
+			var that = this;
+			console.log(this.data.clearnerId)
+			let infoOpt = {
+				url: getCleanerDeail,
+				type: 'POST',
+				data: {
+					id:this.data.clearnerId
+				}
+			};
+			let infoCb = {};
+			infoCb.success = function(res) {
+				console.log(res)
+				that.cleanerDetail = res;
+				uni.hideLoading()
+			},
+			infoCb.beforeSend = () => {
+			  uni.showLoading({
+			  	title:'加载中'
+			  })
+			};
+			sendAjax(infoOpt, infoCb);
+		},
 		//下一页
 		toSub() {
 			uni.navigateTo({

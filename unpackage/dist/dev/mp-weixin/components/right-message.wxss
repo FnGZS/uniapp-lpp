@@ -24,20 +24,20 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.right-message.data-v-01b82b1b {
+.right-message.data-v-240d548d {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   padding-right: 20rpx;
 }
-.avator-wrapper.data-v-01b82b1b {
+.avator-wrapper.data-v-240d548d {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
 }
-.bubble-wrapper.data-v-01b82b1b {
+.bubble-wrapper.data-v-240d548d {
   padding-left: 135rpx;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -45,13 +45,13 @@
           flex: 1;
   padding-right: 30rpx;
 }
-.bubble-wrapper .bubble.data-v-01b82b1b {
+.bubble-wrapper .bubble.data-v-240d548d {
     padding: 20rpx;
     background: #d5ebff;
     border-radius: 15rpx;
     position: relative;
 }
-.bubble-wrapper .bubble.data-v-01b82b1b::before {
+.bubble-wrapper .bubble.data-v-240d548d::before {
       position: absolute;
       right: -20rpx;
       top: 10rpx;
@@ -62,19 +62,19 @@
       border-left: 20px solid #d5ebff;
       border-bottom: 20px solid transparent;
 }
-.avator.data-v-01b82b1b {
+.avator.data-v-240d548d {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
   overflow: hiideen;
   background: #f1f1f1;
 }
-.avator .img.data-v-01b82b1b {
+.avator .img.data-v-240d548d {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
-.time.data-v-01b82b1b {
+.time.data-v-240d548d {
   line-height: 50rpx;
   color: #b7b7b7;
   font-size: 24rpx;

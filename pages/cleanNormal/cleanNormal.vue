@@ -5,7 +5,7 @@
 			<view class="cleanNoraml-search">
 				<view class="cleanNoraml-search-box">
 					<view class="cuIcon-search font_30"></view>
-					<input type="text" value=""  placeholder="搜索"/>
+					<input type="text"   placeholder="请输入名字搜索" :value="searchName" v-on:change='input_searchName'/>
 				</view>
 			</view>
 		  <view id="swiper-tab">
@@ -23,17 +23,17 @@
 		    <swiper :current="currentTab" duration="500" class="swiper-item" v-bind:style='{display:displays}'>
 		      <swiper-item>
 		        <view class="location_bottom" >
-		          <view v-for="(item,index) in cityArr" :key="index" :class="city_index == index + 1?'add_citying':'add_city'" :data-num="index + 1" @click="clickCity" :data-name="item.value">{{item.value}}</view>
+		          <view v-for="(item,index) in cityArr" :key="index" :class="city_index == index ?'add_citying':'add_city'" :data-num="index" @click="clickCity" :data-name="item.value">{{item.name}}</view>
 		        </view>
 		      </swiper-item>
 		      <swiper-item>
 		        <view class="location_bottom">
-		          <view v-for="(item,index) in priceArr" :key="index" :class="price_index == index + 1?'add_priceing':'add_price'" :data-num="index + 1" @click="clickPrice" :data-name="item.value">{{item.value}}</view>
+		          <view v-for="(item,index) in priceArr" :key="index" :class="price_index == index ?'add_priceing':'add_price'" :data-num="index" @click="clickPrice" :data-name="item.value">{{item.value}}</view>
 		        </view>
 		      </swiper-item>
 		      <swiper-item>
 		        <view class="location_bottom">
-		          <view v-for="(item,index) in amountArr" :key="index" :class="amount_index == index + 1?'add_amounting':'add_amount'" :data-num="index + 1" @click="clickAmount" :data-name="item.value">{{item.value}}</view>
+		          <view v-for="(item,index) in amountArr" :key="index" :class="amount_index == index ?'add_amounting':'add_amount'" :data-num="index" @click="clickAmount" :data-name="item.value">{{item.value}}</view>
 		        </view>
 		      </swiper-item>
 		    </swiper>
@@ -45,28 +45,34 @@
 		        <image class='list-left-img' src='https://www.sxscott.com/img/c.png'></image>
 		        <view class='list-left-line'></view>
 		        <view class='list-left-phone'>
-		          <view class='iconfont icon-dianhua'></view>
+		          <view class='iconfont icon-dianhua'  :data-phone='item.telephone' @tap='phone'></view>
 		        </view>
 		      </view>
-		      <view class='list-center'>
-		        <view class='list-name'>王小姐</view>
-		        <view class='list-time'>2年保洁工龄</view>
+		      <view class='list-center' >
+		        <view class='list-name'>{{item.name}}</view>
+		        <view class='list-time'>{{item.work}}年保洁工龄</view>
 		        <view class='list-num'>
 		            <view class='list-num-jiedan'>
 		              <view class='list-num-jiedan-text'>接单量</view>
-		              <view class='list-num-jiedan-number'>45</view>
+		              <view class='list-num-jiedan-number'>{{item.total}}</view>
 		            </view>
 		            <view class='list-num-tuidan'>
 		              <view class='list-num-tuidan-text'>退单量</view>
-		              <view class='list-num-tuidan-number'>2</view>
+		              <view class='list-num-tuidan-number'>{{item.back}}</view>
 		            </view>
 		        </view>
+				<view class="list-card">
+					<view class="label cu-tag  bg-orange">{{item.card}}</view>
+				</view>
+				<view class="list-place">
+					{{item.place}}
+				</view>
 		      </view>
 		      <view class='list-right'>
 		        <view class='iconfont icon-biaoqian'>
-		          <view class='list-score'>4.9</view>
+		          <view class='list-score'>{{item.score}}</view>
 		        </view>
-		        <view class='list-yuyue' @click="toDetail">预约</view>
+		        <view class='list-yuyue' @click="toDetail" :data-id="item.id">预约</view>
 		      </view>
 		    </view>
 		  </view>
@@ -76,10 +82,13 @@
 </template>
 
 <script>
+	import { sendAjax } from '@/common/js/sendAjax.js';
+	import config from '@/apiConfig';
+	const {getCleanerList} = config.api;
 	export default {
 		data() {
 			return {
-				
+				searchName:'',
 				first: '地区',
 				second: '价格',
 				thirds: '接单量',
@@ -89,25 +98,65 @@
 				amount_index: 0,
 				type_index: 0,
 				displays:'none',
-				cityArr: [{ 'value': '全部' }, { 'value': '越城区' }, { 'value': '柯桥区' }, { 'value': '上虞区' }],
+				cityArr: [{ 'value': '全部',name:'全部' }, { 'value': '越城区' ,name:'越城区'}, { 'value': '柯桥区',name:'柯桥区' }, { 'value': '上虞区' ,name:'上虞区'}],
 				priceArr: [{ 'value': '默认' }, { 'value': '价格升序' }, { 'value': '价格降序' }],
 				amountArr: [{ 'value': '默认' }, { 'value': '接单量升序' }, { 'value': '接单量降序' }],
 				typeArr: [{ 'value': '默认' }, { 'value': '明星保洁员' }, { 'value': '普通保洁员' }],
 				currentTab: 0,
-				list:[
-				  {}, {}, {}, {}, {}, {}, {}
-				]
+				list:[]
 			};
 		},
 		methods: {
 			onLoad: function(e) {
-				console.log(e,1)
+				this.getCleanerList();
 				if(e.title){
 					uni.setNavigationBarTitle({
 					    title: e.title
 					});
 				}
-				
+			},
+			//获取保洁员列表
+			getCleanerList(){
+				var that = this;
+				var name = this.searchName;
+				var place = (this.first == '全部'||this.first == '地区')?'':this.first;
+				var price = this.price_index ;
+				var total = this.amount_index ;
+				console.log(place)
+				let infoOpt = {
+					url: getCleanerList,
+					type: 'POST',
+					data: {
+						name: name,
+						place:place,
+						price:price,
+						total:total,
+						pageNum: 1,
+						pageSize: 10
+					}
+				};
+				let infoCb = {};
+				infoCb.success = function(res) {
+					console.log(res)
+					that.list = res.list;
+					uni.hideLoading()
+				},
+				infoCb.beforeSend = () => {
+				  uni.showLoading({
+				  	title:'加载中'
+				  })
+				};
+				sendAjax(infoOpt, infoCb);
+			},
+			input_searchName(){
+				this.searchName = e.detail.value
+			},
+			//拨打电话
+			phone(e){
+				console.log(e)
+				uni.makePhoneCall({
+				  phoneNumber: e.currentTarget.dataset.phone
+				})
 			},
 			// 点击空白处
 			  hideNav: function () {
@@ -129,29 +178,35 @@
 				  this.city_index =e.target.dataset.num,
 				  this.first = e.target.dataset.name,
 				  this.displays = "none"
+				  console.log(this.first)
+				  this.getCleanerList()
 			  },
 			  // 点击价格
 			  clickPrice: function (e) {
 				  this.price_index= e.target.dataset.num,
 				  this.second= e.target.dataset.name,
 				  this.displays="none"
+				   this.getCleanerList()
 			  },
 			  // 点击接单量
 			  clickAmount: function (e) {
 				  this.amount_index=e.target.dataset.num,
 				  this.thirds= e.target.dataset.name,
 				  this.displays="none"
+				   this.getCleanerList()
 			  },
 			  // 点击接单量
 			  clickType: function (e) {
 				  this.type_index= e.target.dataset.num,
 				  this.fours=e.target.dataset.name,
 				  this.displays= "none"
+				   this.getCleanerList()
 			  },
-			  //下一页
-			  toDetail(){
+			  //预约
+			  toDetail(e){
+				  var id = e.currentTarget.dataset.id;
 				 uni.navigateTo({
-				 	url:'../subscribeTime/subscribeTime'
+				 	url:'../subscribeTime/subscribeTime?id=' + id
 				 })
 			  }
 		}
@@ -448,7 +503,19 @@
 	  }
 	  .list-center{
 	    margin-left: 40upx;
-	    width: 30%;
+	    width: 100%;
+		position: relative;
+	  }
+	  .list-card{
+		  position: absolute;
+		  right: 0;
+		  top: 0;
+	  }
+	  .list-place{
+		  position: absolute;
+		  right: 0;
+		  top: 70upx;
+		  font-size: 25upx;
 	  }
 	  .list-name{
 	    margin-top:10upx;

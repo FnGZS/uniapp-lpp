@@ -79,7 +79,6 @@
 		onLoad(options){
 			this.tabCurrentIndex = +options.state||0;
 			this.getOrderList();
-			
 		},
 		 
 		methods: {

@@ -30,8 +30,12 @@
 			"current": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 1,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -39,14 +43,8 @@
 					"pathName": "pages/order/order",
 					"query": "",
 					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/order/orderDetail/orderDetail",
-					"pathName": "pages/order/orderDetail/orderDetail",
-					"query": "id=12019100213410303806089018175294",
-					"scene": null
 				}
+				
 			]
 		}
 	}

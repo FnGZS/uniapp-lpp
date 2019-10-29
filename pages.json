@@ -131,12 +131,12 @@
 				"selectedIconPath": "static/tab/index.png",
 				"text":"首页"
 			},
-			{
-				"pagePath": "pages/message/message",
-				"iconPath": "static/tab/messageNo.png",
-				"selectedIconPath": "static/tab/message.png",
-				"text":"消息"
-			},
+			// {
+			// 	"pagePath": "pages/message/message",
+			// 	"iconPath": "static/tab/messageNo.png",
+			// 	"selectedIconPath": "static/tab/message.png",
+			// 	"text":"消息"
+			// },
 			{
 				"pagePath": "pages/order/order",
 				"iconPath": "static/tab/orderNo.png",

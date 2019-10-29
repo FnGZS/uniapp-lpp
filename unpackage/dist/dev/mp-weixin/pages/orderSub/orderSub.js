@@ -105,7 +105,55 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);
+var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -151,16 +199,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var _default =
-{
-  data: function data() {
-    return {};
-  },
-  methods: {
-    //下一页
-    toSub: function toSub() {
-      uni.navigateTo({
-        url: '../subscribeSub/subscribeSub' });
+var _getCleanerDeail = _apiConfig.default.api.getCleanerDeail;var _default = { data: function data() {return { data: [], cleanerDetail: [], sum: 0 };}, methods: { onLoad: function onLoad(e) {this.data = JSON.parse(e.data);console.log(this.data);this.getCleanerDeail();this.calculation();}, calculation: function calculation() {var num = this.data.area;this.sum = num * 100;}, getCleanerDeail: function getCleanerDeail() {var that = this;console.log(this.data.clearnerId);var infoOpt = { url: _getCleanerDeail, type: 'POST', data: { id: this.data.clearnerId } };var infoCb = {};infoCb.success = function (res) {console.log(res);that.cleanerDetail = res;uni.hideLoading();}, infoCb.beforeSend = function () {uni.showLoading({ title: '加载中' });};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, //下一页
+    toSub: function toSub() {uni.navigateTo({ url: '../subscribeSub/subscribeSub' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

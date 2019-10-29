@@ -231,17 +231,8 @@ var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 1
 //
 //
 //
-var _config$api = _apiConfig.default.api,_getCleanerDeail = _config$api.getCleanerDeail,_getCleanerWork = _config$api.getCleanerWork;var _default = { data: function data() {return { id: null, basicsList: [{ name: '预约时间' }, { name: '完善信息' }, { name: '提交' }], // 0 预约时间 1 预约时间+完善信息 2  预约时间+完善信息+提交
-      scroll: 0, detail: '', chooseType: 'mor', chooseData: '10.27', dataList: [{ week: '周二', date: '07-01', status: 1 }, { week: '周三', date: '07-02', status: 1 }, { week: '周四', date: '07-03', status: 1 }, { week: '周五', date: '07-04', status: 1 }, { week: '周六', date: '07-05', status: 1 }, { week: '周日', date: '07-06', status: 0 }, { week: '周一', date: '07-07', status: 1 }] };}, methods: { onLoad: function onLoad(e) {console.log(e);this.id = e.id;this.getCleanerDeail();this.getCleanerWork();}, getCleanerDeail: function getCleanerDeail() {var that = this;var infoOpt = { url: _getCleanerDeail, type: 'POST', data: {
-          id: this.id } };
-
-
-      var infoCb = {};
-      infoCb.success = function (res) {
-        console.log(res);
-        that.detail = res;
-        uni.hideLoading();
-      },
+var _config$api = _apiConfig.default.api,_getCleanerDeail = _config$api.getCleanerDeail,_getCleanerWork = _config$api.getCleanerWork;var _default = { data: function data() {return { id: null, basicsList: [{ name: '预约时间' }, { name: '完善信息' }, { name: '估价' }], // 0 预约时间 1 预约时间+完善信息 2  预约时间+完善信息+提交
+      scroll: 0, detail: '', chooseType: '', chooseData: '', dataList: [] };}, methods: { onLoad: function onLoad(e) {console.log(e);this.id = e.id;this.getCleanerDeail();this.getCleanerWork();}, getCleanerDeail: function getCleanerDeail() {var that = this;var infoOpt = { url: _getCleanerDeail, type: 'POST', data: { id: this.id } };var infoCb = {};infoCb.success = function (res) {console.log(res);that.detail = res;uni.hideLoading();}, infoCb.beforeSend = function () {uni.showLoading({ title: '加载中' });};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, getCleanerWork: function getCleanerWork() {var that = this;var infoOpt = { url: _getCleanerWork, type: 'POST', data: { cleanerId: this.id } };var infoCb = {};infoCb.success = function (res) {console.log(res);var workList = res;for (var i in workList) {workList[i].workDate = workList[i].workDate.substring(5, 10);}that.dataList = workList;console.log(workList);uni.hideLoading();},
       infoCb.beforeSend = function () {
         uni.showLoading({
           title: '加载中' });
@@ -249,32 +240,13 @@ var _config$api = _apiConfig.default.api,_getCleanerDeail = _config$api.getClean
       };
       (0, _sendAjax.sendAjax)(infoOpt, infoCb);
     },
-    getCleanerWork: function getCleanerWork() {
-      var that = this;
-      var infoOpt = {
-        url: _getCleanerWork,
-        type: 'POST',
-        data: {
-          cleanerId: this.id } };
-
-
-      var infoCb = {};
-      infoCb.success = function (res) {
-        console.log(res);
-        var workList = res;
-        for (var i in workList) {
-          workList[i].workDate = workList[i].workDate.substring(5, 11);
-        }
-        that.dataList = workList;
-        console.log(workList);
-        uni.hideLoading();
-      },
-      infoCb.beforeSend = function () {
-        uni.showLoading({
-          title: '加载中' });
-
-      };
-      (0, _sendAjax.sendAjax)(infoOpt, infoCb);
+    //点击时间预约
+    yuyue: function yuyue(e) {
+      console.log(e);
+      var type = e.currentTarget.dataset.type;
+      var data = e.currentTarget.dataset.data;
+      this.chooseType = type;
+      this.chooseData = data;
     },
     //拨打电话
     phone: function phone(e) {
@@ -285,8 +257,12 @@ var _config$api = _apiConfig.default.api,_getCleanerDeail = _config$api.getClean
     },
     //下一页
     toSub: function toSub() {
+      var id = this.id;
+      var day = this.chooseData;
+      var type = this.chooseType;
+
       uni.navigateTo({
-        url: '../subscribeSub/subscribeSub' });
+        url: '../subscribeSub/subscribeSub?day=' + day + '&type=' + type + '&id=' + id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

@@ -164,36 +164,106 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      basicsList: [
-      {
-        name: '预约时间' },
-
-      {
-        name: '完善信息' },
-
-      {
-        name: '提交' }],
-
-
+      clearnerId: null,
+      customerId: null,
+      img: '',
+      name: '',
+      phone: '',
+      address: '',
+      area: '',
+      remark: '',
+      appointmentTime: '',
+      appointmentType: '',
+      basicsList: [{ name: '预约时间' }, { name: '完善信息' }, { name: '估价' }],
       // 0 预约时间 1 预约时间+完善信息 2  预约时间+完善信息+提交
       scroll: 1,
       radio: '1' };
 
   },
-  onLoad: function onLoad() {
-  },
   methods: {
+    onLoad: function onLoad(e) {
+      this.clearnerId = e.id;
+      this.appointmentType = e.type;
+      this.appointmentTime = e.day;
+      this.customerId = uni.getStorageSync('userInfo').openId;
+    },
+    chooseImage: function chooseImage() {var _this = this;
+      uni.chooseImage({
+        count: 1, //默认9
+        sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album'], //从相册选择
+        success: function success(res) {
+          _this.img = res.tempFilePaths;
+        } });
+
+    },
+    input_name: function input_name(e) {
+      this.name = e.detail.value;
+    },
+    input_phone: function input_phone(e) {
+      this.phone = e.detail.value;
+    },
+    input_address: function input_address(e) {
+      this.address = e.detail.value;
+    },
+    input_area: function input_area(e) {
+      console.log(e);
+      this.area = e.detail.value;
+    },
+    input_remark: function input_remark(e) {
+      console.log(e);
+      this.remark = e.detail.value;
+    },
+
     RadioChange: function RadioChange(e) {
       this.radio = e.detail.value;
     },
     //下一页
-    toSub: function toSub() {
-      uni.navigateTo({
-        url: '../orderSub/orderSub' });
+    submit: function submit() {
+      if (this.img == '') {
+        uni.showToast({ title: '请选择图片', icon: 'none' });
+      } else if (this.name == '') {
+        uni.showToast({ title: '请输入名字', icon: 'none' });
+      } else if (this.phone == '') {
+        uni.showToast({ title: '请输入联系电话', icon: 'none' });
+      } else if (this.address == '') {
+        uni.showToast({ title: '请输入家庭地址', icon: 'none' });
+      } else if (this.area == '') {
+        uni.showToast({ title: '请输入房屋面积', icon: 'none' });
+      } else
+      {
+        var data = {
+          clearnerId: this.clearnerId,
+          customerId: this.customerId,
+          img: this.img,
+          billingType: this.scroll,
+          name: this.name,
+          phone: this.phone,
+          address: this.address,
+          area: this.area,
+          remark: this.remark,
+          appointmentTime: this.appointmentTime,
+          appointmentType: this.appointmentType };
+
+        uni.navigateTo({
+          url: '../orderSub/orderSub?data=' + JSON.stringify(data) });
+
+      }
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

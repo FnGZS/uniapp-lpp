@@ -35,15 +35,15 @@
 					<tr>
 						<td class="font_28">上午</td>
 						<td v-for="(item, index) in dataList" :key="index">
-							<view v-if="item.status == 2" class="subPeopleTimeTableNoYuYue" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''">预约</view>
-							<view v-if="item.status == 1" class="subPeopleTimeTableYuYue">预约</view>
+							<view v-if="item.statusMor == 0" class="subPeopleTimeTableYuYue " :data-type="'mor'" :data-data="item.workDate" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
+							<view v-if="item.statusMor == 1" class="subPeopleTimeTableNoYuYue" data-type="'mor'" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''">预约</view>
 						</td>
 					</tr>
 					<tr>
 						<td class="font_28">下午</td>	
 						<td v-for="(item, index) in dataList" :key="index">
-							<view v-if="item.status == 0" class="subPeopleTimeTableNoYuYue" :class="chooseType=='aft'&&chooseData==item.workDate ?'choose':''">预约</view>
-							<view v-if="item.status == 1" class="subPeopleTimeTableYuYue">预约</view>
+							<view v-if="item.statusAft == 0" class="subPeopleTimeTableYuYue" :data-type="'aft'" :data-data="item.workDate" :class="chooseType=='aft'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
+							<view v-if="item.statusAft == 1" class="subPeopleTimeTableNoYuYue" :data-type="'aft'" >预约</view>
 						</td>
 					</tr>
 				</tbody>
@@ -68,49 +68,13 @@ export default {
 	data() {
 		return {
 			id:null,
-			basicsList: [{name: '预约时间'},{name: '完善信息'},{name: '提交'}],
+			basicsList: [{name: '预约时间'},{name: '完善信息'},{name: '估价'}],
 			// 0 预约时间 1 预约时间+完善信息 2  预约时间+完善信息+提交
 			scroll: 0,
 			detail:'',
-			chooseType:'mor',
-			chooseData:'10.27',
-			dataList: [
-				{
-					week: '周二',
-					date: '07-01',
-					status: 1
-				},
-				{
-					week: '周三',
-					date: '07-02',
-					status: 1
-				},
-				{
-					week: '周四',
-					date: '07-03',
-					status: 1
-				},
-				{
-					week: '周五',
-					date: '07-04',
-					status: 1
-				},
-				{
-					week: '周六',
-					date: '07-05',
-					status: 1
-				},
-				{
-					week: '周日',
-					date: '07-06',
-					status: 0
-				},
-				{
-					week: '周一',
-					date: '07-07',
-					status: 1
-				}
-			]
+			chooseType:'',
+			chooseData:'',
+			dataList: []
 		};
 	},
 	methods: {
@@ -156,7 +120,7 @@ export default {
 				console.log(res)
 				var workList = res;
 				for(var i in workList){
-					workList[i].workDate = workList[i].workDate.substring(5,11)
+					workList[i].workDate = workList[i].workDate.substring(5,10)
 				}
 				that.dataList = workList;
 				console.log(workList)
@@ -169,6 +133,14 @@ export default {
 			};
 			sendAjax(infoOpt, infoCb);
 		},
+		//点击时间预约
+		yuyue(e){
+			console.log(e)
+			var type = e.currentTarget.dataset.type;
+			var data = e.currentTarget.dataset.data;
+			this.chooseType = type;
+			this.chooseData = data;
+		},
 		//拨打电话
 		phone(e){
 			console.log(e)
@@ -178,8 +150,12 @@ export default {
 		},
 		//下一页
 		toSub() {
+			var id = this.id;
+			var day = this.chooseData;
+			var type = this.chooseType;
+			
 			uni.navigateTo({
-				url: '../subscribeSub/subscribeSub'
+				url: '../subscribeSub/subscribeSub?day=' + day +'&type=' + type +'&id='+id
 			});
 		}
 	}
@@ -356,6 +332,6 @@ export default {
 	margin-bottom: 200upx;
 }
 .choose{
-	border: 1upx solid red;
+	border: 5upx solid red;
 }
 </style>

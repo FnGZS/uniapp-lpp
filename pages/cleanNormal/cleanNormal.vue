@@ -148,7 +148,7 @@
 				};
 				sendAjax(infoOpt, infoCb);
 			},
-			input_searchName(){
+			input_searchName(e){
 				this.searchName = e.detail.value
 			},
 			//拨打电话

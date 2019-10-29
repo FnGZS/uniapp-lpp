@@ -94,6 +94,76 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 步骤条 */
 .cu-steps {
 	padding: 0rpx 0rpx 20rpx 85rpx;
@@ -200,9 +270,17 @@ radio {
 	color: #4a4a4a;
 	font-size: 28rpx;
 }
+.subFormInfoRight {
+	position: relative;
+}
 .subFormInfoRight input{
 	width: 450rpx;
 	margin-left: 20rpx;
+}
+.cuIcon-right{
+	position: absolute;
+	right:0;
+	top:20rpx;
 }
 /* 备注 */
 .subFormRemark{
@@ -222,5 +300,8 @@ radio {
 }
 .subFormRemark textarea{
 	margin: 10rpx 45rpx;
+}
+.sub{
+	z-index: 999;
 }
 

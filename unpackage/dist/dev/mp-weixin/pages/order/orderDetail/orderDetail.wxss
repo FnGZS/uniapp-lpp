@@ -296,7 +296,7 @@ page {
 .orderStatusBtn {
 	position: absolute;
 	right: 5%;
-	top: 20rpx;
+	top: 10rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;

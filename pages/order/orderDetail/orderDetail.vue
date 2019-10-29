@@ -1,7 +1,10 @@
 <template>
 	<view id='orderDetail'>
 		<view class='orderStatus'>
-			<view class='orderStatusText'>等待用户付款</view>
+			<view class='orderStatusText' v-if="orderDetail.orderStatus==1">取消预约</view>
+			<view class='orderStatusText' v-if="orderDetail.orderStatus==1">预约中</view>
+			<view class='orderStatusText' v-if="orderDetail.orderStatus==2">已预约</view>
+			<view class='orderStatusText' v-if="orderDetail.orderStatus==3">预约关闭</view>
 		</view>
 		<view class='orderAddress'>
 			<view class='iconfont icon-dizhi'></view>
@@ -55,10 +58,10 @@
 		</view>
 		<view class='barBottom'>
 			<view class='orderStatusBtn'>
-				<button class="cu-btn block line-grey sm" v-if="orderDetail.orderStatus==1">取消预约</button>
-				<button class="cu-btn block line-blue sm" v-if="orderDetail.orderStatus==1">预约中</button>
-				<button class="cu-btn block line-cyan sm"  v-if="orderDetail.orderStatus==2">已预约</button>
-				<button class="cu-btn block line-gray sm"  v-if="orderDetail.orderStatus==3">预约关闭</button>
+				<button class="cu-btn block line-grey " v-if="orderDetail.orderStatus==1">取消预约</button>
+				<button class="cu-btn block line-blue " v-if="orderDetail.orderStatus==1">预约中</button>
+				<button class="cu-btn block line-cyan "  v-if="orderDetail.orderStatus==2">已预约</button>
+				<button class="cu-btn block line-gray "  v-if="orderDetail.orderStatus==3">预约关闭</button>
 				<!-- <button class="cu-btn block line-grey sm" v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 2">取消订单</button>
 				<button class="cu-btn block line-red sm"  v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 2">立即支付</button>
 				<button class="cu-btn block line-gray sm" v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 0">预约失败</button>
@@ -421,7 +424,7 @@
 	.orderStatusBtn {
 		position: absolute;
 		right: 5%;
-		top: 20upx;
+		top: 10upx;
 		display: flex;
 		font-size: 25upx;
 		height: 70upx;

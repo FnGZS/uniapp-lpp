@@ -9,7 +9,7 @@
 		</view>
 		<!-- <empty v-if="tabItem.loaded === true && tabItem.orderList.length === 0"></empty> -->
 		<view class="order">
-			<view class="items" @tap="toDetail" v-for="item in orderList">
+			<view class="items" @tap="toDetail" v-for="item in orderList" :data-id="item.id">
 				<view class="top">
 					<view class="time">{{item.gmtCreated}}</view>
 					<view class="status">待付款</view>
@@ -17,10 +17,10 @@
 				<view class="center">
 					<image class="img" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg" mode=""></image>
 					<view class="info">
-						<view class="name">{{item.employerName}}</view>
-						<view class="work_time">{{item.work_time}}</view>
-						<view class="num">接单量:{{item.num}}</view>
-						<view class="label cu-tag  bg-orange">{{item.label}}</view>
+						<view class="name">{{item.cleaner.name}}</view>
+						<view class="work_time">{{item.cleaner.work}}年工作经验</view>
+						<view class="num">接单量:{{item.cleaner.total}}</view>
+						<view class="label cu-tag  bg-orange">{{item.cleaner.card}}</view>
 					</view>
 				</view>
 				<!-- <view class="money">
@@ -28,10 +28,10 @@
 				</view> -->
 				<view class="bottom">
 					<view class="bottomList">
-						<button class="cu-btn round line-grey sm" v-if="item.orderStatus==1">取消预约</button>
-						<button class="cu-btn round line-blue sm" v-if="item.orderStatus==1">预约中</button>
-						<button class="cu-btn round line-cyan sm"  v-if="item.orderStatus==2">已预约</button>
-						<button class="cu-btn round line-gray sm"  v-if="item.orderStatus==3">预约关闭</button>
+						<button class="cu-btn round line-grey sm" v-if="item.orderState==1">取消预约</button>
+						<button class="cu-btn round line-blue sm" v-if="item.orderState==1">预约中</button>
+						<button class="cu-btn round line-cyan sm"  v-if="item.orderState==2">已预约</button>
+						<button class="cu-btn round line-gray sm"  v-if="item.orderState==3">预约关闭</button>
 					<!-- <button class="cu-btn round line-grey sm" v-if="item.goodsState==0 && item.fuwuState == 2">取消订单</button>
 					<button class="cu-btn round line-red sm"  v-if="item.goodsState==0 && item.fuwuState == 2">立即支付</button>
 					<button class="cu-btn round line-gray sm" v-if="item.goodsState==0 && item.fuwuState == 0">预约失败</button>
@@ -69,12 +69,8 @@
 					// {state: 4,text: '服务中'},
 					// {state: 5,text: '待评价'}
 				],
-				orderList:[{id:0,gmtCreated:'2019-10-17 17:41',employerName:'王小姐',work_time:'1年工龄',num:45,label:'明星保洁员',orderStatus:3},
-				{id:1,gmtCreated:'2019-10-17 17:41',employerName:'王小姐',work_time:'1年工龄',num:45,label:'明星保洁员',orderStatus:1},
-				{id:2,gmtCreated:'2019-10-17 17:41',employerName:'王小姐',work_time:'2年工龄',num:45,label:'明星保洁员',orderStatus:2},
-				{id:3,gmtCreated:'2019-10-17 17:41',employerName:'王小姐',work_time:'3年工龄',num:45,label:'明星保洁员',orderStatus:3},
-				{id:3,gmtCreated:'2019-10-17 17:41',employerName:'王小姐',work_time:'4年工龄',num:45,label:'明星保洁员',orderStatus:1},
-				{id:3,gmtCreated:'2019-10-17 17:41',employerName:'王小姐',work_time:'5年工龄',num:45,label:'明星保洁员',orderStatus:2}],
+				orderList:[],
+				orderState:0,
 				pageNum: 1,
 				pageSize: 5
 			};
@@ -82,29 +78,47 @@
 		
 		onLoad(options){
 			this.tabCurrentIndex = +options.state||0;
-			// this.getOrderList();
+			this.getOrderList();
+			
 		},
 		 
 		methods: {
 			//顶部tab点击
 			tabClick(index){
 				this.tabCurrentIndex = index;
+				this.orderState = index;
+				this.getOrderList();
 			},
 			getOrderList(){
 				var pageNum = this.pageNum;
 				var pageSize = this.pageSize;
+				var employerId = uni.getStorageSync('userInfo').openId;
+				var orderState = this.orderState;
 				var that = this;
-				let infoOpt = {
-					url: getOrderList,
-					type: 'GET',
-					data: {
+				if(this.orderState == 0){
+					var data = {
+						employerId:employerId,
 						pageNum: pageNum,
 						pageSize: pageSize
 					}
+				}else{
+					var data = {
+						employerId:employerId,
+						orderState:orderState,
+						pageNum: pageNum,
+						pageSize: pageSize
+					}
+				}
+				
+				let infoOpt = {
+					url: getOrderList,
+					type: 'GET',
+					data:data
 				};
 				let infoCb = {};
 				infoCb.success = function(res) {
 					that.orderList = res.list;
+					uni.hideLoading()
 				},
 				infoCb.beforeSend = () => {
 				  uni.showLoading({
@@ -113,9 +127,10 @@
 				};
 				sendAjax(infoOpt, infoCb);
 			},
-			toDetail(){
+			toDetail(e){
+				var id = e.currentTarget.dataset.id;
 				uni.navigateTo({
-					url:'orderDetail/orderDetail'
+					url:'orderDetail/orderDetail?id='+id
 				})
 			}
 			

@@ -1948,6 +1948,8 @@ module.exports = {
     getNewsUrl: "".concat(apiUrl, "/news/getList"),
     //获取订单列表
     getOrderList: "".concat(apiUrl, "/pay/payOrder"),
+    //获取订单详情
+    getOrderDetail: "".concat(apiUrl, "/pay/payOrder/"),
     //获取保洁员
     getCleanerList: "".concat(apiUrl, "/cleaner/findMenus"),
     //获取保洁员详细信息

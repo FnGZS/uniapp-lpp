@@ -35,15 +35,15 @@
 					<tr>
 						<td class="font_28">上午</td>
 						<td v-for="(item, index) in dataList" :key="index">
-							<view v-if="item.statusMor == 0" class="subPeopleTimeTableYuYue " :data-type="'mor'" :data-data="item.workDate" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
-							<view v-if="item.statusMor == 1" class="subPeopleTimeTableNoYuYue" data-type="'mor'" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''">预约</view>
+							<view v-if="yuyueList[item.workDate][0] == 0" class="subPeopleTimeTableYuYue " :data-type="'mor'" :data-data="item.workDate" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
+							<view v-if="yuyueList[item.workDate][0] == 1" class="subPeopleTimeTableNoYuYue" data-type="'mor'" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''">预约</view>
 						</td>
 					</tr>
 					<tr>
 						<td class="font_28">下午</td>	
 						<td v-for="(item, index) in dataList" :key="index">
-							<view v-if="item.statusAft == 0" class="subPeopleTimeTableYuYue" :data-type="'aft'" :data-data="item.workDate" :class="chooseType=='aft'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
-							<view v-if="item.statusAft == 1" class="subPeopleTimeTableNoYuYue" :data-type="'aft'" >预约</view>
+							<view v-if="yuyueList[item.workDate][1] == 0" class="subPeopleTimeTableYuYue" :data-type="'aft'" :data-data="item.workDate" :class="chooseType=='aft'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
+							<view v-if="yuyueList[item.workDate][1] == 1" class="subPeopleTimeTableNoYuYue" :data-type="'aft'" >预约</view>
 						</td>
 					</tr>
 				</tbody>
@@ -74,7 +74,8 @@ export default {
 			detail:'',
 			chooseType:'',
 			chooseData:'',
-			dataList: []
+			dataList: [],
+			yuyueList:{}
 		};
 	},
 	methods: {
@@ -82,6 +83,7 @@ export default {
 			console.log(e)
 			this.id = e.id;
 			this.getCleanerDeail();
+			this.getWorkTime();
 			this.getCleanerWork();
 		},
 		getCleanerDeail(){
@@ -117,13 +119,16 @@ export default {
 			};
 			let infoCb = {};
 			infoCb.success = function(res) {
-				console.log(res)
 				var workList = res;
 				for(var i in workList){
 					workList[i].workDate = workList[i].workDate.substring(5,10)
 				}
-				that.dataList = workList;
-				console.log(workList)
+				var yuyueList = {}
+				for(var i in workList){
+					yuyueList[workList[i].workDate] = workList[i].statusMor.toString() + workList[i].statusAft.toString()
+				}
+				console.log(yuyueList)
+				that.yuyueList = yuyueList
 				uni.hideLoading()
 			},
 			infoCb.beforeSend = () => {
@@ -133,6 +138,46 @@ export default {
 			};
 			sendAjax(infoOpt, infoCb);
 		},
+		getWorkTime(){
+			var arr = []
+			for (let i = 0; i < 7; i++) {
+			  arr.push(this.dealTime(i))
+			}
+			console.log(arr)
+			this.dataList = arr;
+		},
+		// 处理未来七天的函数
+		  dealTime: function (num) {     // num：未来天数
+			var time = new Date()     // 获取当前时间日期
+		    var date = new Date(time.setDate(time.getDate() + num + 1)).getDate()  //这里先获取日期，在按需求设置日期，最后获取需要的
+			if(date<10) date = '0' + date;
+		    var month = time.getMonth() + 1   // 获取月份
+		    var day = time.getDay()   //  获取星期
+		    switch (day){             //  格式化
+		      case 0: day = "周日"
+		        break
+		      case 1: day = "周一" 
+		        break
+		      case 2: day = "周二"
+		        break
+		      case 3: day = "周三"
+		        break
+		      case 4: day = "周四" 
+		        break
+		      case 5: day = "周五"
+		        break
+		      case 6: day = "周六"
+		        break
+		    }
+		    var obj = {
+		      workDate: month + '-' + date,
+		      workTime: day,
+			  statusMor:0,
+			  statusAft:0
+		    }
+		    return obj      // 返回对象
+		  },
+
 		//点击时间预约
 		yuyue(e){
 			console.log(e)

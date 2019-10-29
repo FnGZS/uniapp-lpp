@@ -11,6 +11,8 @@
 	"libVersion": "2.7.0",
 	"appid": "wx35dbfc535288fd25",
 	"projectname": "2",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -33,16 +35,16 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/subscribeSub/subscribeSub",
-					"pathName": "pages/subscribeSub/subscribeSub",
-					"query": "type='mor'&day='10-28'&id=1",
+					"name": "pages/order/order",
+					"pathName": "pages/order/order",
+					"query": "",
 					"scene": null
 				},
 				{
-					"id": 1,
-					"name": "pages/orderSub/orderSub",
-					"pathName": "pages/orderSub/orderSub",
-					"query": "data= {\"clearnerId\":\"1\",\"customerId\":\"ojnSm5E1oORJTXE5-UOMbR-P4h8k\",\"img\":[\"http://tmp/wx35dbfc535288fd25.o6zAJs4UuxeQNsVeCJ-ApNV5cfB8.tbXqJZ0fy9k3065fc6eba8adb3ed3b147bb260d653a5.png\"],\"billingType\":1,\"name\":\"钟佳闱\",\"phone\":\"17857058385\",\"address\":\"康新花园\",\"area\":\"15\",\"remark\":\"备注\",\"appointmentTime\":\"'10-28'\",\"appointmentType\":\"'mor'\"}",
+					"id": -1,
+					"name": "pages/order/orderDetail/orderDetail",
+					"pathName": "pages/order/orderDetail/orderDetail",
+					"query": "id=12019100213410303806089018175294",
 					"scene": null
 				}
 			]

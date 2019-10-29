@@ -189,7 +189,7 @@ _getOrderList = _apiConfig.default.api.getOrderList;var _default =
 
   onLoad: function onLoad(options) {
     this.tabCurrentIndex = +options.state || 0;
-    // this.getOrderList();
+    this.getOrderList();
   },
 
   methods: {

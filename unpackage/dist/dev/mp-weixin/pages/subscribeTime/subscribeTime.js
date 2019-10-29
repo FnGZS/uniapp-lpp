@@ -232,7 +232,12 @@ var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 1
 //
 //
 var _config$api = _apiConfig.default.api,_getCleanerDeail = _config$api.getCleanerDeail,_getCleanerWork = _config$api.getCleanerWork;var _default = { data: function data() {return { id: null, basicsList: [{ name: '预约时间' }, { name: '完善信息' }, { name: '估价' }], // 0 预约时间 1 预约时间+完善信息 2  预约时间+完善信息+提交
-      scroll: 0, detail: '', chooseType: '', chooseData: '', dataList: [] };}, methods: { onLoad: function onLoad(e) {console.log(e);this.id = e.id;this.getCleanerDeail();this.getCleanerWork();}, getCleanerDeail: function getCleanerDeail() {var that = this;var infoOpt = { url: _getCleanerDeail, type: 'POST', data: { id: this.id } };var infoCb = {};infoCb.success = function (res) {console.log(res);that.detail = res;uni.hideLoading();}, infoCb.beforeSend = function () {uni.showLoading({ title: '加载中' });};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, getCleanerWork: function getCleanerWork() {var that = this;var infoOpt = { url: _getCleanerWork, type: 'POST', data: { cleanerId: this.id } };var infoCb = {};infoCb.success = function (res) {console.log(res);var workList = res;for (var i in workList) {workList[i].workDate = workList[i].workDate.substring(5, 10);}that.dataList = workList;console.log(workList);uni.hideLoading();},
+      scroll: 0, detail: '', chooseType: '', chooseData: '', dataList: [], yuyueList: {} };}, methods: { onLoad: function onLoad(e) {console.log(e);this.id = e.id;this.getCleanerDeail();this.getWorkTime();this.getCleanerWork();}, getCleanerDeail: function getCleanerDeail() {var that = this;var infoOpt = { url: _getCleanerDeail, type: 'POST', data: { id: this.id } };var infoCb = {};infoCb.success = function (res) {console.log(res);that.detail = res;uni.hideLoading();}, infoCb.beforeSend = function () {uni.showLoading({ title: '加载中' });};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, getCleanerWork: function getCleanerWork() {var that = this;var infoOpt = { url: _getCleanerWork, type: 'POST', data: { cleanerId: this.id } };var infoCb = {};infoCb.success = function (res) {var workList = res;for (var i in workList) {workList[i].workDate = workList[i].workDate.substring(5, 10);}var yuyueList = {};for (var i in workList) {yuyueList[workList[i].workDate] = workList[i].statusMor.toString() + workList[i].statusAft.toString();
+        }
+        console.log(yuyueList);
+        that.yuyueList = yuyueList;
+        uni.hideLoading();
+      },
       infoCb.beforeSend = function () {
         uni.showLoading({
           title: '加载中' });
@@ -240,6 +245,46 @@ var _config$api = _apiConfig.default.api,_getCleanerDeail = _config$api.getClean
       };
       (0, _sendAjax.sendAjax)(infoOpt, infoCb);
     },
+    getWorkTime: function getWorkTime() {
+      var arr = [];
+      for (var i = 0; i < 7; i++) {
+        arr.push(this.dealTime(i));
+      }
+      console.log(arr);
+      this.dataList = arr;
+    },
+    // 处理未来七天的函数
+    dealTime: function dealTime(num) {// num：未来天数
+      var time = new Date(); // 获取当前时间日期
+      var date = new Date(time.setDate(time.getDate() + num + 1)).getDate(); //这里先获取日期，在按需求设置日期，最后获取需要的
+      if (date < 10) date = '0' + date;
+      var month = time.getMonth() + 1; // 获取月份
+      var day = time.getDay(); //  获取星期
+      switch (day) {//  格式化
+        case 0:day = "周日";
+          break;
+        case 1:day = "周一";
+          break;
+        case 2:day = "周二";
+          break;
+        case 3:day = "周三";
+          break;
+        case 4:day = "周四";
+          break;
+        case 5:day = "周五";
+          break;
+        case 6:day = "周六";
+          break;}
+
+      var obj = {
+        workDate: month + '-' + date,
+        workTime: day,
+        statusMor: 0,
+        statusAft: 0 };
+
+      return obj; // 返回对象
+    },
+
     //点击时间预约
     yuyue: function yuyue(e) {
       console.log(e);

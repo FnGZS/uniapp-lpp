@@ -158,7 +158,7 @@ var _default =
 
       severList: [
       [
-      { name: '我的地址', icon: 'icon-dizhi', url: 'address/address' },
+      // {name:'我的地址',icon:'icon-dizhi',url:'address/address'},
       { name: '积分兑换', icon: 'icon-shoucang' },
       { name: '我的兑换', icon: 'icon-shoucang' },
       { name: '服务认证', icon: 'icon-yueyue', url: 'serviceCert/serviceCert' }],

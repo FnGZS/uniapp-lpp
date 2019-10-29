@@ -51,10 +51,10 @@
 				<view class='orderTime-Text'>下单时间</view>
 				<view class='orderTime-number'>{{orderDetail.gmtCreated}}</view>
 			</view>
-			<view class='orderPayWay'>
+			<!-- <view class='orderPayWay'>
 				<view class='orderPayWay-Text'>支付方式</view>
 				<view class='orderPayWay-number'>在线支付</view>
-			</view>
+			</view> -->
 		</view>
 		<view class='barBottom'>
 			<view class='orderStatusBtn'>

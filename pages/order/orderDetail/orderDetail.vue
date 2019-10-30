@@ -1,51 +1,53 @@
 <template>
 	<view id='orderDetail'>
 		<view class='orderStatus'>
-			<view class='orderStatusText' v-if="orderDetail.orderStatus==1">取消预约</view>
-			<view class='orderStatusText' v-if="orderDetail.orderStatus==1">预约中</view>
-			<view class='orderStatusText' v-if="orderDetail.orderStatus==2">已预约</view>
-			<view class='orderStatusText' v-if="orderDetail.orderStatus==3">预约关闭</view>
+			<!-- <view class='orderStatusText' v-if="orderDetail.orderState==1">取消预约</view> -->
+			<view class='orderStatusText' v-if="orderDetail.orderState==1">预约中</view>
+			<view class='orderStatusText' v-if="orderDetail.orderState==2">已预约</view>
+			<view class='orderStatusText' v-if="orderDetail.orderState==3">预约关闭</view>
 		</view>
 		<view class='orderAddress'>
 			<view class='iconfont icon-dizhi'></view>
 			<view class='orderAddress-main'>
-				<text class='orderAddress-main-name'>{{orderDetail.consignee}}</text>
-				<text class='orderAddress-main-phone'>{{orderDetail.receivePhone}}</text>
-				<view class='orderAddress-main-pos'>{{orderDetail.receiveAddress}}</view>
+				<text class='orderAddress-main-name'>{{orderDetail.employerName}}</text>
+				<text class='orderAddress-main-phone'>{{orderDetail.employerPhone}}</text>
+				<view class='orderAddress-main-pos'>{{orderDetail.address}}</view>
 			</view>
 		</view>
 		<view class="goods-list">
 			<view class="list-title">基础信息 </view>
 			<view class="a-goods" key="index">
 				<view class="img-box">
-					<image :src="orderDetail.goodsImg" mode='aspectFill' class="img" />
+					<image :src="orderDetail.picUrl" mode='aspectFill' class="img" />
 				</view>
 				<view class="text-box">
 					<view class="arow arow01">
-						<view class="goods-name">{{orderDetail.goodsTitle}}</view>
-						<view class="goods-price">¥ {{orderDetail.orderPrice}}</view>
+						<view class="goods-name">{{orderDetail.cleaner.name}}</view>
+						<view class="goods-price">¥ {{orderDetail.cleaner.price}}</view>
 					</view>
 					<view class="arow">
-						<view class="goods-label">{{orderDetail.goodsContent}}</view>
+						<view class="goods-label">{{orderDetail.cleaner.card}}</view>
 						<view class="goods-num">x 1</view>
 					</view>
 				</view>
 			</view>
+			<view class='orderNum'>
+				<view class='orderNum-text' >服务范围</view>
+				<view class='orderPrice-num'>{{orderDetail.cleaner.place}}</view>
+			</view>
+			
 			<view class='orderPrice'>
 				<view class='orderPrice-text'>订单总价</view>
-				<view class='orderPrice-num'>￥{{orderDetail.orderPrice}}</view>
+				<view class='orderPrice-num'>￥{{orderDetail.cleaner.price}}</view>
 			</view>
-			<view class='orderPayPrice'>
-				<view class='orderPayPrice-text' v-if="orderDetail.orderState == 0">需付款</view>
-				<view class='orderPayPrice-text' v-if="orderDetail.orderState != 0">已付款</view>
-				<view class='orderPayPrice-num'>￥{{orderDetail.pay_num}}</view>
-			</view>
+			
+			
 		</view>
 		<view class='orderMes'>
 			<view class='orderMes-title'>订单信息</view>
 			<view class='orderNum'>
 				<view class='orderNum-Text'>订单编号</view>
-				<view class='orderNum-number'>{{orderDetail.orderId}}</view>
+				<view class='orderNum-number'>{{orderDetail.id}}</view>
 			</view>
 			<view class='orderTime'>
 				<view class='orderTime-Text'>下单时间</view>
@@ -58,10 +60,10 @@
 		</view>
 		<view class='barBottom'>
 			<view class='orderStatusBtn'>
-				<button class="cu-btn block line-grey " v-if="orderDetail.orderStatus==1">取消预约</button>
-				<button class="cu-btn block line-blue " v-if="orderDetail.orderStatus==1">预约中</button>
-				<button class="cu-btn block line-cyan "  v-if="orderDetail.orderStatus==2">已预约</button>
-				<button class="cu-btn block line-gray "  v-if="orderDetail.orderStatus==3">预约关闭</button>
+				<button class="cu-btn block line-grey " v-if="orderDetail.orderState==1">取消预约</button>
+				<button class="cu-btn block line-blue " v-if="orderDetail.orderState==1">预约中</button>
+				<button class="cu-btn block line-cyan "  v-if="orderDetail.orderState==2">已预约</button>
+				<button class="cu-btn block line-gray "  v-if="orderDetail.orderState==3">预约关闭</button>
 				<!-- <button class="cu-btn block line-grey sm" v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 2">取消订单</button>
 				<button class="cu-btn block line-red sm"  v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 2">立即支付</button>
 				<button class="cu-btn block line-gray sm" v-if="orderDetail.goodsState==0 && orderDetail.fuwuState == 0">预约失败</button>
@@ -77,42 +79,45 @@
 </template>
 
 <script>
+	import { sendAjax } from '@/common/js/sendAjax.js';
+	import config from '@/apiConfig';
+	const { getOrderDetail} = config.api;
 	export default {
 		data() {
 			return {
 				isUser:1,
-				orderDetail: {
-					code: "200",
-					consignee: "钟佳闱",
-					gmtCreated: "2019-10-22 18:18:47",
-					goodsContent: "常规清洁",
-					goodsId: 36,
-					goodsImg: "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg",
-					goodsNum: 0,
-					goodsState: 0,
-					goodsTitle: "王小姐",
-					goodsType: "常规清洁",
-					headImgUrl: "https://wx.qlogo.cn/mmopen/vi_32/xF183KBwd3dN4mQk483ZNr8vUu94nGibhqmHghSKrEw7Gcr4rpKErFGrCbnNmSoj2aBuAiaGSicwN8PHoZjoqqQhw/132",
-					id: 36,
-					orderStatus: 2,
-					message: "",
-					oldPrice: "50.00",
-					orderId: "12019082018184789852671929861789",
-					orderPrice: 100,
-					pay_num:20,
-					orderState: 2,
-					postion: "北区11幢236",
-					price: "0.01",
-					receiveAddress: "浙江省杭州市西湖区文三西路翠苑街道康新花园A座",
-					receivePhone: "17857058385",
-					telephone: "17857058385",
-					
-				}
+				id:null,
+				orderDetail:{}
 			}
 		},
-		onLoad() {},
+		onLoad(option) {
+			console.log(option.id)
+			this.id = option.id;
+			this.getOrderDetail()
+		},
 		methods: {
-
+			
+			getOrderDetail(){
+				var that = this;
+				var id = this.id;
+				let infoOpt = {
+					url: getOrderDetail  + id,
+					type: 'GET',
+					data:{}
+				};
+				let infoCb = {};
+				infoCb.success = function(res) {
+					console.log(res)
+					that.orderDetail = res;
+					uni.hideLoading()
+				},
+				infoCb.beforeSend = () => {
+				  uni.showLoading({
+				  	title:'加载中'
+				  })
+				};
+				sendAjax(infoOpt, infoCb);
+			}
 		}
 	}
 </script>

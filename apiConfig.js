@@ -13,6 +13,8 @@ module.exports = {
 		getNewsUrl:`${apiUrl}/news/getList`,
 		//获取订单列表
 		getOrderList:`${apiUrl}/pay/payOrder`,
+		//获取订单详情
+		getOrderDetail:`${apiUrl}/pay/payOrder/`,
 		//获取保洁员
 		getCleanerList:`${apiUrl}/cleaner/findMenus`,
 		//获取保洁员详细信息

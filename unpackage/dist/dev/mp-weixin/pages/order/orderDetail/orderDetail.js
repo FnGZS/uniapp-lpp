@@ -105,120 +105,170 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {
-      isUser: 1,
-      orderDetail: {
-        code: "200",
-        consignee: "钟佳闱",
-        gmtCreated: "2019-10-22 18:18:47",
-        goodsContent: "常规清洁",
-        goodsId: 36,
-        goodsImg: "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg",
-        goodsNum: 0,
-        goodsState: 0,
-        goodsTitle: "王小姐",
-        goodsType: "常规清洁",
-        headImgUrl: "https://wx.qlogo.cn/mmopen/vi_32/xF183KBwd3dN4mQk483ZNr8vUu94nGibhqmHghSKrEw7Gcr4rpKErFGrCbnNmSoj2aBuAiaGSicwN8PHoZjoqqQhw/132",
-        id: 36,
-        orderStatus: 2,
-        message: "",
-        oldPrice: "50.00",
-        orderId: "12019082018184789852671929861789",
-        orderPrice: 100,
-        pay_num: 20,
-        orderState: 2,
-        postion: "北区11幢236",
-        price: "0.01",
-        receiveAddress: "浙江省杭州市西湖区文三西路翠苑街道康新花园A座",
-        receivePhone: "17857058385",
-        telephone: "17857058385" } };
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
-  },
-  onLoad: function onLoad() {},
-  methods: {} };exports.default = _default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);
+var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _getOrderDetail = _apiConfig.default.api.getOrderDetail;var _default = { data: function data() {return { isUser: 1, id: null, orderDetail: {} };}, onLoad: function onLoad(option) {console.log(option.id);this.id = option.id;this.getOrderDetail();}, methods: { getOrderDetail: function getOrderDetail() {var that = this;var id = this.id;var infoOpt = { url: _getOrderDetail + id, type: 'GET', data: {} };var infoCb = {};infoCb.success = function (res) {console.log(res);that.orderDetail = res;uni.hideLoading();}, infoCb.beforeSend = function () {uni.showLoading({ title: '加载中' });};(0, _sendAjax.sendAjax)(infoOpt, infoCb);} } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

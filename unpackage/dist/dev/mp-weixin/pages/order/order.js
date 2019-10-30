@@ -176,12 +176,8 @@ _getOrderList = _apiConfig.default.api.getOrderList;var _default =
         // {state: 4,text: '服务中'},
         // {state: 5,text: '待评价'}
       }],
-      orderList: [{ id: 0, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '1年工龄', num: 45, label: '明星保洁员', orderStatus: 3 },
-      { id: 1, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '1年工龄', num: 45, label: '明星保洁员', orderStatus: 1 },
-      { id: 2, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '2年工龄', num: 45, label: '明星保洁员', orderStatus: 2 },
-      { id: 3, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '3年工龄', num: 45, label: '明星保洁员', orderStatus: 3 },
-      { id: 3, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '4年工龄', num: 45, label: '明星保洁员', orderStatus: 1 },
-      { id: 3, gmtCreated: '2019-10-17 17:41', employerName: '王小姐', work_time: '5年工龄', num: 45, label: '明星保洁员', orderStatus: 2 }],
+      orderList: [],
+      orderState: 0,
       pageNum: 1,
       pageSize: 5 };
 
@@ -196,22 +192,39 @@ _getOrderList = _apiConfig.default.api.getOrderList;var _default =
     //顶部tab点击
     tabClick: function tabClick(index) {
       this.tabCurrentIndex = index;
+      this.orderState = index;
+      this.getOrderList();
     },
     getOrderList: function getOrderList() {
       var pageNum = this.pageNum;
       var pageSize = this.pageSize;
+      var employerId = uni.getStorageSync('userInfo').openId;
+      var orderState = this.orderState;
       var that = this;
+      if (this.orderState == 0) {
+        var data = {
+          employerId: employerId,
+          pageNum: pageNum,
+          pageSize: pageSize };
+
+      } else {
+        var data = {
+          employerId: employerId,
+          orderState: orderState,
+          pageNum: pageNum,
+          pageSize: pageSize };
+
+      }
+
       var infoOpt = {
         url: _getOrderList,
         type: 'GET',
-        data: {
-          pageNum: pageNum,
-          pageSize: pageSize } };
-
+        data: data };
 
       var infoCb = {};
       infoCb.success = function (res) {
         that.orderList = res.list;
+        uni.hideLoading();
       },
       infoCb.beforeSend = function () {
         uni.showLoading({
@@ -220,9 +233,10 @@ _getOrderList = _apiConfig.default.api.getOrderList;var _default =
       };
       (0, _sendAjax.sendAjax)(infoOpt, infoCb);
     },
-    toDetail: function toDetail() {
+    toDetail: function toDetail(e) {
+      var id = e.currentTarget.dataset.id;
       uni.navigateTo({
-        url: 'orderDetail/orderDetail' });
+        url: 'orderDetail/orderDetail?id=' + id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

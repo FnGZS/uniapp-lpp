@@ -112,6 +112,12 @@
 			"style": {
 				"navigationBarTitleText": "订单详情"
 			}
+		},
+		{
+			"path": "pages/user/paiban/paiban",
+			"style": {
+				"navigationBarTitleText": "排班信息"
+			}
 		}
 	],
 

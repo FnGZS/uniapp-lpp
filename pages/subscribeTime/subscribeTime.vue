@@ -35,14 +35,14 @@
 					<tr>
 						<td class="font_28">上午</td>
 						<td v-for="(item, index) in dataList" :key="index">
-							<view v-if="yuyueList[item.workDate][0] == 0" class="subPeopleTimeTableYuYue " :data-type="'mor'" :data-data="item.workDate" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
-							<view v-if="yuyueList[item.workDate][0] == 1" class="subPeopleTimeTableNoYuYue" data-type="'mor'" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''">预约</view>
+							<view v-if="yuyueList[item.workDate][0] == 0 || !yuyueList[item.workDate]" class="subPeopleTimeTableYuYue " :data-type="'mor'" :data-data="item.workDate" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
+							<view v-if="yuyueList[item.workDate][0] == 1 " class="subPeopleTimeTableNoYuYue" data-type="'mor'" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''">预约</view>
 						</td>
 					</tr>
 					<tr>
 						<td class="font_28">下午</td>	
 						<td v-for="(item, index) in dataList" :key="index">
-							<view v-if="yuyueList[item.workDate][1] == 0" class="subPeopleTimeTableYuYue" :data-type="'aft'" :data-data="item.workDate" :class="chooseType=='aft'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
+							<view v-if="yuyueList[item.workDate][1] == 0 || !yuyueList[item.workDate]" class="subPeopleTimeTableYuYue" :data-type="'aft'" :data-data="item.workDate" :class="chooseType=='aft'&&chooseData==item.workDate ?'choose':''" @click="yuyue">预约</view>
 							<view v-if="yuyueList[item.workDate][1] == 1" class="subPeopleTimeTableNoYuYue" :data-type="'aft'" >预约</view>
 						</td>
 					</tr>
@@ -129,6 +129,7 @@ export default {
 				}
 				console.log(yuyueList)
 				that.yuyueList = yuyueList
+				console.log(yuyueList['12-12'])
 				uni.hideLoading()
 			},
 			infoCb.beforeSend = () => {

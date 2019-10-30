@@ -28,10 +28,11 @@
 				</view> -->
 				<view class="bottom">
 					<view class="bottomList">
-						<button class="cu-btn round line-grey sm" v-if="item.orderState==1">取消预约</button>
+						<button class="cu-btn round line-grey sm" v-if="item.orderState==1" v-on:click.stop="cancelOrder"  :data-id="item.id">取消预约</button>
 						<button class="cu-btn round line-blue sm" v-if="item.orderState==1">预约中</button>
-						<button class="cu-btn round line-cyan sm"  v-if="item.orderState==2">已预约</button>
-						<button class="cu-btn round line-gray sm"  v-if="item.orderState==3">预约关闭</button>
+						<button class="cu-btn round line-cyan sm"  v-if="item.orderState==2">预约成功</button>
+						<button class="cu-btn round line-gray sm"  v-if="item.orderState==3">预约失败</button>
+						<button class="cu-btn round line-gray sm"  v-if="item.orderState==4">已关闭</button>
 					<!-- <button class="cu-btn round line-grey sm" v-if="item.goodsState==0 && item.fuwuState == 2">取消订单</button>
 					<button class="cu-btn round line-red sm"  v-if="item.goodsState==0 && item.fuwuState == 2">立即支付</button>
 					<button class="cu-btn round line-gray sm" v-if="item.goodsState==0 && item.fuwuState == 0">预约失败</button>
@@ -53,7 +54,7 @@
 	import empty from "@/components/empty";
 	import { sendAjax } from '@/common/js/sendAjax.js';
 	import config from '@/apiConfig';
-	const { getOrderList} = config.api;
+	const { getOrderList,updateOrderState} = config.api;
 	export default {
 		components: {
 			empty
@@ -65,7 +66,8 @@
 					// {state: 1,text: '待预约'},
 					{state: 1,text: '预约中'},
 					{state:2,text: '已预约'},
-					{state: 3,text: '已关闭'}
+					{state: 3,text: '已失败'},
+					{state: 4,text: '已关闭'}
 					// {state: 4,text: '服务中'},
 					// {state: 5,text: '待评价'}
 				],
@@ -87,6 +89,30 @@
 				this.tabCurrentIndex = index;
 				this.orderState = index;
 				this.getOrderList();
+			},
+			cancelOrder(e){
+				var that = this;
+				var id = e.currentTarget.dataset.id;
+				var data = {
+						 id:id,
+						 orderState:3
+					}
+				let infoOpt = {
+					url: updateOrderState,
+					type: 'PUT',
+					data: JSON.stringify(data),
+				};
+				let infoCb = {};
+				infoCb.success = function(res) {
+					console.log(res)
+					uni.hideLoading()
+				},
+				infoCb.beforeSend = () => {
+				  uni.showLoading({
+				  	title:'加载中'
+				  })
+				};
+				sendAjax(infoOpt, infoCb,1);
 			},
 			getOrderList(){
 				var pageNum = this.pageNum;

@@ -17,7 +17,8 @@
     "pages/user/address/addressEdit",
     "pages/index/lookImg",
     "pages/user/serviceCert/serviceCert",
-    "pages/order/orderDetail/orderDetail"
+    "pages/order/orderDetail/orderDetail",
+    "pages/user/paiban/paiban"
   ],
   "subPackages": [],
   "window": {
@@ -52,7 +53,5 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  },
-  "sitemapLocation": "sitemap21.json"
-
+  }
 }

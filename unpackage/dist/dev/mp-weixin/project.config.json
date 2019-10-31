@@ -28,17 +28,7 @@
 		},
 		"miniprogram": {
 			"current": -1,
-
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/order/order",
-					"pathName": "pages/order/order",
-					"query": "",
-					"scene": null
-				}
-				
-			]
+			"list": []
 		}
 	}
 }

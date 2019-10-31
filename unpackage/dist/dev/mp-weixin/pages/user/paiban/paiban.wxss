@@ -1,0 +1,283 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 时间表 */
+.subPeopleTime {
+	width: 100%;
+	height: 410rpx;
+	background: #fff;
+	padding-bottom: 10rpx;
+	margin-bottom: 10rpx;
+}
+.subPeopleTimeTable {
+	width: 706rpx;
+	height: 288rpx;
+	border: 2rpx solid #cef3eb;
+	margin: 0 auto;
+	background: #e7e7e7;
+	overflow: hidden;
+	border-radius: 10rpx;
+}
+.subPeopleTimeTable ._tbody {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.subPeopleTimeTable ._tr {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.subPeopleTimeTable ._tr>._td {
+	color: #7d7d7d;
+}
+.subPeopleTimeTable ._td {
+	width: 87.5rpx;
+	background: #fff;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.subPeopleTimeTable ._tr:nth-child(1) {
+	height: 99rpx;
+	margin-bottom: 1rpx;
+	font-size: 21rpx;
+	line-height: 40rpx;
+}
+.subPeopleTimeTable ._tr:nth-child(2),
+.subPeopleTimeTable ._tr:nth-child(3) {
+	height: 92rpx;
+	margin-bottom: 1rpx;
+}
+.subPeopleTimeTableYuYue,
+.subPeopleTimeTableNoYuYue {
+	background: #3598dc;
+	width: 71rpx;
+	height: 67rpx;
+	opacity: 0.8;
+	border-radius: 6rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	color: #fff;
+	font-size: 21rpx;
+}
+.subPeopleTimeTableNoYuYue {
+	background: #d7d7d7;
+}
+/* 简介 */
+.subPeopleInfo {
+	width: 100%;
+	background: #fff;
+}
+.subPeopleInfoText {
+	padding: 0 30rpx 30rpx;
+	font-size: 26rpx;
+	color: #4a4a4a;
+	margin-bottom: 200rpx;
+}
+.choose {
+	border: 5rpx solid red;
+}
+

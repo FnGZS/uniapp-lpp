@@ -236,6 +236,7 @@ var _config$api = _apiConfig.default.api,_getCleanerDeail = _config$api.getClean
         }
         console.log(yuyueList);
         that.yuyueList = yuyueList;
+        console.log(yuyueList['12-12']);
         uni.hideLoading();
       },
       infoCb.beforeSend = function () {

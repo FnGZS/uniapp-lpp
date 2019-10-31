@@ -158,9 +158,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);
-var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var empty = function empty() {return __webpack_require__.e(/*! import() | components/empty */ "components/empty").then(__webpack_require__.bind(null, /*! @/components/empty */ 194));};var
-_getOrderList = _apiConfig.default.api.getOrderList;var _default =
+var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var empty = function empty() {return __webpack_require__.e(/*! import() | components/empty */ "components/empty").then(__webpack_require__.bind(null, /*! @/components/empty */ 202));};var _config$api =
+_apiConfig.default.api,_getOrderList = _config$api.getOrderList,updateOrderState = _config$api.updateOrderState;var _default =
 {
   components: {
     empty: empty },
@@ -172,7 +173,8 @@ _getOrderList = _apiConfig.default.api.getOrderList;var _default =
       // {state: 1,text: '待预约'},
       { state: 1, text: '预约中' },
       { state: 2, text: '已预约' },
-      { state: 3, text: '已关闭'
+      { state: 3, text: '已失败' },
+      { state: 4, text: '已关闭'
         // {state: 4,text: '服务中'},
         // {state: 5,text: '待评价'}
       }],
@@ -194,6 +196,30 @@ _getOrderList = _apiConfig.default.api.getOrderList;var _default =
       this.tabCurrentIndex = index;
       this.orderState = index;
       this.getOrderList();
+    },
+    cancelOrder: function cancelOrder(e) {
+      var that = this;
+      var id = e.currentTarget.dataset.id;
+      var data = {
+        id: id,
+        orderState: 3 };
+
+      var infoOpt = {
+        url: updateOrderState,
+        type: 'PUT',
+        data: JSON.stringify(data) };
+
+      var infoCb = {};
+      infoCb.success = function (res) {
+        console.log(res);
+        uni.hideLoading();
+      },
+      infoCb.beforeSend = function () {
+        uni.showLoading({
+          title: '加载中' });
+
+      };
+      (0, _sendAjax.sendAjax)(infoOpt, infoCb, 1);
     },
     getOrderList: function getOrderList() {
       var pageNum = this.pageNum;

@@ -150,18 +150,20 @@ var _default =
       userInfo: null,
       orderTypeLise: [
       //name-标题 icon-图标 badge-角标
-      { name: '待付款', icon: 'icon-daifukuan', badge: 1 },
-      { name: '待发货', icon: 'icon-daifahuo', badge: 2 },
-      { name: '待收货', icon: 'icon-daishouhuo', badge: 6 },
-      { name: '待评价', icon: 'icon-daipingjia', badge: 9 },
-      { name: '售后服务', icon: 'icon-shouhou', badge: 0 }],
+      { name: '全部订单', icon: 'icon-daipingjia', badge: 0 },
+      { name: '预约中', icon: 'icon-daifukuan', badge: 1 },
+      { name: '预约成功', icon: 'icon-daifahuo', badge: 2 },
+      { name: '预约失败', icon: 'icon-yuyueshibai', badge: 6 },
+      { name: '已关闭', icon: 'icon-yiguanbi', badge: 9 }],
+
 
       severList: [
       [
       // {name:'我的地址',icon:'icon-dizhi',url:'address/address'},
       { name: '积分兑换', icon: 'icon-shoucang' },
       { name: '我的兑换', icon: 'icon-shoucang' },
-      { name: '服务认证', icon: 'icon-yueyue', url: 'serviceCert/serviceCert' }],
+      { name: '服务认证', icon: 'icon-fuwurenzheng', url: 'serviceCert/serviceCert' },
+      { name: '排班信息', icon: 'icon-paiban', url: 'paiban/paiban' }],
 
 
       [

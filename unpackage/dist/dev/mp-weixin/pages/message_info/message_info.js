@@ -120,7 +120,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-var messageDate = __webpack_require__(/*! @/common/js/message.js */ 68);var leftMessage = function leftMessage() {return __webpack_require__.e(/*! import() | components/left-message */ "components/left-message").then(__webpack_require__.bind(null, /*! ../../components/left-message.vue */ 173));};var rightMessage = function rightMessage() {return __webpack_require__.e(/*! import() | components/right-message */ "components/right-message").then(__webpack_require__.bind(null, /*! ../../components/right-message.vue */ 180));};var sendMessage = function sendMessage() {return __webpack_require__.e(/*! import() | components/send-message */ "components/send-message").then(__webpack_require__.bind(null, /*! ../../components/send-message.vue */ 187));};var _default =
+var messageDate = __webpack_require__(/*! @/common/js/message.js */ 68);var leftMessage = function leftMessage() {return __webpack_require__.e(/*! import() | components/left-message */ "components/left-message").then(__webpack_require__.bind(null, /*! ../../components/left-message.vue */ 181));};var rightMessage = function rightMessage() {return __webpack_require__.e(/*! import() | components/right-message */ "components/right-message").then(__webpack_require__.bind(null, /*! ../../components/right-message.vue */ 188));};var sendMessage = function sendMessage() {return __webpack_require__.e(/*! import() | components/send-message */ "components/send-message").then(__webpack_require__.bind(null, /*! ../../components/send-message.vue */ 195));};var _default =
 
 
 

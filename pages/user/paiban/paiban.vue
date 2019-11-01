@@ -10,26 +10,22 @@
 					<tr>
 						<td></td>
 						<td v-for="(item, index) in dataList" :key="index">
-							<span>{{ item.workTime }}</span>
-							<span>{{ item.workDate }}</span>
+							<span>{{ item.workTime}}</span>
+							<span>{{ item.workDate.substring(5,10) }}</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="font_28">上午</td>
 						<td v-for="(item, index) in dataList" :key="index">
-							<view v-if="yuyueList[item.workDate][0] == 0 || !yuyueList[item.workDate]" class="subPeopleTimeTableYuYue "
-							 :data-type="'mor'" :data-data="item.workDate" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''"
-							 @click="paiban" data-target="DialogModal1">排班</view>
-							<view v-if="yuyueList[item.workDate][0] == 1 " class="subPeopleTimeTableNoYuYue" data-type="'mor'" :class="chooseType=='mor'&&chooseData==item.workDate ?'choose':''" @click="paiban" data-target="DialogModal1">排班</view>
+							<view  class="subPeopleTimeTableYuYue " :data-type="'mor'" :data-data="item.workDate"  @click="paiban" data-target="DialogModal1">排班</view>
+							<view  class="subPeopleTimeTableNoYuYue " data-type="'mor'" :data-data="item.workDate"  @click="paiban" data-target="DialogModal1">排班</view>
 						</td>
 					</tr>
 					<tr>
 						<td class="font_28">下午</td>
 						<td v-for="(item, index) in dataList" :key="index">
-							<view v-if="yuyueList[item.workDate][1] == 0 || !yuyueList[item.workDate]" class="subPeopleTimeTableYuYue"
-							 :data-type="'aft'" :data-data="item.workDate" :class="chooseType=='aft'&&chooseData==item.workDate ?'choose':''"
-							 @click="paiban" data-target="DialogModal1">排班</view>
-							<view v-if="yuyueList[item.workDate][1] == 1" class="subPeopleTimeTableNoYuYue" :data-type="'aft'" @click="paiban" data-target="DialogModal1">排班</view>
+							<view  class="subPeopleTimeTableYuYue" :data-type="'aft'" :data-data="item.workDate" @click="paiban" data-target="DialogModal1">排班</view>
+							<view  class="subPeopleTimeTableNoYuYue" :data-type="'aft'" :data-data="item.workDate" @click="paiban" data-target="DialogModal1">排班</view>
 						</td>
 					</tr>
 				</tbody>
@@ -48,8 +44,8 @@
 				</view>
 				<view class="cu-bar bg-white justify-end">
 					<view class="action">
-						<button class="cu-btn line-green text-green" @tap="hideModal">取消排班</button>
-						<button class="cu-btn bg-green margin-left" @tap="hideModal">确认排班</button>
+						<button class="cu-btn line-green text-green" @tap="cancel">取消排班</button>
+						<button class="cu-btn bg-green margin-left" @tap="confirm">确认排班</button>
 					</view>
 				</view>
 			</view>
@@ -102,7 +98,34 @@
 			},
 			paiban(e){
 				console.log('排班')
-				this.modalName = e.currentTarget.dataset.target
+				this.modalName = e.currentTarget.dataset.target;
+				this.chooseType = e.currentTarget.dataset.type;
+				this.chooseData = e.currentTarget.dataset.data;
+				console.log(this.chooseType)
+				console.log(this.chooseData)
+			},
+			cancel(){
+				var type = this.chooseType;
+				var work_date = this.chooseData;
+				if(type == 'mor'){
+					var status_mor = 0;
+				}else{
+					var status_aft = 0;
+				}
+				var data = {
+					id:xx,
+					work_date:work_date,
+					status_mor:0
+				}
+			},
+			confirm(){
+				var type = this.chooseType;
+				var work_date = this.chooseData;
+				if(type == 'mor'){
+					status_mor = 1;
+				}else{
+					status_aft = 1;
+				}
 			},
 			hideModal(e) {
 				this.modalName = null
@@ -120,6 +143,8 @@
 				var time = new Date() // 获取当前时间日期
 				var date = new Date(time.setDate(time.getDate() + num + 1)).getDate() //这里先获取日期，在按需求设置日期，最后获取需要的
 				if (date < 10) date = '0' + date;
+				var year = time.getFullYear();
+				console.log(year)
 				var month = time.getMonth() + 1 // 获取月份
 				var day = time.getDay() //  获取星期
 				switch (day) { //  格式化
@@ -146,7 +171,7 @@
 						break
 				}
 				var obj = {
-					workDate: month + '-' + date,
+					workDate:year + '-' + month + '-' + date,
 					workTime: day,
 					statusMor: 0,
 					statusAft: 0

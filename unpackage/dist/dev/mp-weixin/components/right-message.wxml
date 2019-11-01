@@ -1,1 +1,1 @@
-<view class="right-message data-v-588694b6"><view class="bubble-wrapper data-v-588694b6"><view class="bubble _div data-v-588694b6"><rich-text nodes="{{data}}" class="data-v-588694b6"></rich-text></view><view class="time data-v-588694b6">{{time}}</view></view></view>
+<view class="right-message data-v-240d548d"><view class="bubble-wrapper data-v-240d548d"><view class="bubble _div data-v-240d548d"><rich-text nodes="{{data}}" class="data-v-240d548d"></rich-text></view><view class="time data-v-240d548d">{{time}}</view></view></view>

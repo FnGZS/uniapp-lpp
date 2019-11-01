@@ -93,26 +93,44 @@
 			cancelOrder(e){
 				var that = this;
 				var id = e.currentTarget.dataset.id;
-				var data = {
-						 id:id,
-						 orderState:3
-					}
-				let infoOpt = {
-					url: updateOrderState,
-					type: 'PUT',
-					data: JSON.stringify(data),
-				};
-				let infoCb = {};
-				infoCb.success = function(res) {
-					console.log(res)
-					uni.hideLoading()
-				},
-				infoCb.beforeSend = () => {
-				  uni.showLoading({
-				  	title:'加载中'
-				  })
-				};
-				sendAjax(infoOpt, infoCb,1);
+				uni.showModal({
+				    title: '提示',
+				    content: '确认取消预约？',
+				    success: function (res) {
+				        if (res.confirm) {
+				           var data = {
+				           		 id:id,
+				           		 orderState:3
+				           	}
+				           let infoOpt = {
+				           	url: updateOrderState,
+				           	type: 'PUT',
+				           	data: JSON.stringify(data),
+				           };
+				           let infoCb = {};
+				           infoCb.success = function(res) {
+				           	console.log(res)
+				           	if(res == null){
+				           		uni.showToast({
+				           			title:'取消成功'
+				           		})
+				           	}
+				           	uni.hideLoading()
+				           },
+				           infoCb.beforeSend = () => {
+				             uni.showLoading({
+				             	title:'加载中',
+								icon:'none'
+				             })
+				           };
+				           sendAjax(infoOpt, infoCb,1);
+				        } else if (res.cancel) {
+				            
+				        }
+				    }
+				});
+				
+				
 			},
 			getOrderList(){
 				var pageNum = this.pageNum;

@@ -70,6 +70,7 @@ page, .content {
     font-size: 25rpx;
     color: #303133;
     position: relative;
+    background: #fff;
 }
 .navbar .nav-item.current {
       color: #08a1f2;
@@ -162,5 +163,12 @@ page, .content {
 }
 .bottom .cu-btn {
     margin-left: 10rpx;
+}
+button::after {
+  border: none;
+  top: 75rpx;
+}
+button.button-hover {
+  background-color: #fff;
 }
 

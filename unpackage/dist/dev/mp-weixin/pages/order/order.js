@@ -159,15 +159,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
 var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);
 var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var empty = function empty() {return __webpack_require__.e(/*! import() | components/empty */ "components/empty").then(__webpack_require__.bind(null, /*! @/components/empty */ 202));};var _config$api =
-_apiConfig.default.api,_getOrderList = _config$api.getOrderList,updateOrderState = _config$api.updateOrderState;var _default =
+_apiConfig.default.api,getFormId = _config$api.getFormId,_getOrderList = _config$api.getOrderList,updateOrderState = _config$api.updateOrderState;var _default =
 {
   components: {
     empty: empty },
 
   data: function data() {
     return {
+      role: 2, //模拟身份，1为用户，2为保洁员
       tabCurrentIndex: 0,
       navList: [{ state: 0, text: '全部' },
       // {state: 1,text: '待预约'},
@@ -221,6 +228,7 @@ _apiConfig.default.api,_getOrderList = _config$api.getOrderList,updateOrderState
                 uni.showToast({
                   title: '取消成功' });
 
+                that.getOrderList();
               }
               uni.hideLoading();
             },
@@ -236,7 +244,46 @@ _apiConfig.default.api,_getOrderList = _config$api.getOrderList,updateOrderState
           }
         } });
 
+    },
+    confirmOrder: function confirmOrder(e) {
+      var that = this;
+      var id = e.currentTarget.dataset.id;
+      uni.showModal({
+        title: '提示',
+        content: '确认预约？',
+        success: function success(res) {
+          if (res.confirm) {
+            var data = {
+              id: id,
+              orderState: 2 };
 
+            var infoOpt = {
+              url: updateOrderState,
+              type: 'PUT',
+              data: JSON.stringify(data) };
+
+            var infoCb = {};
+            infoCb.success = function (res) {
+              console.log(res);
+              if (res == null) {
+                uni.showToast({
+                  title: '确认成功' });
+
+                that.getOrderList();
+              }
+              uni.hideLoading();
+            },
+            infoCb.beforeSend = function () {
+              uni.showLoading({
+                title: '加载中',
+                icon: 'none' });
+
+            };
+            (0, _sendAjax.sendAjax)(infoOpt, infoCb, 1);
+          } else if (res.cancel) {
+
+          }
+        } });
 
     },
     getOrderList: function getOrderList() {
@@ -281,6 +328,35 @@ _apiConfig.default.api,_getOrderList = _config$api.getOrderList,updateOrderState
       var id = e.currentTarget.dataset.id;
       uni.navigateTo({
         url: 'orderDetail/orderDetail?id=' + id });
+
+    },
+    //收集formId
+    getFormId: function getFormId(e) {
+      console.log(e);
+      var formId = e.detail.formId;
+      // var userId = wx.getStorageSync('userinfo').userId;
+      var openId = uni.getStorageSync('userinfo').openId;
+      console.log(formId);
+      // if (formId != 'the formId is a mock one'){
+      //   var that = this;
+      //   let infoOpt = {
+      //     url:getFormId,
+      //     type: 'POST',
+      //     data: {
+      //       // userId: userId,
+      //       openId: openId,
+      //       formId: formId
+      //     },
+      //     header: {
+      //       'content-type': 'application/json',
+      //     },
+      //   }
+      //   let infoCb = {}
+      //   infoCb.success = function (res) {
+      //   }
+      //   infoCb.beforeSend = () => { }
+      //   sendAjax(infoOpt, infoCb, () => { });
+      // }
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

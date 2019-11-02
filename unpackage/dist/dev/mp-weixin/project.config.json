@@ -31,20 +31,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
-				{
-					"id": -1,
-					"name": "pages/user/paiban/paiban",
-					"pathName": "pages/user/paiban/paiban",
-					"query": "id=12019100213410303806089018175294",
-					"scene": null
-				},
 				{
 					"id": -1,
 					"name": "pages/order/order",
 					"pathName": "pages/order/order",
-					"query": "id=12019100213410303806089018175294",
 					"scene": null
 				}
 			]

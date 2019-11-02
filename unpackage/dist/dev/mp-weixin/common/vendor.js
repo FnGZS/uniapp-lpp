@@ -1959,6 +1959,10 @@ module.exports = {
   api: {
     //登录授权
     jwtLoginUrl: "".concat(apiUrl, "/user/jwtLogin"),
+    //发送模板消息
+    templeMsg: "".concat(apiUrl, "/userForm/message"),
+    //收集formId
+    getFormId: "".concat(apiUrl, "/userForm/insertForm"),
     //字段获取字典
     dictDetailUrl: "".concat(apiUrl, "/dict/seletAll"),
     //获取新闻公告

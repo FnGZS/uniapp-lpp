@@ -7,6 +7,10 @@ module.exports = {
 	api: {
 		//登录授权
 		jwtLoginUrl:`${apiUrl}/user/jwtLogin`,
+		//发送模板消息
+		templeMsg:`${apiUrl}/userForm/message`,
+		//收集formId
+		getFormId:`${apiUrl}/userForm/insertForm`,
 		//字段获取字典
 		dictDetailUrl:`${apiUrl}/dict/seletAll`,
 		//获取新闻公告

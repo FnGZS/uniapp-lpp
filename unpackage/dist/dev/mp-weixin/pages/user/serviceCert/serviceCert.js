@@ -211,10 +211,12 @@ var _default =
       sex: '女',
       phone: '',
       code: '',
-      serviceArea: '',
+      serviceArea: '浙江省绍兴市越城区',
       workExp: '',
       headImg: [],
+      arr_img_head: [],
       sfzImg: [],
+      arr_img_sfz: [],
       region: ['浙江省', '绍兴市', '越城区'],
       picker: ['0-1年', '1-3年', '3-5年', '5-10年'],
       pickerIndex: -1,
@@ -226,10 +228,152 @@ var _default =
   },
   onLoad: function onLoad() {},
   methods: {
+    submitBtn: function submitBtn() {
+      var name = this.name;
+      var sex = this.sex;
+      var phone = this.phone;
+      var code = this.code;
+      var serviceArea = this.serviceArea;
+      var workExp = this.workExp;
+      var headImg = this.headImg;
+      var sfzImg = this.sfzImg;
+      if (name == '') {
+        uni.showToast({ title: '请输入姓名', icon: 'none' });
+      } else if (phone == '') {
+        uni.showToast({ title: '请输入手机号', icon: 'none' });
+      } else if (code == '') {
+        uni.showToast({ title: '请输入正确的验证码', icon: 'none' });
+      } else if (serviceArea == '') {
+        uni.showToast({ title: '请选择服务范围', icon: 'none' });
+      } else if (workExp == '') {
+        uni.showToast({ title: '请选择工作经验', icon: 'none' });
+      } else if (headImg.length == 0) {
+        uni.showToast({ title: '请选择头像', icon: 'none' });
+      } else if (sfzImg.length < 2) {
+        uni.showToast({ title: '请选择身份证', icon: 'none' });
+      } else {
+        uni.showLoading({
+          title: '提交中' });
+
+        this.uploadimgHead();
+        this.uploadimgSfz();
+      }
+
+    },
+    //完成提交去审核
+    publish: function publish() {
+      uni.hideLoading();
+    },
+    uploadimgHead: function uploadimgHead() {//这里触发图片上传的方法
+      var pics = this.headImg;
+      var that = this;
+      that.uploadimgs_head({
+        url: 'https://www.sxscott.com/housework/upload/avatar', //这里是你图片上传的接口
+        path: pics, //这里是选取的图片的地址数组
+        formData: {
+          picType: 'head' } });
+
+
+    },
+    uploadimgSfz: function uploadimgSfz() {//这里触发图片上传的方法
+      var pics = this.sfzImg;
+      var that = this;
+      that.uploadimgs_sfz({
+        url: 'https://www.sxscott.com/housework/upload/avatar', //这里是你图片上传的接口
+        path: pics, //这里是选取的图片的地址数组
+        formData: {
+          picType: 'sfz' } });
+
+
+    },
+
+    uploadimgs_head: function uploadimgs_head(data) {
+      var that = this;
+      var i = data.i ? data.i : 0; //当前上传的哪张图片
+      var _success = data.success ? data.success : 0; //上传成功的个数
+      var _fail = data.fail ? data.fail : 0; //上传失败的个数
+      var pics = data.pics ? data.pics : [];
+      uni.uploadFile({
+        header: {
+          'content-type': 'application/json',
+          'Authorization': "Bearer " + uni.getStorageSync('userInfo').token },
+
+        url: data.url,
+        filePath: data.path[i],
+        name: 'file', //这里根据自己的实际情况改
+        formData: data.formData, //这里是上传图片时一起上传的数据
+        success: function success(resp) {
+          console.log(JSON.parse(resp.data));
+          _success++; //图片上传成功，图片上传成功的变量+1
+          pics.push(JSON.parse(resp.data).data);
+
+        },
+        fail: function fail(res) {
+          _fail++; //图片上传失败，图片上传失败的变量+1
+          console.log('fail:' + i + "fail:" + _fail);
+        },
+        complete: function complete() {
+          i++; //这个图片执行完上传后，开始上传下一张
+          if (i == data.path.length) {//当图片传完时，停止调用          
+            console.log('成功：' + _success + " 失败：" + _fail);
+            that.arr_img_head = pics;
+            console.log(that.arr_img_head);
+            // that.publish();
+          } else {//若图片还没有传完，则继续调用函数
+            data.i = i;
+            data.success = _success;
+            data.fail = _fail;
+            data.pics = pics;
+            that.uploadimgs_head(data);
+          }
+        } });
+
+    },
+    uploadimgs_sfz: function uploadimgs_sfz(data) {
+      var that = this;
+      var i = data.i ? data.i : 0; //当前上传的哪张图片
+      var _success2 = data.success ? data.success : 0; //上传成功的个数
+      var _fail2 = data.fail ? data.fail : 0; //上传失败的个数
+      var pics = data.pics ? data.pics : [];
+      uni.uploadFile({
+        header: {
+          'content-type': 'application/json',
+          'Authorization': "Bearer " + uni.getStorageSync('userInfo').token },
+
+        url: data.url,
+        filePath: data.path[i],
+        name: 'file', //这里根据自己的实际情况改
+        formData: data.formData, //这里是上传图片时一起上传的数据
+        success: function success(resp) {
+          console.log(JSON.parse(resp.data));
+          _success2++; //图片上传成功，图片上传成功的变量+1
+          pics.push(JSON.parse(resp.data).data);
+
+        },
+        fail: function fail(res) {
+          _fail2++; //图片上传失败，图片上传失败的变量+1
+          console.log('fail:' + i + "fail:" + _fail2);
+        },
+        complete: function complete() {
+          i++; //这个图片执行完上传后，开始上传下一张
+          if (i == data.path.length) {//当图片传完时，停止调用          
+            console.log('成功：' + _success2 + " 失败：" + _fail2);
+            that.arr_img_sfz = pics;
+            console.log(that.arr_img_sfz);
+            that.publish();
+          } else {//若图片还没有传完，则继续调用函数
+            data.i = i;
+            data.success = _success2;
+            data.fail = _fail2;
+            data.pics = pics;
+            that.uploadimgs_sfz(data);
+          }
+        } });
+
+    },
     getCode: function getCode() {
       var that = this;
       that.disabled = true; //禁用点击
-
       uni.showToast({
         title: '获取验证码成功',
         icon: 'none' });
@@ -237,7 +381,6 @@ var _default =
       that.countdown = 60;
       that.timestatus = true;
       that.clear = setInterval(that.countDown, 1000);
-
     },
     // 倒计时
     countDown: function countDown() {
@@ -316,8 +459,9 @@ var _default =
     },
 
     RegionChange: function RegionChange(e) {
+      console.log(e.detail.value);
       this.region = e.detail.value;
-      this.serviceArea = e.detail.value;
+      this.serviceArea = e.detail.value[0] + e.detail.value[1] + e.detail.value[2];
     },
     PickerChange: function PickerChange(e) {
       this.pickerIndex = e.detail.value;

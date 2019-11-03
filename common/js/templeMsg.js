@@ -3,7 +3,7 @@ import {
 } from '@/common/js/sendAjax.js'
 import config from '@/apiConfig.js'
 const {
-	templeMsg
+	sendTempleMsg
 } = config.api
 
 function templeMsg(openId,template_id, page, data){
@@ -13,7 +13,7 @@ function templeMsg(openId,template_id, page, data){
   var that = this;
 
   let infoOpt = {
-    url: templeMsg,
+    url: sendTempleMsg,
     type: 'POST',
     data: {
       openId: openId,

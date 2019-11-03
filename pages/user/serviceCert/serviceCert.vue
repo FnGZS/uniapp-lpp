@@ -25,7 +25,7 @@
 				<view class="title">验证码</view>
 				<input placeholder="请输入验证码" name="input" @input="getYzm"></input>
 				<button class='cu-btn bg-green' @tap="getCode" :disabled="disabled">
-					 {{countdown}} <text v-show="timestatus">秒重获</text>
+					{{countdown}} <text v-show="timestatus">秒重获</text>
 				</button>
 			</view>
 			<view class="cu-form-group">
@@ -65,7 +65,7 @@
 					</view>
 				</view>
 			</view>
-			
+
 			<view class="cu-bar bg-white margin-top">
 				<view class="action">
 					身份证正反面上传
@@ -77,7 +77,7 @@
 			<view class="cu-form-group">
 				<view class="grid col-4 grid-square flex-sub">
 					<view class="bg-img" v-for="(item,index) in sfzImg" :key="index" @tap="ViewImage" :data-url="sfzImg[index]">
-					 <image :src="sfzImg[index]" mode="aspectFill"></image>
+						<image :src="sfzImg[index]" mode="aspectFill"></image>
 						<view class="cu-tag bg-red" @tap.stop="DelSfzImg" :data-index="index">
 							<text class='cuIcon-close'></text>
 						</view>
@@ -87,11 +87,11 @@
 					</view>
 				</view>
 			</view>
-			
-			
+
+
 		</form>
 		<view class="padding flex flex-direction">
-			<button class="cu-btn  bg-olive lg">提交</button>
+			<button class="cu-btn  bg-olive lg" @click="submitBtn">提交</button>
 		</view>
 	</view>
 </template>
@@ -100,50 +100,193 @@
 	export default {
 		data() {
 			return {
-				name:'',
-				sex:'女',
-				phone:'',
-				code:'',
-				serviceArea:'',
-				workExp:'',
+				name: '',
+				sex: '女',
+				phone: '',
+				code: '',
+				serviceArea: '浙江省绍兴市越城区',
+				workExp: '',
 				headImg: [],
-				sfzImg:[],
+				arr_img_head:[],
+				sfzImg: [],
+				arr_img_sfz:[],
 				region: ['浙江省', '绍兴市', '越城区'],
-				picker: ['0-1年', '1-3年', '3-5年','5-10年'],
-				pickerIndex:-1,
-				switchSex:false,
-				countdown:'获取验证码',
-				disabled:false,
-				timestatus:false
+				picker: ['0-1年', '1-3年', '3-5年', '5-10年'],
+				pickerIndex: -1,
+				switchSex: false,
+				countdown: '获取验证码',
+				disabled: false,
+				timestatus: false
 			}
 		},
 		onLoad() {},
 		methods: {
+			submitBtn(){
+				var name = this.name;
+				var sex = this.sex;
+				var phone = this.phone;
+				var code = this.code;
+				var serviceArea = this.serviceArea;
+				var workExp = this.workExp;
+				var headImg = this.headImg;
+				var sfzImg = this.sfzImg;
+				if(name == ''){
+					uni.showToast({title:'请输入姓名',icon:'none'})
+				}else if(phone == ''){
+					uni.showToast({title:'请输入手机号',icon:'none'})
+				}else if(code == ''){
+					uni.showToast({title:'请输入正确的验证码',icon:'none'})
+				}else if(serviceArea == ''){
+					uni.showToast({title:'请选择服务范围',icon:'none'})
+				}else if(workExp == ''){
+					uni.showToast({title:'请选择工作经验',icon:'none'})
+				}else if(headImg.length == 0){
+					uni.showToast({title:'请选择头像',icon:'none'})
+				}else if(sfzImg.length < 2){
+					uni.showToast({title:'请选择身份证',icon:'none'})
+				}else{
+					uni.showLoading({
+						title:'提交中'
+					})
+					this.uploadimgHead();
+					this.uploadimgSfz();
+				}
+				
+			},
+			//完成提交去审核
+			publish(){
+				uni.hideLoading();
+			},
+			uploadimgHead () {//这里触发图片上传的方法
+			    var pics = this.headImg;
+			    var that = this;
+			    that.uploadimgs_head({
+			        url: 'https://www.sxscott.com/housework/upload/avatar',//这里是你图片上传的接口
+			        path: pics,//这里是选取的图片的地址数组
+			        formData:{
+			          picType:'head'
+			        }
+			      });
+			  },
+			  uploadimgSfz () {//这里触发图片上传的方法
+			      var pics = this.sfzImg;
+			      var that = this;
+			      that.uploadimgs_sfz({
+			          url: 'https://www.sxscott.com/housework/upload/avatar',//这里是你图片上传的接口
+			          path: pics,//这里是选取的图片的地址数组
+			          formData:{
+			            picType:'sfz'
+			          }
+			        });
+			    },
+				
+			  uploadimgs_head(data){
+			    var that = this;
+			    var i = data.i ? data.i : 0; //当前上传的哪张图片
+			    var success = data.success ? data.success : 0; //上传成功的个数
+			    var fail = data.fail ? data.fail : 0; //上传失败的个数
+			    var pics = data.pics ? data.pics : [];
+			    uni.uploadFile({
+			      header: {
+			        'content-type': 'application/json',
+			        'Authorization': "Bearer " + uni.getStorageSync('userInfo').token
+			      },
+			      url: data.url,
+			      filePath: data.path[i],
+			      name: 'file', //这里根据自己的实际情况改
+			      formData: data.formData, //这里是上传图片时一起上传的数据
+			      success: (resp) => {
+			        console.log(JSON.parse(resp.data))
+			        success++; //图片上传成功，图片上传成功的变量+1
+			        pics.push(JSON.parse(resp.data).data);
+			
+			      },
+			      fail: (res) => {
+			        fail++; //图片上传失败，图片上传失败的变量+1
+			        console.log('fail:' + i + "fail:" + fail);
+			      },
+			      complete: () => {
+			        i++; //这个图片执行完上传后，开始上传下一张
+			        if (i == data.path.length) { //当图片传完时，停止调用          
+			          console.log('成功：' + success + " 失败：" + fail);
+					  that.arr_img_head = pics
+			           console.log(that.arr_img_head)
+			          // that.publish();
+			        } else { //若图片还没有传完，则继续调用函数
+			          data.i = i;
+			          data.success = success;
+			          data.fail = fail;
+			          data.pics = pics;
+			          that.uploadimgs_head(data);
+			        }
+			      }
+			    });
+			  },
+			  uploadimgs_sfz(data){
+			    var that = this;
+			    var i = data.i ? data.i : 0; //当前上传的哪张图片
+			    var success = data.success ? data.success : 0; //上传成功的个数
+			    var fail = data.fail ? data.fail : 0; //上传失败的个数
+			    var pics = data.pics ? data.pics : [];
+			    uni.uploadFile({
+			      header: {
+			        'content-type': 'application/json',
+			        'Authorization': "Bearer " + uni.getStorageSync('userInfo').token
+			      },
+			      url: data.url,
+			      filePath: data.path[i],
+			      name: 'file', //这里根据自己的实际情况改
+			      formData: data.formData, //这里是上传图片时一起上传的数据
+			      success: (resp) => {
+			        console.log(JSON.parse(resp.data))
+			        success++; //图片上传成功，图片上传成功的变量+1
+			        pics.push(JSON.parse(resp.data).data);
+			  			
+			      },
+			      fail: (res) => {
+			        fail++; //图片上传失败，图片上传失败的变量+1
+			        console.log('fail:' + i + "fail:" + fail);
+			      },
+			      complete: () => {
+			        i++; //这个图片执行完上传后，开始上传下一张
+			        if (i == data.path.length) { //当图片传完时，停止调用          
+			          console.log('成功：' + success + " 失败：" + fail);
+			  					  that.arr_img_sfz= pics
+			          console.log(that.arr_img_sfz)
+			          that.publish();
+			        } else { //若图片还没有传完，则继续调用函数
+			          data.i = i;
+			          data.success = success;
+			          data.fail = fail;
+			          data.pics = pics;
+			          that.uploadimgs_sfz(data);
+			        }
+			      }
+			    });
+			  },
 			getCode() {
 				var that = this;
-			       that.disabled = true;//禁用点击
-			                          
-                uni.showToast({
-                   title: '获取验证码成功',
-                   icon: 'none'
-                });
-                that.countdown = 60;
-                that.timestatus = true;
-                that.clear = setInterval(that.countDown,1000);                
-			                                  
+				that.disabled = true; //禁用点击
+				uni.showToast({
+					title: '获取验证码成功',
+					icon: 'none'
+				});
+				that.countdown = 60;
+				that.timestatus = true;
+				that.clear = setInterval(that.countDown, 1000);
 			},
 			// 倒计时
-            countDown(){
-                var that = this;
-                if(!that.countdown){                    
-                    that.disabled = false;
-                    that.timestatus = false;
-                    that.countdown = '获取验证码';
-                    clearInterval(that.clear);
-                }else{
-                    --that.countdown;
-                }
-            },
+			countDown() {
+				var that = this;
+				if (!that.countdown) {
+					that.disabled = false;
+					that.timestatus = false;
+					that.countdown = '获取验证码';
+					clearInterval(that.clear);
+				} else {
+					--that.countdown;
+				}
+			},
 			ChooseHeadImage() {
 				uni.chooseImage({
 					count: 1, //默认9
@@ -158,7 +301,7 @@
 					}
 				});
 			},
-			ChooseSfzImage(){
+			ChooseSfzImage() {
 				uni.chooseImage({
 					count: 2, //默认9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
@@ -185,7 +328,7 @@
 					}
 				})
 			},
-			DelSfzImg(e){
+			DelSfzImg(e) {
 				uni.showModal({
 					title: '提示',
 					content: '确定删除？',
@@ -198,19 +341,20 @@
 					}
 				})
 			},
-			getName(e){
+			getName(e) {
 				this.name = e.detail.value;
 			},
-			getPhone(e){
+			getPhone(e) {
 				this.phone = e.detail.value;
 			},
-			getYzm(e){
+			getYzm(e) {
 				this.code = e.detail.value;
 			},
-		
+
 			RegionChange(e) {
+				console.log(e.detail.value)
 				this.region = e.detail.value
-				this.serviceArea = e.detail.value
+				this.serviceArea = e.detail.value[0] + e.detail.value[1] + e.detail.value[2]
 			},
 			PickerChange(e) {
 				this.pickerIndex = e.detail.value
@@ -219,9 +363,9 @@
 			},
 			SwitchSex(e) {
 				this.switchSex = e.detail.value
-				if(e.detail.value){
+				if (e.detail.value) {
 					this.sex = '男';
-				}else{
+				} else {
 					this.sex = '女';
 				}
 			}
@@ -233,7 +377,8 @@
 	.cu-form-group .title {
 		min-width: calc(4em + 15px);
 	}
-	.margin-top{
+
+	.margin-top {
 		margin-top: 10upx;
 	}
 </style>

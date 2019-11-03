@@ -1960,7 +1960,7 @@ module.exports = {
     //登录授权
     jwtLoginUrl: "".concat(apiUrl, "/user/jwtLogin"),
     //发送模板消息
-    templeMsg: "".concat(apiUrl, "/userForm/message"),
+    sendTempleMsg: "".concat(apiUrl, "/userForm/message"),
     //收集formId
     getFormId: "".concat(apiUrl, "/userForm/insertForm"),
     //字段获取字典
@@ -7945,6 +7945,55 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _cleanNormal = _interopRequireDefault(__webpack_require__(/*! ./pages/cleanNormal/cleanNormal.vue */ 23));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_cleanNormal.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 250:
+/*!***************************************************!*\
+  !*** F:/Github/uniapp-lpp/common/js/templeMsg.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);
+
+
+var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
+
+sendTempleMsg =
+_apiConfig.default.api.sendTempleMsg;
+
+function templeMsg(openId, template_id, page, data) {
+  console.log(template_id);
+  console.log(page);
+  console.log(data);
+  var that = this;
+
+  var infoOpt = {
+    url: sendTempleMsg,
+    type: 'POST',
+    data: {
+      openId: openId,
+      template_id: template_id,
+      page: page,
+      data: JSON.stringify(data),
+      emphasis_keyword: 'keyword1.DATA' },
+
+    header: {
+      'content-type': 'application/json' } };
+
+
+  var infoCb = {};
+  infoCb.success = function (res) {
+    console.log(res);
+  };
+  infoCb.beforeSend = function () {};
+  (0, _sendAjax.sendAjax)(infoOpt, infoCb, function () {});
+}
+
+module.exports = {
+  templeMsg: templeMsg };
 
 /***/ }),
 

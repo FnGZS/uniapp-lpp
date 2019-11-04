@@ -271,7 +271,7 @@ var _default =
         url: 'https://www.sxscott.com/housework/upload/avatar', //这里是你图片上传的接口
         path: pics, //这里是选取的图片的地址数组
         formData: {
-          picType: 'head' } });
+          type: 'head' } });
 
 
     },
@@ -282,7 +282,7 @@ var _default =
         url: 'https://www.sxscott.com/housework/upload/avatar', //这里是你图片上传的接口
         path: pics, //这里是选取的图片的地址数组
         formData: {
-          picType: 'sfz' } });
+          type: 'sfz' } });
 
 
     },

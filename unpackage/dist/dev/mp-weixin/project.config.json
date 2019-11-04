@@ -22,31 +22,13 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/order/order",
-					"pathName": "pages/order/order",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/user/serviceCert/serviceCert",
-					"pathName": "pages/user/serviceCert/serviceCert",
-					"scene": null
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }

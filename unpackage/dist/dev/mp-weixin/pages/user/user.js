@@ -160,8 +160,8 @@ var _default =
       severList: [
       [
       // {name:'我的地址',icon:'icon-dizhi',url:'address/address'},
-      { name: '积分兑换', icon: 'icon-shoucang' },
-      { name: '我的兑换', icon: 'icon-shoucang' },
+      { name: '积分兑换', icon: 'icon-shoucang', url: '' },
+      { name: '我的兑换', icon: 'icon-shoucang', url: '' },
       { name: '服务认证', icon: 'icon-fuwurenzheng', url: 'serviceCert/serviceCert' },
       { name: '排班信息', icon: 'icon-paiban', url: 'paiban/paiban' }],
 
@@ -200,8 +200,16 @@ var _default =
     toPage: function toPage(list_i, li_i) {
       //获取跳转的选项
       var toUrl = this.severList[list_i][li_i].url;
-      uni.navigateTo({
-        url: toUrl });
+      if (toUrl == '') {
+        uni.showToast({
+          title: '暂无开放，请耐心等待',
+          icon: 'none' });
+
+      } else {
+        uni.navigateTo({
+          url: toUrl });
+
+      }
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

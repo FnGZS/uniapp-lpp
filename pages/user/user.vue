@@ -53,8 +53,8 @@
 				severList:[
 					[
 						// {name:'我的地址',icon:'icon-dizhi',url:'address/address'},
-						{name:'积分兑换',icon:'icon-shoucang'},
-						{name:'我的兑换',icon:'icon-shoucang'},
+						{name:'积分兑换',icon:'icon-shoucang',url:''},
+						{name:'我的兑换',icon:'icon-shoucang',url:''},
 						{name:'服务认证',icon:'icon-fuwurenzheng',url:'serviceCert/serviceCert'},
 						{name:'排班信息',icon:'icon-paiban',url:'paiban/paiban'},
 					],
@@ -93,9 +93,17 @@
 			toPage(list_i,li_i){
 				//获取跳转的选项
 				var toUrl = this.severList[list_i][li_i].url;
-				uni.navigateTo({
-					url:toUrl
-				})
+				if(toUrl == ''){
+					uni.showToast({
+						title:'暂无开放，请耐心等待',
+						icon:'none'
+					})
+				}else{
+					uni.navigateTo({
+						url:toUrl
+					})
+				}
+				
 			}
 		}
 	}

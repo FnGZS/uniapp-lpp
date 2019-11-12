@@ -99,6 +99,7 @@
 				this.orderState = index;
 				this.getOrderList();
 			},
+			//普通用户取消订单
 			userCancelOrder(e){
 				var that = this;
 				var detail = e.currentTarget.dataset.detail;
@@ -171,6 +172,7 @@
 				    }
 				});
 			},
+			//保洁员取消订单
 			cleanerCancelOrder(e){
 				var that = this;
 				var detail = e.currentTarget.dataset.detail;
@@ -244,6 +246,7 @@
 				    }
 				});
 			},
+			//保洁员确认订单
 			confirmOrder(e){
 				var that = this;
 				var id = e.currentTarget.dataset.id;
@@ -312,6 +315,7 @@
 				    }
 				});
 			},
+			//获取订单列表
 			getOrderList(){
 				var pageNum = this.pageNum;
 				var pageSize = this.pageSize;

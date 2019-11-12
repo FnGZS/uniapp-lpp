@@ -44,7 +44,8 @@ function sendAjax(options, callback,type) {
 	const scallback = callback.success || function(data) {};
 	//执行回调
 	const ccallback = callback.complete || function(data) {};
-
+	//错误回调
+	const errorallback = callback.error || function(data) {};
 	bcallback()
 	uni.request({
 		url: _sets.url,
@@ -58,11 +59,14 @@ function sendAjax(options, callback,type) {
 			if (res.data.code == 200) {
 				scallback(res.data.data)
 			} else{
-				uni.showModal({
-					title: '提示',
-					content: res.data.message || '处理失败',
-					showCancel: false
-				});
+				errorallback(res.data)
+				if(!callback.hasOwnProperty('error')){
+					uni.showModal({
+						title: '提示',
+						content: res.data.message || '处理失败',
+						showCancel: false
+					});
+				}
 			}
 		},
 		fail() {

@@ -176,7 +176,6 @@ export default {
 		if(uni.getStorageSync('userInfo')){
 			this.modalName =null
 			this.getDict()
-			this.getNews()
 		}else{
 			this.modalName = 'toUserLogin'
 		}
@@ -197,7 +196,6 @@ export default {
 			callback.success = function() {
 				that.modalName = null;
 				that.getDict();
-				that.getNews();
 			};
 			login(callback);
 		},
@@ -217,6 +215,18 @@ export default {
 			let infoCb = {};
 			infoCb.success = function(res) {
 				that.ylxxList = res.list;
+				that.getNews();
+			};
+			infoCb.error = function(res) {
+				if(res.status ==='000'){
+					that.modalName = 'toUserLogin'
+				}else{
+					uni.showModal({
+						title: '提示',
+						content:'处理失败',
+						showCancel: false
+					});
+				}
 			};
 			sendAjax(infoOpt, infoCb);
 		},

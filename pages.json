@@ -118,6 +118,18 @@
 			"style": {
 				"navigationBarTitleText": "排班信息"
 			}
+		},
+		{
+			"path": "pages/tests/index",
+			"style": {
+				"navigationBarTitleText": "试卷考核"
+			}
+		},
+		{
+			"path": "pages/tests/info",
+			"style": {
+				"navigationBarTitleText": "试卷考核"
+			}
 		}
 	],
 

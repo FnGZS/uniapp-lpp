@@ -123,6 +123,7 @@
 <script>
 import { login } from '@/common/js/login.js';
 import { sendAjax } from '@/common/js/sendAjax.js';
+import { htmlToText } from '@/common/js/tools.js';
 import config from '@/apiConfig';
 const { dictDetailUrl,getNewsUrl} = config.api;
 export default {
@@ -243,6 +244,10 @@ export default {
 			};
 			let infoCb = {};
 			infoCb.success = function(res) {
+				//富文本转换
+				res.list.forEach(res=>{
+					res.title = htmlToText(res.title)
+				})
 				that.msgList = res.list
 			};
 			sendAjax(infoOpt, infoCb);

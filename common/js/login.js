@@ -39,7 +39,7 @@ function login(callback, first) {
 									let infoCb = {}
 									infoCb.success = function(res) {
 										res.user.token = res.token
-										console.log(res)
+										res.user.userDetail = res.userDetail
 										uni.setStorageSync("userInfo", res.user)
 										scallback(res.user)
 									}

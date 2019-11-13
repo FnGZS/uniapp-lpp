@@ -5,4 +5,30 @@
 .margin-top {
 	margin-top: 10rpx;
 }
+.tips{
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	margin-top: 250rpx;
+}
+.cuIcon-emoji{
+	font-size: 100rpx;
+	color: #007AFF;
+}
+.cuIcon-roundclose{
+	font-size: 100rpx;
+	color: #DD514C;
+}
+.content{
+	margin-top: 10rpx;
+	color: #007AFF;
+}
+.content1{
+	margin-top: 10rpx;
+	color: #DD514C;
+}
+.reason{
+	margin-top: 10rpx;
+	color: #DD514C;
+}
 

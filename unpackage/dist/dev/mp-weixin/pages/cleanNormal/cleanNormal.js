@@ -273,11 +273,15 @@ var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 1
 //
 //
 //
-var _getCleanerList = _apiConfig.default.api.getCleanerList;var _default = { data: function data() {return { searchName: '', first: '地区', second: '价格', thirds: '接单量', fours: '类型', city_index: 0, price_index: 0, amount_index: 0, type_index: 0, displays: 'none', cityArr: [{ 'value': '全部', name: '全部' }, { 'value': '越城区', name: '越城区' }, { 'value': '柯桥区', name: '柯桥区' }, { 'value': '上虞区', name: '上虞区' }], priceArr: [{ 'value': '默认' }, { 'value': '价格升序' }, { 'value': '价格降序' }], amountArr: [{ 'value': '默认' }, { 'value': '接单量升序' }, { 'value': '接单量降序' }], typeArr: [{ 'value': '默认' }, { 'value': '明星保洁员' }, { 'value': '普通保洁员' }], currentTab: 0, list: [] };}, methods: { onLoad: function onLoad(e) {this.getCleanerList();if (e.title) {uni.setNavigationBarTitle({ title: e.title });}}, //获取保洁员列表
-    getCleanerList: function getCleanerList() {var that = this;var name = this.searchName;var place = this.first == '全部' || this.first == '地区' ? '' : this.first;var price = this.price_index;var total = this.amount_index;console.log(place);var infoOpt = { url: _getCleanerList, type: 'POST', data: { name: name, place: place, price: price, total: total, pageNum: 1, pageSize: 10 } };var infoCb = {};infoCb.success = function (res) {console.log(res);that.list = res.list;uni.hideLoading();}, infoCb.beforeSend = function () {uni.showLoading({ title: '加载中' });};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, input_searchName: function input_searchName(e) {this.searchName = e.detail.value;}, //拨打电话
+var _getCleanerList = _apiConfig.default.api.getCleanerList;var _default = { data: function data() {return { type: '', searchName: '', first: '地区', second: '价格', thirds: '接单量', fours: '类型', city_index: 0, price_index: 0, amount_index: 0, type_index: 0, displays: 'none', cityArr: [{ 'value': '全部', name: '全部' }, { 'value': '越城区', name: '越城区' }, { 'value': '柯桥区', name: '柯桥区' }, { 'value': '上虞区', name: '上虞区' }], priceArr: [{ 'value': '默认' }, { 'value': '价格升序' }, { 'value': '价格降序' }], amountArr: [{ 'value': '默认' }, { 'value': '接单量升序' }, { 'value': '接单量降序' }], typeArr: [{ 'value': '默认' }, { 'value': '明星保洁员' }, { 'value': '普通保洁员' }], currentTab: 0, list: [] };}, methods: { onLoad: function onLoad(e) {if (e.title) {uni.setNavigationBarTitle({ title: e.title });}this.type = e.title;this.getCleanerList();}, //获取保洁员列表
+    getCleanerList: function getCleanerList() {var that = this;var name = this.searchName;var place = this.first == '全部' || this.first == '地区' ? '' : this.first;var price = this.price_index;var total = this.amount_index;var type = this.type;console.log(place);var infoOpt = { url: _getCleanerList, type: 'POST', data: { name: name, place: place, price: price, total: total, type: type, pageNum: 1, pageSize: 10 } };var infoCb = {};infoCb.success = function (res) {console.log(res);that.list = res.list;uni.hideLoading();}, infoCb.beforeSend = function () {uni.showLoading({ title: '加载中' });};(0, _sendAjax.sendAjax)(infoOpt, infoCb);}, input_searchName: function input_searchName(e) {this.searchName = e.detail.value;}, //拨打电话
     phone: function phone(e) {console.log(e);uni.makePhoneCall({ phoneNumber: e.currentTarget.dataset.phone });}, // 点击空白处
     hideNav: function hideNav() {this.displays = "none";}, // 点击导航栏
-    tabNav: function tabNav(e) {this.displays = "block";if (this.currentTab === e.target.dataset.current) {return false;} else {this.currentTab = e.target.dataset.current;}
+    tabNav: function tabNav(e) {this.displays = "block";if (this.currentTab === e.target.dataset.current) {return false;
+      } else {
+        this.currentTab = e.target.dataset.current;
+
+      }
     },
 
     // 点击地区

@@ -175,6 +175,7 @@ export default {
 		//判断是否第一次进入小程序		
 		if(uni.getStorageSync('userInfo')){
 			this.modalName =null
+			login({});
 			this.getDict()
 		}else{
 			this.modalName = 'toUserLogin'

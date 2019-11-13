@@ -88,6 +88,7 @@
 	export default {
 		data() {
 			return {
+				type:'',
 				searchName:'',
 				first: '地区',
 				second: '价格',
@@ -108,12 +109,13 @@
 		},
 		methods: {
 			onLoad: function(e) {
-				this.getCleanerList();
 				if(e.title){
 					uni.setNavigationBarTitle({
 					    title: e.title
 					});
 				}
+				this.type = e.title
+				this.getCleanerList();
 			},
 			//获取保洁员列表
 			getCleanerList(){
@@ -122,6 +124,7 @@
 				var place = (this.first == '全部'||this.first == '地区')?'':this.first;
 				var price = this.price_index ;
 				var total = this.amount_index ;
+				var type = this.type;
 				console.log(place)
 				let infoOpt = {
 					url: getCleanerList,
@@ -131,6 +134,7 @@
 						place:place,
 						price:price,
 						total:total,
+						type:type,
 						pageNum: 1,
 						pageSize: 10
 					}

@@ -68,7 +68,7 @@
 		sendAjax
 	} from '@/common/js/sendAjax.js';
 	import config from '@/apiConfig';
-	const {} = config.api;
+	const {setCleanerWork} = config.api;
 	export default {
 		data() {
 			return {
@@ -92,8 +92,8 @@
 		},
 		methods: {
 			onLoad: function(e) {
-				console.log(e)
-				this.id = e.id;
+				this.id = uni.getStorageSync('userDetail').cleaner.id;
+				
 				this.getWorkTime();
 			},
 			paiban(e){
@@ -103,6 +103,7 @@
 				this.chooseData = e.currentTarget.dataset.data;
 				console.log(this.chooseType)
 				console.log(this.chooseData)
+				
 			},
 			cancel(){
 				var type = this.chooseType;
@@ -121,11 +122,32 @@
 			confirm(){
 				var type = this.chooseType;
 				var work_date = this.chooseData;
-				if(type == 'mor'){
-					status_mor = 1;
-				}else{
-					status_aft = 1;
-				}
+				// if(type == 'mor'){
+				// 	status_mor = 1;
+				// }else{
+				// 	status_aft = 1;
+				// }
+				var that = this;
+				let infoOpt = {
+					url: setCleanerWork,
+					type: 'POST',
+					data: {
+						cid:this.id,
+						workDate:work_date,
+						type:type
+					}
+				};
+				let infoCb = {};
+				infoCb.success = function(res) {
+					console.log(res)
+					uni.hideLoading()
+				},
+				infoCb.beforeSend = () => {
+				  uni.showLoading({
+				  	title:'加载中'
+				  })
+				};
+				sendAjax(infoOpt, infoCb);
 			},
 			hideModal(e) {
 				this.modalName = null
@@ -144,7 +166,6 @@
 				var date = new Date(time.setDate(time.getDate() + num + 1)).getDate() //这里先获取日期，在按需求设置日期，最后获取需要的
 				if (date < 10) date = '0' + date;
 				var year = time.getFullYear();
-				console.log(year)
 				var month = time.getMonth() + 1 // 获取月份
 				var day = time.getDay() //  获取星期
 				switch (day) { //  格式化

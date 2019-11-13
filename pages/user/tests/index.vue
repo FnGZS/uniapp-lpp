@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<image @click="toInfo" src="/static/img/cleanerTop.jpg" mode=""></image>
+		<image @click="toInfo" src="../../../static/img/cleanerTop.jpg" mode=""></image>
 	</view>
 </template>
 

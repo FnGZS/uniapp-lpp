@@ -115,7 +115,7 @@
 	export default {
 		data() {
 			return {
-				status: 1,
+				status: 0,
 				name: '',
 				sex: '女',
 				phone: '',

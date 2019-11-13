@@ -19,8 +19,8 @@
     "pages/user/serviceCert/serviceCert",
     "pages/order/orderDetail/orderDetail",
     "pages/user/paiban/paiban",
-    "pages/tests/index",
-    "pages/tests/info"
+    "pages/user/tests/index",
+    "pages/user/tests/info"
   ],
   "subPackages": [],
   "window": {

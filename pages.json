@@ -120,13 +120,13 @@
 			}
 		},
 		{
-			"path": "pages/tests/index",
+			"path": "pages/user/tests/index",
 			"style": {
 				"navigationBarTitleText": "试卷考核"
 			}
 		},
 		{
-			"path": "pages/tests/info",
+			"path": "pages/user/tests/info",
 			"style": {
 				"navigationBarTitleText": "试卷考核"
 			}

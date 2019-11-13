@@ -1,7 +1,7 @@
 // const apiUrl = 'http://localhost:8080'
-const apiUrl = 'http://192.168.1.119:8080'
+// const apiUrl = 'http://192.168.1.119:8080'
 // const apiUrl = 'http://192.168.1.116:8081'
-// const apiUrl = 'https://www.sxscott.com/housework'
+const apiUrl = 'https://www.sxscott.com/housework'
 
 module.exports = {
 	api: {
@@ -27,6 +27,8 @@ module.exports = {
 		getCleanerDeail:`${apiUrl}/cleaner/loadCleanerById`,
 		//获取保洁员排班信息
 		getCleanerWork:`${apiUrl}/cleaner/cleanerWork`,
+		//设置保洁员排班
+		setCleanerWork:`${apiUrl}/cleaner/updateCleanerWorkDetail`,
 		//试卷列表
 		getTestList:`${apiUrl}/test/selecteByMap`,
 		//考核通过

@@ -55,6 +55,7 @@
 						// {name:'我的地址',icon:'icon-dizhi',url:'address/address'},
 						{name:'积分兑换',icon:'icon-shoucang',url:''},
 						{name:'我的兑换',icon:'icon-shoucang',url:''},
+						{name:'考试认证',icon:'icon-fuwurenzheng',url:'tests/index'},
 						{name:'服务认证',icon:'icon-fuwurenzheng',url:'serviceCert/serviceCert'},
 						{name:'排班信息',icon:'icon-paiban',url:'paiban/paiban'},
 					],

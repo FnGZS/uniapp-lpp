@@ -1833,6 +1833,7 @@ function login(callback, first) {
                     res.user.token = res.token;
                     res.user.userDetail = res.userDetail;
                     uni.setStorageSync("userInfo", res.user);
+                    uni.setStorageSync("userDetail", res.userDetail);
                     scallback(res.user);
                   };
                   (0, _sendAjax.sendAjax)(infoOpt, infoCb, 1);
@@ -2012,7 +2013,7 @@ module.exports = {
     //获取订单详情
     getOrderDetail: "".concat(apiUrl, "/pay/payOrder/"),
     //获取保洁员
-    getCleanerList: "".concat(apiUrl, "/cleaner/findMenus"),
+    getCleanerList: "".concat(apiUrl, "/cleaner/findCleaners"),
     //获取保洁员详细信息
     getCleanerDeail: "".concat(apiUrl, "/cleaner/loadCleanerById"),
     //获取保洁员排班信息

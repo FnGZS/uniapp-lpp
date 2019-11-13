@@ -203,10 +203,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      status: 1,
       name: '',
       sex: '女',
       phone: '',
@@ -238,19 +254,40 @@ var _default =
       var headImg = this.headImg;
       var sfzImg = this.sfzImg;
       if (name == '') {
-        uni.showToast({ title: '请输入姓名', icon: 'none' });
+        uni.showToast({
+          title: '请输入姓名',
+          icon: 'none' });
+
       } else if (phone == '') {
-        uni.showToast({ title: '请输入手机号', icon: 'none' });
+        uni.showToast({
+          title: '请输入手机号',
+          icon: 'none' });
+
       } else if (code == '') {
-        uni.showToast({ title: '请输入正确的验证码', icon: 'none' });
+        uni.showToast({
+          title: '请输入正确的验证码',
+          icon: 'none' });
+
       } else if (serviceArea == '') {
-        uni.showToast({ title: '请选择服务范围', icon: 'none' });
+        uni.showToast({
+          title: '请选择服务范围',
+          icon: 'none' });
+
       } else if (workExp == '') {
-        uni.showToast({ title: '请选择工作经验', icon: 'none' });
+        uni.showToast({
+          title: '请选择工作经验',
+          icon: 'none' });
+
       } else if (headImg.length == 0) {
-        uni.showToast({ title: '请选择头像', icon: 'none' });
+        uni.showToast({
+          title: '请选择头像',
+          icon: 'none' });
+
       } else if (sfzImg.length < 2) {
-        uni.showToast({ title: '请选择身份证', icon: 'none' });
+        uni.showToast({
+          title: '请选择身份证',
+          icon: 'none' });
+
       } else {
         uni.showLoading({
           title: '提交中' });

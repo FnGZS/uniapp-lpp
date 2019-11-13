@@ -41,6 +41,7 @@ function login(callback, first) {
 										res.user.token = res.token
 										res.user.userDetail = res.userDetail
 										uni.setStorageSync("userInfo", res.user)
+										uni.setStorageSync("userDetail", res.userDetail)
 										scallback(res.user)
 									}
 									sendAjax(infoOpt, infoCb,1);

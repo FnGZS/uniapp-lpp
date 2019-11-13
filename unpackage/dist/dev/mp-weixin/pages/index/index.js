@@ -361,7 +361,7 @@ var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 1
 //
 //
 var _config$api = _apiConfig.default.api,dictDetailUrl = _config$api.dictDetailUrl,getNewsUrl = _config$api.getNewsUrl;var _default = { data: function data() {return { ylxxList: [], swiperList: [{ id: 0, type: 'image', url: 'https://www.sxscott.com/img/banner.png' }], baojieList: [{ id: 0, title: '常规保洁', content: 'XXX', picture: 'https://www.sxscott.com/img/c.png' }, { id: 1, title: '深度保洁', content: 'XXX', picture: 'https://www.sxscott.com/img/c.png' }, { id: 2, title: '新居开荒', content: 'XXX', picture: 'https://www.sxscott.com/img/c.png' }, { id: 3, title: '办公室桌面保洁', content: 'XXX', picture: 'https://www.sxscott.com/img/c.png' }, { id: 4, title: '家居整洁', content: 'XXX', picture: 'https://www.sxscott.com/img/c.png' }, { id: 5, title: '甲醛治理', content: 'XXX', picture: 'https://www.sxscott.com/img/c.png' }], msgList: [], modalName: '' };}, onLoad: function onLoad() {//判断是否第一次进入小程序		
-    if (uni.getStorageSync('userInfo')) {this.modalName = null;this.getDict();} else {this.modalName = 'toUserLogin';}}, methods: { //获取用户信息
+    if (uni.getStorageSync('userInfo')) {this.modalName = null;(0, _login.login)({});this.getDict();} else {this.modalName = 'toUserLogin';}}, methods: { //获取用户信息
     wxGetUserInfo: function wxGetUserInfo(res) {var that = this;if (!res.detail.iv) {uni.showToast({ title: '您取消了授权,登录失败', icon: 'none' });return false;} //授权成功回调
       var callback = {};callback.success = function () {that.modalName = null;that.getDict();};(0, _login.login)(callback);}, // 获取字典
     getDict: function getDict() {var that = this; //娱乐休闲

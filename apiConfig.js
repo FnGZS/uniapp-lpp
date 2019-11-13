@@ -22,7 +22,7 @@ module.exports = {
 		//获取订单详情
 		getOrderDetail:`${apiUrl}/pay/payOrder/`,
 		//获取保洁员
-		getCleanerList:`${apiUrl}/cleaner/findMenus`,
+		getCleanerList:`${apiUrl}/cleaner/findCleaners`,
 		//获取保洁员详细信息
 		getCleanerDeail:`${apiUrl}/cleaner/loadCleanerById`,
 		//获取保洁员排班信息

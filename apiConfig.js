@@ -1,12 +1,16 @@
 // const apiUrl = 'http://localhost:8080'
-// const apiUrl = 'http://192.168.1.119:8080'
+const apiUrl = 'http://192.168.1.119:8080'
 // const apiUrl = 'http://192.168.1.116:8081'
-const apiUrl = 'https://www.sxscott.com/housework'
+// const apiUrl = 'https://www.sxscott.com/housework'
 
 module.exports = {
 	api: {
 		//登录授权
 		jwtLoginUrl:`${apiUrl}/user/jwtLogin`,
+		//轮播图
+		getBannerListUrl:`${apiUrl}/banner/getList`,
+		//保洁推荐
+		cleanRecommendListUrl:`${apiUrl}/cleanRecommend/getList`,
 		//发送模板消息
 		sendTempleMsg:`${apiUrl}/userForm/message`,
 		//收集formId

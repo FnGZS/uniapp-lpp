@@ -123,12 +123,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
 var _sendAjax = __webpack_require__(/*! @/common/js/sendAjax.js */ 18);
 var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
@@ -147,14 +141,14 @@ var _apiConfig = _interopRequireDefault(__webpack_require__(/*! @/apiConfig */ 1
 //
 //
 //
-//
-//
-//
-//
-//
-//
 var _config$api = _apiConfig.default.api,getTestList = _config$api.getTestList,submit = _config$api.submit;var _default = { data: function data() {return { testList: [], dataList: [], //清空选择框
-      checkBox: true };}, onLoad: function onLoad() {this.getTest();}, methods: { getTest: function getTest() {var that = this;var infoOpt = { url: getTestList, type: 'POST', data: { id: '', title: '', pageNum: 1, pageSize: 999 } };
+      checkBox: true };}, onLoad: function onLoad() {this.getTest();}, methods: { getTest: function getTest() {var that = this;var infoOpt = { url: getTestList,
+        type: 'POST',
+        data: {
+          id: '',
+          title: '',
+          pageNum: 1,
+          pageSize: 999 } };
 
 
       var infoCb = {};
@@ -166,12 +160,6 @@ var _config$api = _apiConfig.default.api,getTestList = _config$api.getTestList,s
         that.testList = res.list;
       };
       (0, _sendAjax.sendAjax)(infoOpt, infoCb);
-    },
-    RadioChange: function RadioChange(e) {
-      this.dataList[e.target.dataset.index] = {
-        value: e.detail.value,
-        answer: e.target.dataset.answer };
-
     },
     CheckboxChange: function CheckboxChange(e) {
       this.checkBox = true;
@@ -186,7 +174,6 @@ var _config$api = _apiConfig.default.api,getTestList = _config$api.getTestList,s
       that.dataList.forEach(function (res) {
         newList.push(res);
       });
-      // console.log(newList)
       if (newList.length != that.testList.length) {
         uni.showModal({
           title: '提示',
@@ -194,7 +181,6 @@ var _config$api = _apiConfig.default.api,getTestList = _config$api.getTestList,s
           showCancel: false });
 
       } else {
-        console.log(that.dataList);
         var d = 0;
         var c = 0;
         that.dataList.forEach(function (res) {
@@ -204,7 +190,6 @@ var _config$api = _apiConfig.default.api,getTestList = _config$api.getTestList,s
             c++;
           }
         });
-        console.log(d, c);
         if (d / that.dataList.length >= 0.8) {
           var infoOpt = {
             url: submit,

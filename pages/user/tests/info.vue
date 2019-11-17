@@ -99,6 +99,7 @@ export default {
 							content: '恭喜你通过考核！',
 							showCancel: false
 						});
+						uni.setStorageSync('pasttest',1)
 					};
 					sendAjax(infoOpt, infoCb);
 				}else{

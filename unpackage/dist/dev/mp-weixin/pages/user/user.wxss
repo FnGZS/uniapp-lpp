@@ -112,11 +112,16 @@ page {
     padding-top: 25px;
 }
 .header .userInfo {
-    width: 90%;
+    width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-left: 25%;
 }
 .header .userInfo .face {
       -webkit-flex-shrink: 0;
@@ -173,7 +178,7 @@ page {
       font-size: 40rpx;
 }
 .hover {
-  background-color: #eee;
+  background-color: #fff;
 }
 .orders {
   background-color: #63B8FF;

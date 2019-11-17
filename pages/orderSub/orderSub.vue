@@ -1,5 +1,6 @@
 <template>
 	<view>
+		
 		<view class="orderBox">
 			<image src="../../static/img/gujia.png" mode=""></image>
 			<view class="orderTop">
@@ -26,8 +27,8 @@
 					<span class="color_4a4a4a">{{cleanerDetail.telephone}}</span>
 				</view>
 				<view class="orderBottomText lastText">
-					<span class="color_959595 font_22">简介:</span>
-					<span class="color_4a4a4a font_22">{{cleanerDetail.introduction}}</span>
+					<span class="color_959595 ">简介:</span>
+					<span class="color_4a4a4a ">{{cleanerDetail.introduction}}</span>
 				</view>
 			</view>
 		</view>
@@ -40,7 +41,55 @@
 			<span class="font_30">定金：</span>
 			<span class="font_30 color_red">￥888</span>
 		</view> -->
-		<view class="subBtn">立即预约</view>
+		<view class="rule">点击查看<view style="color: #0081FF;" @tap="showModal" data-target="Modal">《人工估价规则》</view></view>
+		<view class="btn">
+			<view class="subBtn">
+				<view>人工估价</view>
+				<button class='service-kefu-btn' plain open-type="contact"></button>
+			</view>
+			<view class="subBtn" @tap="yuyue">立即预约</view>
+		</view>
+		
+		
+		<view class="cu-modal" :class="modalName=='Modal'?'show':''">
+			<view class="cu-dialog">
+				<view class="cu-bar bg-white justify-end">
+					<view class="content">人工估价</view>
+					<view class="action" @tap="hideModal">
+						<text class="cuIcon-close text-red"></text>
+					</view>
+				</view>
+				<view class="padding-xl" style="font-size: 23upx;">
+					【常规保洁】  每平方米1元<br>
+					建筑面积：<br>
+					赠送面积(标注阳台数量)：<br>
+					油烟机表面深度清洁+25元<br>
+					油烟机深度清洁+100元<br>
+					马桶深度清洁消毒+20元<br>
+					楼梯扶手每一层+8元<br>
+					垃圾超过10斤+2元一斤<br><br>
+					【深度保洁】   3元每平米<br>
+					建筑面积：<br>
+					赠送面积（标注阳台数量）：<br>
+					窗户面积：每平米+10元<br>
+					移门面积：每平米+8元<br>
+					书房规划整理：每平米+20元<br>
+					衣帽间规划整理：每平米+20元<br>
+					垃圾超过10斤 +每斤2元<br>
+					注：窗户超过3米以外外部分不在服务内。体量超过12平米，物件超过350件作为单独服务项目。<br><br>
+					【新居开荒】  3.5元每平米<br>
+					建筑面积：<br>
+					赠送面积（注明阳台数量）：<br>
+					窗户面积：+10元每平米<br>
+					移门面积：+8元每平米<br>
+					室内楼梯：+每一层8元<br>
+					垃圾超过20斤 ： 每斤2元<br>
+					厕所超过三个，超出部分+50一个<br><br>
+					【办公室保洁】  1元每平方米<br>
+					厕所：+50元一个
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -51,6 +100,7 @@ const {getCleanerDeail} = config.api;
 export default {
 	data() {
 		return {
+			modalName: null,
 			data:[],
 			cleanerDetail:[],
 			sum:0
@@ -58,6 +108,7 @@ export default {
 	},
 	methods: {
 		onLoad: function(e) {
+			console.log(e)
 			this.data = JSON.parse(e.data)
 			console.log(this.data)
 			this.getCleanerDeail();
@@ -65,7 +116,32 @@ export default {
 		},
 		calculation(){
 			var num = this.data.area;
-			this.sum = num * 100; 
+			var cleanType = this.data.clearnType;
+			var billingType = this.data.billingType;
+			var unitPrice = 0;
+			if(billingType == 1){
+				if(cleanType == '常规保洁'){
+					unitPrice = 1.5;
+				}else if(cleanType == '深度保洁'){
+					unitPrice = 5;
+				}else if(cleanType == '新居开荒'){
+					unitPrice = 7;
+				}else if(cleanType == '办公室店面保洁'){
+					unitPrice = 1.5
+				}
+			}else{
+				if(cleanType == '常规保洁'){
+					unitPrice = 40;
+				}else if(cleanType == '深度保洁'){
+					unitPrice = 55;
+				}else if(cleanType == '新居开荒'){
+					unitPrice = 65;
+				}else if(cleanType == '办公室店面保洁'){
+					unitPrice = 40
+				}
+			}
+			
+			this.sum = num * unitPrice; 
 		},
 		getCleanerDeail(){
 			var that = this;
@@ -91,6 +167,12 @@ export default {
 			sendAjax(infoOpt, infoCb);
 		},
 		//下一页
+		showModal(e) {
+			this.modalName = e.currentTarget.dataset.target
+		},
+		hideModal(e) {
+			this.modalName = null
+		},
 		toSub() {
 			uni.navigateTo({
 				url: '../subscribeSub/subscribeSub'
@@ -150,15 +232,47 @@ export default {
 	flex-direction: row;
 	justify-content: flex-end;
 }
+.btn{
+	display: flex;
+}
 .subBtn {
 	position: relative;
 	background: #3598dc;
-	width: 690upx;
+	width: 47%;
 	height: 84upx;
 	margin: 20upx auto;
+	margin-right: 1%;
 	color: #ffffff;
 	line-height: 84upx;
-	font-size: 30upx;
+	font-size: 28upx;
 	text-align: center;
+}
+.service-kefu-btn{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #fff;
+	text-align: left;
+	font-size: 28upx;
+	z-index: 999;
+
+}
+button[plain] {
+  color:#6D6C6B;
+  
+padding-left:0;
+border:none;
+background-color:transparent;
+
+}
+.rule{
+	display: flex;
+	width: 100%;
+	text-align: center;
+	margin: auto;
+	font-size: 25upx;
+	justify-content: center;
 }
 </style>

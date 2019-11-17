@@ -68,6 +68,7 @@ export default {
 	data() {
 		return {
 			id:null,
+			cleanType:'',
 			basicsList: [{name: '预约时间'},{name: '完善信息'},{name: '估价'}],
 			// 0 预约时间 1 预约时间+完善信息 2  预约时间+完善信息+提交
 			scroll: 0,
@@ -82,6 +83,7 @@ export default {
 		onLoad: function(e) {
 			console.log(e)
 			this.id = e.id;
+			this.cleanType = e.cleanType;
 			this.getCleanerDeail();
 			this.getWorkTime();
 			this.getCleanerWork();
@@ -199,9 +201,10 @@ export default {
 			var id = this.id;
 			var day = this.chooseData;
 			var type = this.chooseType;
+			var cleanType =this.cleanType;
 			
 			uni.navigateTo({
-				url: '../subscribeSub/subscribeSub?day=' + day +'&type=' + type +'&id='+id
+				url: '../subscribeSub/subscribeSub?day=' + day +'&type=' + type +'&id='+id +'&cleanType='+cleanType
 			});
 		}
 	}

@@ -1,7 +1,7 @@
 // const apiUrl = 'http://localhost:8080'
-const apiUrl = 'http://192.168.1.119:8080'
+// const apiUrl = 'http://192.168.1.119:8080'
 // const apiUrl = 'http://192.168.1.116:8081'
-// const apiUrl = 'https://www.sxscott.com/housework'
+const apiUrl = 'https://www.sxscott.com/housework'
 
 module.exports = {
 	api: {
@@ -37,5 +37,7 @@ module.exports = {
 		getTestList:`${apiUrl}/test/selecteByMap`,
 		//考核通过
 		submit:`${apiUrl}/test/submit`,
+		//我的页面获取订单数量
+		getOrderCount:`${apiUrl}/pay/payOrder/count`,
 		}
 }

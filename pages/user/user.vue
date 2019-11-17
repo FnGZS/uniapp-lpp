@@ -9,7 +9,7 @@
 				</view>
 			</view>
 			<view class="setting">
-				<view class="iconfont icon-shezhi"></view>
+				<!-- <view class="iconfont icon-shezhi"></view> -->
 			</view>
 		</view>
 		<view class="orders">
@@ -23,7 +23,7 @@
 			</view>
 		</view> 
 		<view class="list" v-for="(list,list_i) in severList" :key="list_i">
-			<view class="li" v-for="(li,li_i) in list" @tap="toPage(list_i,li_i)" v-bind:class="{'noborder':li_i==list.length-1}"  hover-class="hover" :key="li.name" >
+			<view class="li" v-for="(li,li_i) in list" v-if="userDetail.role == li.role || li.role == ''" @tap="toPage(list_i,li_i)" v-bind:class="{'noborder':li_i==list.length-1}"  hover-class="hover" :key="li.name" >
 				<view class="icon">
 					<view class="iconfont" :class="li.icon">
 						
@@ -36,34 +36,39 @@
 		</view>
 	</view>
 </template>
+
 <script>
+	import { sendAjax } from '@/common/js/sendAjax.js';
+	import config from '@/apiConfig';
+	const {getOrderCount} = config.api;
 	export default {
 		data() {
 			return {
 				userInfo:null,
+				userDetail:null,
 				orderTypeLise:[
 					//name-标题 icon-图标 badge-角标
-					{name:'全部订单',icon:'icon-daipingjia',badge:0},
-					{name:'预约中',icon:'icon-daifukuan',badge:1},
-					{name:'预约成功',icon:'icon-daifahuo',badge:2},
-					{name:'预约失败',icon:'icon-yuyueshibai',badge:6},
-					{name:'已关闭',icon:'icon-yiguanbi',badge:9}
+					{name:'全部订单',icon:'icon-daipingjia',badge:0,state:0},
+					{name:'预约中',icon:'icon-daifukuan',badge:0,state:1},
+					{name:'预约成功',icon:'icon-daifahuo',badge:0,state:2},
+					{name:'预约失败',icon:'icon-yuyueshibai',badge:0,state:3},
+					{name:'已关闭',icon:'icon-yiguanbi',badge:0,state:4}
 					
 				],
 				severList:[
 					[
 						// {name:'我的地址',icon:'icon-dizhi',url:'address/address'},
-						{name:'积分兑换',icon:'icon-shoucang',url:''},
-						{name:'我的兑换',icon:'icon-shoucang',url:''},
-						{name:'考试认证',icon:'icon-fuwurenzheng',url:'tests/index'},
-						{name:'服务认证',icon:'icon-fuwurenzheng',url:'serviceCert/serviceCert'},
-						{name:'排班信息',icon:'icon-paiban',url:'paiban/paiban'},
+						{name:'积分兑换',icon:'icon-shoucang',url:'',role:''},
+						{name:'我的兑换',icon:'icon-shoucang',url:'',role:''},
+						{name:'考试认证',icon:'icon-fuwurenzheng',url:'tests/index',role:'USER'},
+						{name:'服务认证',icon:'icon-fuwurenzheng',url:'serviceCert/serviceCert',role:'USER'},
+						{name:'排班信息',icon:'icon-paiban',url:'paiban/paiban',role:'CLEANER'},
 					],
 					
 					[
-						{name:'在线客服',icon:'icon-kefu',url:''},
-						{name:'平台规则',icon:'icon-guize',url:'rule/rule'},
-						{name:'关于我们',icon:'icon-guanyuwomen',url:'aboutUs/aboutUs'}
+						{name:'在线客服',icon:'icon-kefu',url:'',role:''},
+						{name:'平台规则',icon:'icon-guize',url:'rule/rule',role:''},
+						{name:'关于我们',icon:'icon-guanyuwomen',url:'aboutUs/aboutUs',role:''}
 						
 					]
 				],
@@ -71,23 +76,62 @@
 		},
 		onLoad() {
 			//加载
+		},
+		onShow(){
 			this.init();
 		},
 		methods: {
 			init() {
 				var userInfo = uni.getStorageSync('userInfo')
+				var userDetail =  uni.getStorageSync('userDetail')
 				userInfo['integral'] = "88888888"
 				console.log(userInfo)
 				//用户信息
 				this.userInfo = userInfo	
+				this.userDetail = userDetail
 				console.log(this.userInfo.nickName)
+				this.getOrderNum();
+			},
+			getOrderNum(){
+				var that = this;
+				var role = this.userDetail.role;
+				var id = this.userDetail.openId;
+				console.log(this.userDetail)
+				if(role == 'CLEANER'){
+					var data = {
+						clearnerId:this.userDetail.cleaner.id
+					}
+				}else if(role = 'USER'){
+					var data = {
+						employerId:this.userDetail.openId
+					}
+				}
+				let infoOpt = {
+					url: getOrderCount,
+					type: 'GET',
+					data:data
+				};
+				let infoCb = {};
+				infoCb.success = function(res) {
+					
+					that.orderTypeLise[0].badge = res.total;
+					that.orderTypeLise[1].badge = res.wait;
+					that.orderTypeLise[2].badge = res.successs;
+					that.orderTypeLise[3].badge = res.fail;
+					that.orderTypeLise[4].badge = res.close;
+					console.log(that.orderTypeLise)
+				};
+				infoCb.error = function(res) {
+				};
+				sendAjax(infoOpt, infoCb);
 			},
 			//用户点击订单类型
 			toOrderType(index){
 				// uni.showToast({title: this.orderTypeLise[index].name});
-				var toUrl = this.orderTypeLise[index].url;
-				uni.navigateTo({
-					url:toUrl
+				var state = this.orderTypeLise[index].state;
+				uni.setStorageSync('orderState',state) 
+				uni.switchTab({
+					url:'../order/order?state=' + state
 				})
 			},
 			//用户点击列表项
@@ -206,7 +250,7 @@ page{background-color:#fff}
 	&.status{padding-top:var(--status-bar-height);}
 	background: linear-gradient(to bottom ,#3598DC, #63B8FF);;width:100%;height:30vw;padding:0 4%;display:flex;align-items:center;
 	.userInfo{
-		width:90%;display:flex;
+		width:100%;display:flex;justify-content:center;margin-left: 25%;
 		.face{flex-shrink:0;width:15vw;height:15vw;
 			image{width:100%;height:100%;border-radius:100%}
 		}
@@ -221,7 +265,7 @@ page{background-color:#fff}
 		.icon-shezhi{color: #fff;font-size: 40upx;}
 	}
 }
-.hover{background-color:#eee}
+.hover{background-color:#fff}
 .orders{
 	background-color:#63B8FF;width:100%;height:11vw;padding:0 4%;margin-bottom:calc(11vw + 40upx);display:flex;align-items:flex-start;border-radius:0 0 100% 100%;margin-top: -1upx;
 	.box{

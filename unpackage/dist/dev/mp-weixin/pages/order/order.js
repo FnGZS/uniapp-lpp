@@ -223,6 +223,7 @@ _apiConfig.default.api,_getFormId = _config$api.getFormId,_getOrderList = _confi
       var time = detail.startTime;
       var reason = '用户取消预约';
       var cleanerId = detail.cleaner.openid;
+      console.log(detail);
       uni.showModal({
         title: '提示',
         content: '确认取消预约？',

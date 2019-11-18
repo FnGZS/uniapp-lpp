@@ -88,10 +88,16 @@
 		},
 		
 		onLoad(options){
+			console.log(options)
 			this.tabCurrentIndex = +options.state||0;
-			this.getOrderList();
 		},
-		 
+		onShow(options){
+			var state = uni.getStorageSync('orderState')
+			this.tabCurrentIndex = state;
+			this.orderState = state;
+			this.getOrderList();
+			console.log(options)
+		},
 		methods: {
 			//顶部tab点击
 			tabClick(index){
@@ -109,7 +115,8 @@
 				var address = detail.address;
 				var time = detail.startTime;
 				var reason = '用户取消预约';
-				var cleanerId = detail.clearnerId;
+				var cleanerId = detail.cleaner.openid;
+				console.log(detail)
 				uni.showModal({
 				    title: '提示',
 				    content: '确认取消预约？',
@@ -325,15 +332,15 @@
 				if(this.orderState == 0){
 					var data = {
 						employerId:employerId,
-						pageNum: pageNum,
-						pageSize: pageSize
+						// pageNum: pageNum,
+						// pageSize: pageSize
 					}
 				}else{
 					var data = {
 						employerId:employerId,
 						orderState:orderState,
-						pageNum: pageNum,
-						pageSize: pageSize
+						// pageNum: pageNum,
+						// pageSize: pageSize
 					}
 				}
 				

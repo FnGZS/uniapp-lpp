@@ -68,7 +68,7 @@
 		sendAjax
 	} from '@/common/js/sendAjax.js';
 	import config from '@/apiConfig';
-	const {setCleanerWork} = config.api;
+	const {getCleanerWork,setCleanerWork} = config.api;
 	export default {
 		data() {
 			return {
@@ -95,6 +95,7 @@
 				this.id = uni.getStorageSync('userDetail').cleaner.id;
 				
 				this.getWorkTime();
+				this.getCleanerWork();
 			},
 			paiban(e){
 				console.log('排班')
@@ -105,6 +106,37 @@
 				console.log(this.chooseData)
 				
 			},
+			getCleanerWork(){
+				var that = this;
+				let infoOpt = {
+					url: getCleanerWork,
+					type: 'POST',
+					data: {
+						cleanerId:this.id
+					}
+				};
+				let infoCb = {};
+				infoCb.success = function(res) {
+					var workList = res;
+					for(var i in workList){
+						workList[i].workDate = workList[i].workDate.substring(5,10)
+					}
+					var yuyueList = {}
+					for(var i in workList){
+						yuyueList[workList[i].workDate] = workList[i].statusMor.toString() + workList[i].statusAft.toString()
+					}
+					console.log(yuyueList)
+					that.yuyueList = yuyueList
+					console.log(yuyueList['12-12'])
+					uni.hideLoading()
+				},
+				infoCb.beforeSend = () => {
+				  uni.showLoading({
+				  	title:'加载中'
+				  })
+				};
+				sendAjax(infoOpt, infoCb);
+			},
 			cancel(){
 				var type = this.chooseType;
 				var work_date = this.chooseData;
@@ -114,9 +146,9 @@
 					var status_aft = 0;
 				}
 				var data = {
-					id:xx,
+					id:this.id,
 					work_date:work_date,
-					status_mor:0
+					type:type
 				}
 			},
 			confirm(){

@@ -32,7 +32,7 @@
 			indicator-color="#fff"
 			indicator-active-color="#3598DC"
 		>
-			<swiper-item v-for="(item, index) in swiperList" :key="index"><image :src="item.url" mode="aspectFill"></image></swiper-item>
+			<swiper-item v-for="(item, index) in bannerList" :key="index"><image :src="item.picture" mode="aspectFill"></image></swiper-item>
 		</swiper>
 		<!-- 公告 -->
 		<view class="gonggao">
@@ -75,7 +75,7 @@
 				<view class="public-box color_5a6c81 font_29">保洁推荐</view>
 			</view>
 			<view class="baojie-cont">
-				<view class="baojie-list" @click="toCleanNormal(item)" v-for="(item, index) in baojieList" :key="index">
+				<view class="baojie-list" @click="toCleanNormal(item)" v-for="(item, index) in cleanRecommendList" :key="index">
 					<view class="baojie-list-title font_29">{{ item.title }}</view>
 					<view class="baojie-list-text font_24">{{ item.content }}</view>
 
@@ -125,49 +125,13 @@ import { login } from '@/common/js/login.js';
 import { sendAjax } from '@/common/js/sendAjax.js';
 import { htmlToText } from '@/common/js/tools.js';
 import config from '@/apiConfig';
-const { dictDetailUrl,getNewsUrl} = config.api;
+const { dictDetailUrl,getNewsUrl,getBannerListUrl,cleanRecommendListUrl} = config.api;
 export default {
 	data() {
 		return {
 			ylxxList: [],
-			swiperList: [
-				{
-					id: 0,
-					type: 'image',
-					url: 'https://www.sxscott.com/img/banner.png'
-				}
-			],
-			baojieList:[{
-				id:0,
-				title:'常规保洁',
-				content:'XXX',
-				picture:'https://www.sxscott.com/img/c.png'
-			},{
-				id:1,
-				title:'深度保洁',
-				content:'XXX',
-				picture:'https://www.sxscott.com/img/c.png'
-			},{
-				id:2,
-				title:'新居开荒',
-				content:'XXX',
-				picture:'https://www.sxscott.com/img/c.png'
-			},{
-				id:3,
-				title:'办公室桌面保洁',
-				content:'XXX',
-				picture:'https://www.sxscott.com/img/c.png'
-			},{
-				id:4,
-				title:'家居整洁',
-				content:'XXX',
-				picture:'https://www.sxscott.com/img/c.png'
-			},{
-				id:5,
-				title:'甲醛治理',
-				content:'XXX',
-				picture:'https://www.sxscott.com/img/c.png'
-			}],
+			bannerList: [],
+			cleanRecommendList:[],
 			msgList: [],
 			modalName: ''
 		};
@@ -218,6 +182,8 @@ export default {
 			infoCb.success = function(res) {
 				that.ylxxList = res.list;
 				that.getNews();
+				that.getBanner();
+				that.getCleanRecommend()
 			};
 			infoCb.error = function(res) {
 				if(res.status ==='000'){
@@ -250,6 +216,40 @@ export default {
 					res.title = htmlToText(res.title)
 				})
 				that.msgList = res.list
+			};
+			sendAjax(infoOpt, infoCb);
+		},
+		//获取轮播图
+		getBanner(){
+			var that = this;
+			let infoOpt = {
+				url: getBannerListUrl,
+				type: 'POST',
+				data: {
+					pageNum:1,
+					pageSize:99
+				}
+			};
+			let infoCb = {};
+			infoCb.success = function(res) {
+				that.bannerList = res.list
+			};
+			sendAjax(infoOpt, infoCb);
+		},
+		//获取保洁推荐
+		getCleanRecommend(){
+			var that = this;
+			let infoOpt = {
+				url: cleanRecommendListUrl,
+				type: 'POST',
+				data: {
+					pageNum:1,
+					pageSize:99
+				}
+			};
+			let infoCb = {};
+			infoCb.success = function(res) {
+				that.cleanRecommendList = res.list
 			};
 			sendAjax(infoOpt, infoCb);
 		},

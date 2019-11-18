@@ -7,6 +7,10 @@ module.exports = {
 	api: {
 		//登录授权
 		jwtLoginUrl:`${apiUrl}/user/jwtLogin`,
+		//轮播图
+		getBannerListUrl:`${apiUrl}/banner/getList`,
+		//保洁推荐
+		cleanRecommendListUrl:`${apiUrl}/cleanRecommend/getList`,
 		//发送模板消息
 		sendTempleMsg:`${apiUrl}/userForm/message`,
 		//收集formId
@@ -33,5 +37,7 @@ module.exports = {
 		getTestList:`${apiUrl}/test/selecteByMap`,
 		//考核通过
 		submit:`${apiUrl}/test/submit`,
+		//我的页面获取订单数量
+		getOrderCount:`${apiUrl}/pay/payOrder/count`,
 		}
 }

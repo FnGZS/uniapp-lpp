@@ -135,7 +135,31 @@
 				timestatus: false
 			}
 		},
-		onLoad() {},
+		onLoad() {
+			
+		},
+		onShow(){
+			var isPastTest = uni.getStorageSync('pasttest');
+			if(isPastTest == ''){
+				uni.showModal({
+				    title: '提示',
+				    content: '请先通过考试认证',
+				    success: function (res) {
+				        if (res.confirm) {
+				           uni.navigateTo({
+				           	url:'../tests/index'
+				           })
+				        } else if (res.cancel) {
+				           uni.navigateBack({
+				           	
+				           })
+							
+				        }
+				    }
+				});
+			}
+			console.log(isPastTest)
+		},
 		methods: {
 			submitBtn() {
 				var name = this.name;

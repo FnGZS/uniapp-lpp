@@ -1,14 +1,14 @@
 <template>
 	<view>
 		<view class="box" v-for="(item, index) in testList" :key="index">
-			<view class="title">{{index+1}}.{{ item.title }}</view>
-			<view class="content">
-				<radio-group class="block" @change="RadioChange" :data-index = "index" :data-answer="item.answer">
-					<view v-for="(item, index) in item.content" key="index">
-						<radio class="azure radio" :value="index"></radio>
-						<text class="block_text">{{index}}:{{item}}</text>
+			<view class="title font_30">{{index+1}}.{{ item.title }}</view>
+			<view class="padding-top-sm">
+				<checkbox-group class="block" @change="CheckboxChange" :data-index = "index" :data-answer="item.answer">
+					<view class="padding-top-sm padding-bottom-xs content" v-for="(item, index) in item.content" key="index">
+						<checkbox class="margin-left-xs margin-right-sm" :checked="checkBox?'':false" :value="index"></checkbox>
+						<view class="block_text font_26">{{index}}:{{item}}</view>
 					</view>
-				</radio-group>
+				</checkbox-group>
 			</view>
 		</view>
 		<button class="sub_btn" type="primary" @click="sub">提交</button>
@@ -23,7 +23,9 @@ export default {
 	data() {
 		return {
 			testList: [],
-			dataList:[]
+			dataList:[],
+			//清空选择框
+			checkBox:true
 		};
 	},
 	onLoad() {
@@ -52,7 +54,8 @@ export default {
 			};
 			sendAjax(infoOpt, infoCb);
 		},
-		RadioChange(e) {
+		CheckboxChange(e) {
+			this.checkBox = true
 			this.dataList[e.target.dataset.index] = {
 				value:e.detail.value,
 				answer:e.target.dataset.answer
@@ -61,29 +64,25 @@ export default {
 		sub(){
 			let that = this
 			let newList = []
-			
 			that.dataList.forEach(res=>{
 				newList.push(res)
 			})
-			// console.log(newList)
 			if(newList.length!=that.testList.length){
 				uni.showModal({
 					title: '提示',
-					content: '您还有题未答，请继续答题！',
+					content: `您还有${that.testList.length-newList.length}题未答，请继续答题！`,
 					showCancel: false
 				});
 			}else{
-				console.log(that.dataList)
 				let d = 0
 				let c = 0
 				that.dataList.forEach(res=>{
-					if(res.value==res.answer){
+					if(JSON.stringify(res.value)===res.answer){
 						d++
 					}else{
 						c++
 					}
 				})
-				console.log(d,c)
 				if(d/(that.dataList.length)>=0.8){
 					let infoOpt = {
 						url: submit,
@@ -100,13 +99,24 @@ export default {
 							content: '恭喜你通过考核！',
 							showCancel: false
 						});
+						uni.setStorageSync('pasttest',1)
 					};
 					sendAjax(infoOpt, infoCb);
 				}else{
 					uni.showModal({
 						title: '遗憾',
-						content: '很遗憾你未通过考核！',
-						showCancel: false
+						content: `很遗憾您答错${c}题，未通过考核！`,
+						showCancel: false,
+						complete: function (res) {
+							console.log(res)
+						        if (res.confirm) {
+						            console.log('用户点击确定');
+									that.checkBox = false
+						        } else if (res.cancel) {
+						            console.log('用户点击取消');
+						        }
+						    }
+
 					});
 				}
 			}
@@ -125,16 +135,18 @@ export default {
 	background:#fff;
 	border-radius:10upx;
 	.title{
-		width: 100%;
-		heigth:100upx;
-		line-height: 100upx;
-		font-size: 28upx;
+		width: 95%;
 		color: #4a4a4a;
 		font-weight: 700;
 		margin-left: 10upx;
+		line-height: 50upx;
 	}
-	.radio{
-		margin: 4upx 20upx 4upx 0;
+	.content{
+		border-bottom: 1upx solid #eee;
+		display:flex;
+	}
+	.block_text{
+		width: 85%;
 	}
 }
 .sub_btn{

@@ -85,7 +85,8 @@ export default {
 			basicsList: [{name: '预约时间'},{name: '完善信息'},{name: '估价'}],
 			// 0 预约时间 1 预约时间+完善信息 2  预约时间+完善信息+提交
 			scroll: 1,
-			radio: '1'
+			radio: '1',
+			cleanType:''
 		};
 	},
 	methods: {
@@ -93,6 +94,7 @@ export default {
 			this.clearnerId = e.id;
 			this.appointmentType = e.type;
 			this.appointmentTime = e.day;
+			this.cleanType = e.cleanType;
 			this.customerId = uni.getStorageSync('userInfo').openId;
 		},
 		chooseImage() {
@@ -151,7 +153,8 @@ export default {
 					area:this.area,
 					remark:this.remark,
 					appointmentTime:this.appointmentTime,
-					appointmentType:this.appointmentType
+					appointmentType:this.appointmentType,
+					cleanType:this.cleanType
 				}
 				 uni.navigateTo({
 					url:'../orderSub/orderSub?data=' + JSON.stringify(data)

@@ -210,7 +210,7 @@
 			  toDetail(e){
 				  var id = e.currentTarget.dataset.id;
 				 uni.navigateTo({
-				 	url:'../subscribeTime/subscribeTime?id=' + id
+				 	url:'../subscribeTime/subscribeTime?id=' + id +'&cleanType='+this.type
 				 })
 			  }
 		}

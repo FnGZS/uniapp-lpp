@@ -4,7 +4,7 @@
 			<image src="../../../static/logo.jpg" mode=""></image>
 		</view>
 		<view class="banben">V 1.0.0</view>
-		<view class="content">绿泡泡家政是专业的家政服务平台，绿泡泡家政是专业的家政服务平台，绿泡泡家政是专业的家政服务平台，绿泡泡家政是专业的家政服务平台，绿泡泡家政是专业的家政服务平台。</view>
+		<view class="content">绿泡泡家政是一个新型模式的家政平台，是通过以保洁为主其它服务为辅家政平台。初心是让社会闲置劳动力和空余劳动力能充分利用，提高服务人员经济收入，减少中间差价，业主与服务人员都能收益。平台最主要的任务是对服务人员品行与技术进行监督与培训。让业主朋友实实在在得到安心、方便和满意！让绿泡泡家政平台能进入千家万户！</view>
 	</view>
 </template>
 
@@ -43,7 +43,7 @@
 		left: -75upx;
 		margin-left: 50%;
 		top: 280upx;
-		color: #000000;
+		color: #585858;
 	}
 	.content{
 		position: absolute;

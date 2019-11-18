@@ -202,10 +202,17 @@ export default {
 			var day = this.chooseData;
 			var type = this.chooseType;
 			var cleanType =this.cleanType;
+			if(day == ''){
+				uni.showToast({
+					title:'请选择时间',
+					icon:'none'
+				})
+			}else{
+				uni.navigateTo({
+					url: '../subscribeSub/subscribeSub?day=' + day +'&type=' + type +'&id='+id +'&cleanType='+cleanType
+				});
+			}
 			
-			uni.navigateTo({
-				url: '../subscribeSub/subscribeSub?day=' + day +'&type=' + type +'&id='+id +'&cleanType='+cleanType
-			});
 		}
 	}
 };

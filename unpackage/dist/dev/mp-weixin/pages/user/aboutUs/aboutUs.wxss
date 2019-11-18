@@ -19,7 +19,7 @@ page{
 	left: -75rpx;
 	margin-left: 50%;
 	top: 280rpx;
-	color: #000000;
+	color: #585858;
 }
 .content{
 	position: absolute;

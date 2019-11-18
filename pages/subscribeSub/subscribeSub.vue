@@ -46,7 +46,7 @@
 				</view>
 			</view>
 			<view class="subFormInfo">
-				<view class="subFormInfoLeft">房屋面积</view>
+				<view class="subFormInfoLeft">建筑面积</view>
 				<view class="columnLine"></view>
 				<view class="subFormInfoRight">
 					<input type="text" value="" placeholder="请填写房屋面积"  :value="area" @input='input_area'/>

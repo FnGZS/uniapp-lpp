@@ -17,6 +17,7 @@
 
 <script>
 import { sendAjax } from '@/common/js/sendAjax.js';
+import { login } from '@/common/js/login.js';
 import config from '@/apiConfig';
 const { getTestList, submit } = config.api;
 export default {
@@ -97,9 +98,16 @@ export default {
 						uni.showModal({
 							title: '恭喜',
 							content: '恭喜你通过考核！',
-							showCancel: false
+							showCancel: false,
+							success: function (res) {
+							    if (res.confirm) {
+							       uni.switchTab({
+							       	url:'../user'
+							       })
+							    }
+							}
 						});
-						uni.setStorageSync('pasttest',1)
+						login()
 					};
 					sendAjax(infoOpt, infoCb);
 				}else{

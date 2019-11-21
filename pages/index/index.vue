@@ -54,19 +54,21 @@
 				<view class="public-leftLine"></view>
 				<view class="public-box color_5a6c81 font_29">娱乐休闲</view>
 			</view>
-			<view class="cont">
-				<view class="list" v-for="(item, index) in ylxxList" :key="index">
-					<!-- 唱歌 -->
-					<view class="list-icon bc4" @click="gotoDetail(0)" v-if="item.k === 'CG'"><view class="iconfont icon-yule4"></view></view>
-					<!-- 游戏 -->
-					<view class="list-icon bc3" @click="gotoDetail(1)" v-if="item.k === 'YX'"><view class="iconfont icon-yule3"></view></view>
-					<!-- 下棋 -->
-					<view class="list-icon bc2" @click="gotoDetail(2)" v-if="item.k === 'XQ'"><view class="iconfont icon-yule2"></view></view>
-					<!-- 品咖 -->
-					<view class="list-icon bc1" @click="gotoDetail(3)" v-if="item.k === 'PK'"><view class="iconfont icon-yule1"></view></view>
-					<view class="list-title">{{ item.v }}</view>
-				</view>
-			</view>
+				<form @submit="getFormId" report-submit="true" >
+					<view class="cont">
+						<button form-type="submit" class="list" v-for="(item, index) in ylxxList" :key="index">
+							<!-- 唱歌 -->
+							<view class="list-icon bc4" @click="gotoDetail(0)" v-if="item.k === 'CG'"><view class="iconfont icon-yule4"></view></view>
+							<!-- 游戏 -->
+							<view class="list-icon bc3" @click="gotoDetail(1)" v-if="item.k === 'YX'"><view class="iconfont icon-yule3"></view></view>
+							<!-- 下棋 -->
+							<view class="list-icon bc2" @click="gotoDetail(2)" v-if="item.k === 'XQ'"><view class="iconfont icon-yule2"></view></view>
+							<!-- 品咖 -->
+							<view class="list-icon bc1" @click="gotoDetail(3)" v-if="item.k === 'PK'"><view class="iconfont icon-yule1"></view></view>
+							<view class="list-title">{{ item.v }}</view>
+						</button>
+					</view>
+				</form>
 		</view>
 		<!-- 保洁 -->
 		<view class="baojie">
@@ -74,15 +76,17 @@
 				<view class="public-leftLine"></view>
 				<view class="public-box color_5a6c81 font_29">保洁推荐</view>
 			</view>
-			<view class="baojie-cont">
-				<view class="baojie-list" @click="toCleanNormal(item)" v-for="(item, index) in cleanRecommendList" :key="index">
-					<view class="baojie-list-title font_29">{{ item.title }}</view>
-					<view class="baojie-list-text font_24">{{ item.content }}</view>
+			<form @submit="getFormId" report-submit="true" >
+				<view class="baojie-cont">
+					<button form-type="submit" class="baojie-list" @click="toCleanNormal(item)" v-for="(item, index) in cleanRecommendList" :key="index">
+						<view class="baojie-list-title font_29">{{ item.title }}</view>
+						<view class="baojie-list-text font_24">{{ item.content }}</view>
 
-					<image :src=" item.picture "></image>
+						<image :src=" item.picture "></image>
+					</button>
+					
 				</view>
-				
-			</view>
+			</form>
 		</view>
 		<!-- 推荐 -->
 		<view class="tuijian">
@@ -125,7 +129,7 @@ import { login } from '@/common/js/login.js';
 import { sendAjax } from '@/common/js/sendAjax.js';
 import { htmlToText } from '@/common/js/tools.js';
 import config from '@/apiConfig';
-const { dictDetailUrl,getNewsUrl,getBannerListUrl,cleanRecommendListUrl} = config.api;
+const { dictDetailUrl,getNewsUrl,getBannerListUrl,cleanRecommendListUrl,getFormId} = config.api;
 export default {
 	data() {
 		return {
@@ -274,7 +278,36 @@ export default {
 				});
 			}
 			
-		}
+		},
+		//收集formId
+		  getFormId:function(e){
+			  console.log(e)
+		    var formId = e.detail.formId;
+		    // var userId = wx.getStorageSync('userinfo').userId;
+		    var openId = uni.getStorageSync('userInfo').openId;
+		    if (formId != 'the formId is a mock one'){
+		      var that = this;
+		      let infoOpt = {
+		        url:getFormId,
+		        type: 'POST',
+		        data: {
+		          // userId: userId,
+		          openId: openId,
+		          formId: formId
+		        },
+		        header: {
+		          'content-type': 'application/json',
+		        },
+		      }
+		      let infoCb = {}
+		      infoCb.success = function (res) {
+				  console.log(res)
+		      }
+		      infoCb.beforeSend = () => { }
+		      sendAjax(infoOpt, infoCb, () => { });
+		    }
+		    
+		  }
 	}
 };
 </script>
@@ -369,13 +402,13 @@ page {
 	color: #5a6c81;
 }
 .xiuxian .cont {
-	display: flex;
+	display: flex !important;
 	width: 90%;
 	margin-left: 5%;
 }
 .list {
+	display: block;
 	margin-top: 20rpx;
-	width: 25%;
 }
 .list-icon {
 	margin: auto;
@@ -484,13 +517,17 @@ page {
 }
 .baojie-list-title {
 	color: #333333;
-	margin-top: 30upx;
-	margin-left: 18upx;
+/* 	margin-top: 10upx;
+	margin-left: 18upx; */
+	position: absolute;
+	top: 10upx;
+	left: 20upx;
 }
 .baojie-list-text {
 	color: #777777;
-	margin-top: 20upx;
-	margin-left: 20upx;
+	position: absolute;
+	top: 70upx;
+	left: 20upx;
 }
 
 .baojie-list image {
@@ -552,4 +589,18 @@ page {
 	padding: 2upx 10upx;
 	border-radius: 5upx;
 }
+	
+button{
+	background: #fff;
+}
+	button::after{
+	  border:none;
+	  top: 75upx;
+	}
+	 button.button-hover {
+	  background-color: #fff;
+	}
+	.baojie button.button-hover {
+	  background-color: #f8f8f8;
+	}
 </style>
